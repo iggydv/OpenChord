@@ -28,71 +28,70 @@
 
 package com.chord;
 
-import java.io.Serializable;
-
 import com.chord.data.ID;
+
+import java.io.Serializable;
 
 /**
  * @author karsten
  * @version 1.0.5
  */
 public final class Entry implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 3473253817147038992L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 3473253817147038992L;
 
-	/**
-	 * The id of this entry. 
-	 */
-	private ID id;
+    /**
+     * The id of this entry.
+     */
+    private final ID id;
 
-	/**
-	 * The stored value. 
-	 * 
-	 */
-	private Serializable value;
+    /**
+     * The stored value.
+     */
+    private final Serializable value;
 
-	/**
-	 * @param id1
-	 * @param value1
-	 */
-	public Entry(ID id1, Serializable value1) {
-		this.id = id1;
-		this.value = value1;
-	}
+    /**
+     * @param id1
+     * @param value1
+     */
+    public Entry(ID id1, Serializable value1) {
+        this.id = id1;
+        this.value = value1;
+    }
 
-	/**
-	 * @return Returns the id.
-	 */
-	public ID getId() {
-		return this.id;
-	}
+    /**
+     * @return Returns the id.
+     */
+    public ID getId() {
+        return this.id;
+    }
 
-	/**
-	 * @return Returns the value.
-	 */
-	public Serializable getValue() {
-		return this.value;
-	}
+    /**
+     * @return Returns the value.
+     */
+    public Serializable getValue() {
+        return this.value;
+    }
 
-	public String toString() {
-		return "( key = " + this.id.toString() + ", value = " + this.value
-				+ ")";
-	}
+    public String toString() {
+        return "( key = " + this.id.toString() + ", value = " + this.value
+                + ")";
+    }
 
-	public int hashCode() {
-		int result = 17;
-		result += 37 * this.id.hashCode();
-		result += 37 * this.value.hashCode();
-		return result;
-	}
+    public int hashCode() {
+        int result = 17;
+        result += 37 * this.id.hashCode();
+        result += 37 * this.value.hashCode();
+        return result;
+    }
 
-	public boolean equals(Object o) {
-		if (!(o instanceof Entry)) {
-			return false;
-		}
-		Entry entry = (Entry) o;
-		return (entry.id.equals(this.id) && entry.value.equals(this.value));
-	}
+    public boolean equals(Object o) {
+        if (!(o instanceof Entry)) {
+            return false;
+        }
+        Entry entry = (Entry) o;
+        return (entry.id.equals(this.id) && entry.value.equals(this.value));
+    }
 }

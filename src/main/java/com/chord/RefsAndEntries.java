@@ -42,45 +42,45 @@ import java.util.Set;
  */
 public final class RefsAndEntries implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -2144146590744444954L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = -2144146590744444954L;
 
-	/**
-	 * List containing the predecessor (first in this list) and successors of a
-	 * node.
-	 */
-	private List<Node> refs; // list of Node
+    /**
+     * List containing the predecessor (first in this list) and successors of a
+     * node.
+     */
+    private final List<Node> refs; // list of Node
 
-	/**
-	 * The entries a node is responsible for.
-	 */
-	private Set<Entry> entries; // set of Entry
+    /**
+     * The entries a node is responsible for.
+     */
+    private final Set<Entry> entries; // set of Entry
 
-	/**
-	 * @param refs1
-	 * @param entries1
-	 */
-	public RefsAndEntries(List<Node> refs1, Set<Entry> entries1) {
-		this.refs = refs1;
-		this.entries = entries1;
-	}
+    /**
+     * @param refs1
+     * @param entries1
+     */
+    public RefsAndEntries(List<Node> refs1, Set<Entry> entries1) {
+        this.refs = refs1;
+        this.entries = entries1;
+    }
 
-	/**
-	 * @return Returns the entries.
-	 */
-	public Set<Entry> getEntries() {
-		return this.entries;
-	}
+    /**
+     * @return Returns the entries.
+     */
+    public Set<Entry> getEntries() {
+        return this.entries;
+    }
 
-	/**
-	 * Returns references to the nodes contained within this instance.
-	 * @return List containing the predecessor (first in this list) and successors of a
-	 * node.
-	 * 
-	 */
-	public List<Node> getRefs() {
-		return this.refs;
-	}
+    /**
+     * Returns references to the nodes contained within this instance.
+     *
+     * @return List containing the predecessor (first in this list) and successors of a
+     * node.
+     */
+    public List<Node> getRefs() {
+        return this.refs;
+    }
 }

@@ -30,48 +30,52 @@ package com.chord.console.command;
 
 import com.chord.console.Command;
 import com.chord.console.ConsoleException;
+
 import java.io.PrintStream;
 
 /**
- * {@link Command} to leave the remote chord network. 
- * 
- * To get a description of this command type <code>leaveN -help</code> 
+ * {@link Command} to leave the remote chord network.
+ * <p>
+ * To get a description of this command type <code>leaveN -help</code>
  * into the {@link com.chord.console.Main console}.
- * 
- * @author  sven
+ *
+ * @author sven
  * @version 1.0.5
  */
 public class LeaveNetwork extends Command {
-    
-	/**
-	 * The name of this {@link Command}. 
-	 */
+
+    /**
+     * The name of this {@link Command}.
+     */
     public static final String COMMAND_NAME = "leaveN";
-    
-    /** Creates a new instance of Exit 
-     * @param toCommand1 
-     * @param out1 */
+
+    /**
+     * Creates a new instance of Exit
+     *
+     * @param toCommand1
+     * @param out1
+     */
     public LeaveNetwork(Object[] toCommand1, PrintStream out1) {
         super(toCommand1, out1);
     }
-    
+
     public void exec() throws ConsoleException {
         this.out.println("Leaving network.");
         try {
-            ((RemoteChordNetworkAccess)this.toCommand[1]).leave();
+            ((RemoteChordNetworkAccess) this.toCommand[1]).leave();
         } catch (Exception e) {
-            throw new ConsoleException("Leave failed! Reason: " 
-                    + e.getMessage(), e); 
+            throw new ConsoleException("Leave failed! Reason: "
+                    + e.getMessage(), e);
         }
     }
-    
+
     public String getCommandName() {
         return COMMAND_NAME;
     }
-    
+
     public void printOutHelp() {
-    	this.out.println("Causes the node that is connected to a remote network \n " +
-    			"to leave the network and notify the affected nodes.");
+        this.out.println("Causes the node that is connected to a remote network \n " +
+                "to leave the network and notify the affected nodes.");
     }
-    
+
 }

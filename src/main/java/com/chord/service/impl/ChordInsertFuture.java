@@ -27,142 +27,135 @@
  ***************************************************************************/
 package com.chord.service.impl;
 
-import java.io.Serializable;
-import java.util.concurrent.Executor;
-
 import com.chord.service.Chord;
 import com.chord.service.ChordFuture;
 import com.chord.service.Key;
 
+import java.io.Serializable;
+import java.util.concurrent.Executor;
+
 /**
  * Implementation of {@link ChordFuture} for
  * {@link ChordImpl#insertAsync(Key, Serializable)}.
- * 
+ *
  * @author sven
  * @version 1.0.5
- * 
  */
 class ChordInsertFuture extends ChordFutureImpl {
 
-	/**
-	 * The instance of chord used for the invocation represented by this. 
-	 */
-	private Chord chord;
+    /**
+     * The instance of chord used for the invocation represented by this.
+     */
+    private final Chord chord;
 
-	
-	/**
-	 * The key used for the insertion. 
-	 */
-	private Key key;
 
-	/**
-	 * The entry to insert. 
-	 */
-	private Serializable entry;
+    /**
+     * The key used for the insertion.
+     */
+    private final Key key;
 
-	/**
-	 * 
-	 * @param c The instance of chord used for the invocation represented by this. 
-	 * @param k The key used for the insertion. 
-	 * @param entry The entry to insert.
-	 */
-	private ChordInsertFuture(Chord c, Key k, Serializable entry) {
-		this.chord = c;
-		this.key = k;
-		this.entry = entry;
-	}
+    /**
+     * The entry to insert.
+     */
+    private final Serializable entry;
 
-	/**
-	 * Factory method to create an instance of this class. This method also
-	 * prepares execution of the insertion with help of the provided
-	 * {@link Executor} <code>exec</code>.
-	 * 
-	 * @param exec
-	 *            The executor that should asynchronously execute the insertion
-	 *            of <code>entry</code> with key <code>k</code>.
-	 * 
-	 * @param c
-	 *            The instance of {@link Chord} that should be used to insert
-	 *            <code>entry</code>.
-	 * @param k
-	 *            The {@link Key} for <code>entry</code>.
-	 * @param entry
-	 *            The entry to be inserted.
-	 * @return Instance of this class.
-	 */
-	final static ChordInsertFuture create(Executor exec, Chord c, Key k,
-			Serializable entry) {
+    /**
+     * @param c     The instance of chord used for the invocation represented by this.
+     * @param k     The key used for the insertion.
+     * @param entry The entry to insert.
+     */
+    private ChordInsertFuture(Chord c, Key k, Serializable entry) {
+        this.chord = c;
+        this.key = k;
+        this.entry = entry;
+    }
 
-		if (c == null) {
-			throw new IllegalArgumentException(
-					"ChordInsertFuture: chord instance must not be null!");
-		}
-		if (k == null) {
-			throw new IllegalArgumentException(
-					"ChordInsertFuture: key must not be null!");
-		}
-		if (entry == null) {
-			throw new IllegalArgumentException(
-					"ChordInsertFuture: entry must not be null!");
-		}
+    /**
+     * Factory method to create an instance of this class. This method also
+     * prepares execution of the insertion with help of the provided
+     * {@link Executor} <code>exec</code>.
+     *
+     * @param exec  The executor that should asynchronously execute the insertion
+     *              of <code>entry</code> with key <code>k</code>.
+     * @param c     The instance of {@link Chord} that should be used to insert
+     *              <code>entry</code>.
+     * @param k     The {@link Key} for <code>entry</code>.
+     * @param entry The entry to be inserted.
+     * @return Instance of this class.
+     */
+    final static ChordInsertFuture create(Executor exec, Chord c, Key k,
+                                          Serializable entry) {
 
-		ChordInsertFuture f = new ChordInsertFuture(c, k, entry);
-		exec.execute(f.getTask());
-		return f;
-	}
+        if (c == null) {
+            throw new IllegalArgumentException(
+                    "ChordInsertFuture: chord instance must not be null!");
+        }
+        if (k == null) {
+            throw new IllegalArgumentException(
+                    "ChordInsertFuture: key must not be null!");
+        }
+        if (entry == null) {
+            throw new IllegalArgumentException(
+                    "ChordInsertFuture: entry must not be null!");
+        }
 
-	/**
-	 * 
-	 * @return A Runnable that executes the operation associated with this. 
-	 */
-	private final Runnable getTask() {
-		return new InsertTask(this.chord, this.key, this.entry);
-	}
+        ChordInsertFuture f = new ChordInsertFuture(c, k, entry);
+        exec.execute(f.getTask());
+        return f;
+    }
 
-	/**
-	 * Runnable that executes the insertion.
-	 * 
-	 * @author sven
-	 * @version 1.0
-	 */
-	private class InsertTask implements Runnable {
+    /**
+     * @return A Runnable that executes the operation associated with this.
+     */
+    private final Runnable getTask() {
+        return new InsertTask(this.chord, this.key, this.entry);
+    }
 
-		/**
-		 * The instance of chord used for the invocation represented by this. 
-		 */
-		private Chord chord;
+    /**
+     * Runnable that executes the insertion.
+     *
+     * @author sven
+     * @version 1.0
+     */
+    private class InsertTask implements Runnable {
 
-		
-		/**
-		 * The key used for the insertion. 
-		 */
-		private Key key;
+        /**
+         * The instance of chord used for the invocation represented by this.
+         */
+        private final Chord chord;
 
-		/**
-		 * The entry to insert. 
-		 */
-		private Serializable entry;
-		
-		/**
-		 * Private constructor. 
-		 * @param chord 
-		 * @param key 
-		 * @param entry 
-		 */
-		InsertTask(Chord chord, Key key, Serializable entry){
-			this.chord = chord; 
-			this.key = key; 
-			this.entry = entry; 
-		}
-		
-		public void run() {
-			try {
-				this.chord.insert(this.key, this.entry);
-			} catch (Throwable t) {
-				setThrowable(t);
-			}
-			setIsDone();
-		}
-	}
+
+        /**
+         * The key used for the insertion.
+         */
+        private final Key key;
+
+        /**
+         * The entry to insert.
+         */
+        private final Serializable entry;
+
+        /**
+         * Private constructor.
+         *
+         * @param chord
+         * @param key
+         * @param entry
+         */
+        InsertTask(Chord chord, Key key, Serializable entry) {
+            this.chord = chord;
+            this.key = key;
+            this.entry = entry;
+        }
+
+        public void run() {
+            try {
+                this.chord.insert(this.key, this.entry);
+            } catch (Throwable t) {
+                setThrowable(t);
+            }
+            setIsDone();
+        }
+    }
 
 }

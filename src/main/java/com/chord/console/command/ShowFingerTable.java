@@ -25,91 +25,91 @@
  *   with this software or at: http://www.gnu.org/copyleft/gpl.html        *
  *                                                                         *
  ***************************************************************************/
- 
+
 package com.chord.console.command;
 
-import java.net.MalformedURLException;
-
+import com.chord.console.Command;
+import com.chord.console.ConsoleException;
+import com.chord.data.URL;
 import com.chord.local.ChordImplAccess;
 import com.chord.local.Registry;
 import com.chord.local.ThreadEndpoint;
-import com.chord.data.URL;
 import com.chord.service.Report;
-import com.chord.console.Command;
-import com.chord.console.ConsoleException;
+
+import java.net.MalformedURLException;
 
 /**
  * <p>
  * {@link Command} to show the finger table of a chord node of the local chord
  * network.
  * </p>
- * 
+ * <p>
  * To get a description of this command type <code>finger -help</code> into
  * the {@link com.chord.console.Main console}.
- * 
+ *
  * @author sven
  * @version 1.0.5
  */
 public class ShowFingerTable extends Command {
 
-	/**
-	 * The name of this {@link Command}.
-	 */
-	public static final String COMMAND_NAME = "refs";
+    /**
+     * The name of this {@link Command}.
+     */
+    public static final String COMMAND_NAME = "refs";
 
-	/**
-	 * Name of the parameter, that defines the name of the node, for which the
-	 * finger table should be displayed.
-	 */
-	public static final String NODE_PARAM = "node";
+    /**
+     * Name of the parameter, that defines the name of the node, for which the
+     * finger table should be displayed.
+     */
+    public static final String NODE_PARAM = "node";
 
-	/**
-	 * Creates a new instance of ShowFingerTable
-	 * 
-	 * @param toCommand1
-	 * @param out1
-	 */
-	public ShowFingerTable(Object[] toCommand1, java.io.PrintStream out1) {
-		super(toCommand1, out1);
-	}
+    /**
+     * Creates a new instance of ShowFingerTable
+     *
+     * @param toCommand1
+     * @param out1
+     */
+    public ShowFingerTable(Object[] toCommand1, java.io.PrintStream out1) {
+        super(toCommand1, out1);
+    }
 
-	public void exec() throws com.chord.console.ConsoleException {
-		String nodeName = this.parameters.get(NODE_PARAM);
-		if ((nodeName == null) || (nodeName.length() == 0)) {
-			throw new ConsoleException(
-					"Not enough parameters. Please provide name of node "
-							+ "with help of " + NODE_PARAM + " parameter. ");
-		}
+    public void exec() throws com.chord.console.ConsoleException {
+        String nodeName = this.parameters.get(NODE_PARAM);
+        if ((nodeName == null) || (nodeName.length() == 0)) {
+            throw new ConsoleException(
+                    "Not enough parameters. Please provide name of node "
+                            + "with help of " + NODE_PARAM + " parameter. ");
+        }
 
-		URL url = null; 
-		try {
-			url = new URL(URL.KNOWN_PROTOCOLS.get(URL.LOCAL_PROTOCOL) + "://" + nodeName + "/");
-		} catch (MalformedURLException e1) {
-			throw new ConsoleException(e1.getMessage());
-		} 
-		
-		Registry reg = (Registry) this.toCommand[0];
-		this.out.println("Retrieving node " + nodeName);
-		ThreadEndpoint ep = reg.lookup(url);
+        URL url = null;
+        try {
+            url = new URL(URL.KNOWN_PROTOCOLS.get(URL.LOCAL_PROTOCOL) + "://" + nodeName + "/");
+        } catch (MalformedURLException e1) {
+            throw new ConsoleException(e1.getMessage());
+        }
 
-		if (ep != null) {
-			this.out.println(((Report)ChordImplAccess.fetchChordImplOfNode(ep.getNode()))
-					.printReferences());
-		} else {
-			this.out.println("Could not finde node with name " + nodeName);
-		}
-	}
+        Registry reg = (Registry) this.toCommand[0];
+        this.out.println("Retrieving node " + nodeName);
+        ThreadEndpoint ep = reg.lookup(url);
 
-	public String getCommandName() {
-		return COMMAND_NAME;
-	}
+        if (ep != null) {
+            this.out.println(((Report) ChordImplAccess.fetchChordImplOfNode(ep.getNode()))
+                    .printReferences());
+        } else {
+            this.out.println("Could not finde node with name " + nodeName);
+        }
+    }
 
-	public void printOutHelp() {
-		this.out
-				.println("This command displays the finger table of the node with the name "
-						+ "provided with help of parameter '"
-						+ NODE_PARAM
-						+ "'");
-	}
+    public String getCommandName() {
+        return COMMAND_NAME;
+    }
+
+    public void printOutHelp() {
+        this.out
+                .println("This command displays the finger table of the node with the name "
+                        + "provided with help of parameter '"
+                        + NODE_PARAM
+                        + "'");
+    }
 
 }

@@ -33,270 +33,250 @@ import java.util.List;
 
 /**
  * Address of nodes.
- * 
+ * <p>
  * Once created, a URL instance is unmodifiable.
- * 
+ *
  * @author Sven Kaffille, Karsten Loesing
  * @version 1.0.5
  */
 public class URL implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 8223277048826783692L;
+    /**
+     * The names of the protocols known to this chord implementation. The name
+     * for each protocol can be referenced with help of the constants for the
+     * protocoal e.g. <code>SOCKET_PROTOCOL</code>.
+     */
+    public final static List<String> KNOWN_PROTOCOLS = java.util.Collections
+            .unmodifiableList(java.util.Arrays.asList("ocsocket", "oclocal", "ocrmi"));
+    /**
+     * Index of socket protocol in <code>{@link #KNOWN_PROTOCOLS}</code>.
+     */
+    public final static int SOCKET_PROTOCOL = 0;
+    /**
+     * Index of thread protocol (for local chord network ) in
+     * <code>{@link #KNOWN_PROTOCOLS}</code>.
+     */
+    public final static int LOCAL_PROTOCOL = 1;
+    /**
+     * Index of socket protocol in <code>{@link #KNOWN_PROTOCOLS}</code>.
+     */
+    public final static int RMI_PROTOCOL = 2;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 8223277048826783692L;
+    /**
+     * Array containing default ports for all known protocols. The port for each
+     * protocol can be referenced with help of the constants for the protocoal
+     * e.g. <code>SOCKET_PROTOCOL</code>.
+     */
+    private final static int[] DEFAULT_PORTS = new int[]{4242, -1, 4242};
+    /**
+     * Constant for URL parsing.
+     */
+    private final static String DCOLON = ":";
+    /**
+     * Constant for URL parsing.
+     */
+    private final static String SLASH = "/";
+    /**
+     * Constant for URL parsing.
+     */
+    private final static String DCOLON_SLASHES = DCOLON + SLASH + SLASH;
+    /**
+     * The protocol of this URL.
+     */
+    private final String protocol;
+    /**
+     * The host of this URL.
+     */
+    private final String host;
+    /**
+     * The port of this URL.
+     */
+    private final int port;
+    /**
+     * The path for this URL.
+     */
+    private final String path;
+    /**
+     * String representation of URL
+     */
+    private transient String urlString;
 
-	/**
-	 * String representation of URL
-	 */
-	private transient String urlString;
+    /**
+     * Create an instance of URL from <code>urlString</code>.
+     *
+     * @param urlString The string to create an URL from.
+     * @throws MalformedURLException This can occur if <code>urlString</code> does not match the
+     *                               pattern <code>protocol://host[:port]/path</code>, an
+     *                               unknown protocol is specified, or port is negative.
+     */
+    public URL(String urlString) throws MalformedURLException {
 
-	/**
-	 * The protocol of this URL.
-	 */
-	private final String protocol;
+        // store textual representation of URL
+        this.urlString = urlString;
 
-	/**
-	 * The host of this URL.
-	 */
-	private final String host;
+        // parse protocol
+        int indexOfColonAndTwoSlashes = urlString.indexOf(DCOLON_SLASHES);
+        if (indexOfColonAndTwoSlashes < 0) {
+            throw new MalformedURLException("Not a valid URL");
+        }
+        this.protocol = urlString.substring(0, indexOfColonAndTwoSlashes);
+        urlString = urlString.substring(indexOfColonAndTwoSlashes + 3);
 
-	/**
-	 * The port of this URL.
-	 */
-	private final int port;
+        // parse host and port
+        int endOfHost = urlString.indexOf(DCOLON);
+        if (endOfHost >= 0) {
+            this.host = urlString.substring(0, endOfHost);
+            urlString = urlString.substring(endOfHost + 1);
+            int endOfPort = urlString.indexOf(SLASH);
+            if (endOfPort < 0) {
+                throw new MalformedURLException("Not a valid URL!");
+            }
+            /* initialise port */
+            int tmp_port = Integer.parseInt(urlString.substring(0, endOfPort));
+            /* port must not be negative */
+            if ((tmp_port <= 0) || (tmp_port >= 65536)) {
+                throw new MalformedURLException("Not a valid URL! "
+                        + "Port must be between 0 and 65536!");
+            }
+            this.port = tmp_port;
+            urlString = urlString.substring(endOfPort + 1);
+        } else {
+            endOfHost = urlString.indexOf(SLASH);
+            if (endOfHost < 0) {
+                throw new MalformedURLException("Not a valid URL");
+            }
+            this.host = urlString.substring(0, endOfHost);
+            urlString = urlString.substring(endOfHost + 1);
+            if (this.protocol
+                    .equalsIgnoreCase(KNOWN_PROTOCOLS.get(URL.SOCKET_PROTOCOL))) {
+                this.port = URL.DEFAULT_PORTS[URL.SOCKET_PROTOCOL];
+            } else if (this.protocol
+                    .equalsIgnoreCase(KNOWN_PROTOCOLS.get(URL.RMI_PROTOCOL))) {
+                this.port = URL.DEFAULT_PORTS[URL.RMI_PROTOCOL];
+            } else {
+                this.port = URL.DEFAULT_PORTS[URL.LOCAL_PROTOCOL];
+            }
+        }
 
-	/**
-	 * The path for this URL.
-	 */
-	private final String path;
+        // parse path
+        this.path = urlString;
 
-	/**
-	 * The names of the protocols known to this chord implementation. The name
-	 * for each protocol can be referenced with help of the constants for the
-	 * protocoal e.g. <code>SOCKET_PROTOCOL</code>.
-	 */
-	public final static List<String> KNOWN_PROTOCOLS = java.util.Collections
-			.unmodifiableList(java.util.Arrays.asList(new String[] {
-					"ocsocket", "oclocal", "ocrmi" }));
+        // check if protocol is known
+        boolean protocolIsKnown = false;
+        for (int i = 0; i < KNOWN_PROTOCOLS.size() && !protocolIsKnown; i++) {
+            if (this.protocol.equals(KNOWN_PROTOCOLS.get(i))) {
+                protocolIsKnown = true;
+            }
+        }
+        if (!protocolIsKnown) {
+            throw new MalformedURLException("Protocol is not known! "
+                    + this.protocol);
+        }
 
-	/**
-	 * Array containing default ports for all known protocols. The port for each
-	 * protocol can be referenced with help of the constants for the protocoal
-	 * e.g. <code>SOCKET_PROTOCOL</code>.
-	 */
-	private final static int[] DEFAULT_PORTS = new int[] { 4242, -1, 4242 };
+    }
 
-	/**
-	 * Index of socket protocol in <code>{@link #KNOWN_PROTOCOLS}</code>.
-	 */
-	public final static int SOCKET_PROTOCOL = 0;
+    /**
+     * Get the protocol of this URL.
+     *
+     * @return The protocol of this URL.
+     */
+    public final String getProtocol() {
+        return this.protocol;
+    }
 
-	/**
-	 * Index of thread protocol (for local chord network ) in
-	 * <code>{@link #KNOWN_PROTOCOLS}</code>.
-	 */
-	public final static int LOCAL_PROTOCOL = 1;
-	
-	/**
-	 * Index of socket protocol in <code>{@link #KNOWN_PROTOCOLS}</code>.
-	 */
-	public final static int RMI_PROTOCOL = 2;
+    /**
+     * Get the host name contained in this URL.
+     *
+     * @return Host name contained in this URL.
+     */
+    public final String getHost() {
+        return this.host;
+    }
 
-	/**
-	 * Constant for URL parsing.
-	 */
-	private final static String DCOLON = ":";
+    /**
+     * Get the path contained in this URL.
+     *
+     * @return The path contained in this URL.
+     */
+    public final String getPath() {
+        return this.path;
+    }
 
-	/**
-	 * Constant for URL parsing.
-	 */
-	private final static String SLASH = "/";
+    /**
+     * Get the port contained in this URL.
+     *
+     * @return The port of this URL. Has value <code>NO_PORT</code> if no port
+     * has been specified for this URL.
+     */
+    public final int getPort() {
+        return this.port;
+    }
 
-	/**
-	 * Constant for URL parsing.
-	 */
-	private final static String DCOLON_SLASHES = DCOLON + SLASH + SLASH;
+    /** ******************************************************* */
+    /* START: Overwritten methods from java.lang.Object */
+    /** ******************************************************* */
 
-	/**
-	 * Create an instance of URL from <code>urlString</code>.
-	 * 
-	 * @param urlString
-	 *            The string to create an URL from.
-	 * @throws MalformedURLException
-	 *             This can occur if <code>urlString</code> does not match the
-	 *             pattern <code>protocol://host[:port]/path</code>, an
-	 *             unknown protocol is specified, or port is negative.
-	 * 
-	 */
-	public URL(String urlString) throws MalformedURLException {
+    /**
+     * Overwritten from {@link java.lang.Object}.
+     *
+     * @return Hash code of this URL.
+     */
+    public final int hashCode() {
+        int hash = 17;
+        hash += 37 * this.protocol.hashCode();
+        hash += 37 * this.host.hashCode();
+        hash += 37 * this.path.hashCode();
+        hash += 37 * this.port;
+        return hash;
+    }
 
-		// store textual representation of URL
-		this.urlString = urlString;
+    /**
+     * Overwritten from {@link java.lang.Object}.
+     *
+     * @param obj
+     * @return <code>true</code> if provided <code>obj</code> is an instance
+     * of <code>URL</code> and has the same attributes as this
+     * <code>URL</code>.
+     */
+    public final boolean equals(Object obj) {
+        if (obj instanceof URL) {
+            URL url = (URL) obj;
 
-		// parse protocol
-		int indexOfColonAndTwoSlashes = urlString.indexOf(DCOLON_SLASHES);
-		if (indexOfColonAndTwoSlashes < 0) {
-			throw new MalformedURLException("Not a valid URL");
-		}
-		this.protocol = urlString.substring(0, indexOfColonAndTwoSlashes);
-		urlString = urlString.substring(indexOfColonAndTwoSlashes + 3);
+            if (!url.getProtocol().equalsIgnoreCase(this.protocol)) {
+                return false;
+            }
+            if (!url.getHost().equalsIgnoreCase(this.host)) {
+                return false;
+            }
+            if (!(url.getPort() == this.port)) {
+                return false;
+            }
+            return url.getPath().equals(this.path);
+        }
+        return false;
+    }
 
-		// parse host and port
-		int endOfHost = urlString.indexOf(DCOLON);
-		if (endOfHost >= 0) {
-			this.host = urlString.substring(0, endOfHost);
-			urlString = urlString.substring(endOfHost + 1);
-			int endOfPort = urlString.indexOf(SLASH);
-			if (endOfPort < 0) {
-				throw new MalformedURLException("Not a valid URL!");
-			}
-			/* initialise port */
-			int tmp_port = Integer.parseInt(urlString.substring(0, endOfPort));
-			/* port must not be negative */
-			if ((tmp_port <= 0) || (tmp_port >= 65536)) {
-				throw new MalformedURLException("Not a valid URL! "
-						+ "Port must be between 0 and 65536!");
-			}
-			this.port = tmp_port;
-			urlString = urlString.substring(endOfPort + 1);
-		} else {
-			endOfHost = urlString.indexOf(SLASH);
-			if (endOfHost < 0) {
-				throw new MalformedURLException("Not a valid URL");
-			}
-			this.host = urlString.substring(0, endOfHost);
-			urlString = urlString.substring(endOfHost + 1);
-			if (this.protocol
-					.equalsIgnoreCase(KNOWN_PROTOCOLS.get(URL.SOCKET_PROTOCOL))) {
-				this.port = URL.DEFAULT_PORTS[URL.SOCKET_PROTOCOL];
-			} else if (this.protocol
-					.equalsIgnoreCase(KNOWN_PROTOCOLS.get(URL.RMI_PROTOCOL))) {
-				this.port = URL.DEFAULT_PORTS[URL.RMI_PROTOCOL];
-			} else {
-				this.port = URL.DEFAULT_PORTS[URL.LOCAL_PROTOCOL];
-			}
-		}
-
-		// parse path
-		this.path = urlString;
-
-		// check if protocol is known
-		boolean protocolIsKnown = false;
-		for (int i = 0; i < KNOWN_PROTOCOLS.size() && !protocolIsKnown; i++) {
-			if (this.protocol.equals(KNOWN_PROTOCOLS.get(i))) {
-				protocolIsKnown = true;
-			}
-		}
-		if (!protocolIsKnown) {
-			throw new MalformedURLException("Protocol is not known! "
-					+ this.protocol);
-		}
-
-	}
-
-	/**
-	 * Get the protocol of this URL.
-	 * 
-	 * @return The protocol of this URL.
-	 */
-	public final String getProtocol() {
-		return this.protocol;
-	}
-
-	/**
-	 * Get the host name contained in this URL.
-	 * 
-	 * @return Host name contained in this URL.
-	 */
-	public final String getHost() {
-		return this.host;
-	}
-
-	/**
-	 * Get the path contained in this URL.
-	 * 
-	 * @return The path contained in this URL.
-	 */
-	public final String getPath() {
-		return this.path;
-	}
-
-	/**
-	 * Get the port contained in this URL.
-	 * 
-	 * @return The port of this URL. Has value <code>NO_PORT</code> if no port
-	 *         has been specified for this URL.
-	 */
-	public final int getPort() {
-		return this.port;
-	}
-
-	/** ******************************************************* */
-	/* START: Overwritten methods from java.lang.Object */
-	/** ******************************************************* */
-
-	/**
-	 * Overwritten from {@link java.lang.Object}.
-	 * 
-	 * @return Hash code of this URL.
-	 */
-	public final int hashCode() {
-		int hash = 17;
-		hash += 37 * this.protocol.hashCode();
-		hash += 37 * this.host.hashCode();
-		hash += 37 * this.path.hashCode();
-		hash += 37 * this.port;
-		return hash;
-	}
-
-	/**
-	 * Overwritten from {@link java.lang.Object}.
-	 * 
-	 * @param obj
-	 * @return <code>true</code> if provided <code>obj</code> is an instance
-	 *         of <code>URL</code> and has the same attributes as this
-	 *         <code>URL</code>.
-	 */
-	public final boolean equals(Object obj) {
-		if (obj instanceof URL) {
-			URL url = (URL) obj;
-
-			if (!url.getProtocol().equalsIgnoreCase(this.protocol)) {
-				return false;
-			}
-			if (!url.getHost().equalsIgnoreCase(this.host)) {
-				return false;
-			}
-			if (!(url.getPort() == this.port)) {
-				return false;
-			}
-			if (!url.getPath().equals(this.path)) {
-				return false;
-			}
-			return true;
-		}
-		return false;
-	}
-
-	/**
-	 * Overwritten from {@link java.lang.Object}.
-	 * 
-	 * @return String representation of this URL.
-	 */
-	public final String toString() {
-		if (this.urlString == null) {
-			StringBuilder builder = new StringBuilder();
-			builder.append(this.protocol);
-			builder.append(DCOLON_SLASHES);
-			builder.append(this.host);
-			builder.append(DCOLON);
-			builder.append(this.port);
-			builder.append(SLASH);
-			builder.append(this.path);
-			this.urlString = builder.toString().toLowerCase();
-		}
-		return this.urlString;
-	}
+    /**
+     * Overwritten from {@link java.lang.Object}.
+     *
+     * @return String representation of this URL.
+     */
+    public final String toString() {
+        if (this.urlString == null) {
+            StringBuilder builder = new StringBuilder();
+            builder.append(this.protocol);
+            builder.append(DCOLON_SLASHES);
+            builder.append(this.host);
+            builder.append(DCOLON);
+            builder.append(this.port);
+            builder.append(SLASH);
+            builder.append(this.path);
+            this.urlString = builder.toString().toLowerCase();
+        }
+        return this.urlString;
+    }
 
 }

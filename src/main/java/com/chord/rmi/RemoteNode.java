@@ -26,120 +26,108 @@
  ***************************************************************************/
 package com.chord.rmi;
 
+import com.chord.CommunicationException;
+import com.chord.Entry;
+import com.chord.data.ID;
+
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
 import java.util.Set;
 
-import com.chord.CommunicationException;
-import com.chord.Entry;
-import com.chord.data.ID;
-
 /**
- * 
  * @author sven
  * @version 1.0.5
  */
 public interface RemoteNode extends Remote {
 
-	/**
-	 * 
-	 * @param key
-	 * @return
-	 * @throws CommunicationException
-	 * @throws RemoteException
-	 */
-	public RemoteNodeInfo findSuccessor(ID key) throws CommunicationException,
-			RemoteException;
+    /**
+     * @param key
+     * @return
+     * @throws CommunicationException
+     * @throws RemoteException
+     */
+    RemoteNodeInfo findSuccessor(ID key) throws CommunicationException,
+            RemoteException;
 
-	/**
-	 * 
-	 * @return
-	 * @throws RemoteException
-	 */
-	public ID getNodeID() throws RemoteException;
+    /**
+     * @return
+     * @throws RemoteException
+     */
+    ID getNodeID() throws RemoteException;
 
-	/**
-	 * 
-	 * @param entryToInsert
-	 * @throws CommunicationException
-	 * @throws RemoteException
-	 */
-	public void insertEntry(Entry entryToInsert) throws CommunicationException,
-			RemoteException;
+    /**
+     * @param entryToInsert
+     * @throws CommunicationException
+     * @throws RemoteException
+     */
+    void insertEntry(Entry entryToInsert) throws CommunicationException,
+            RemoteException;
 
-	/**
-	 * 
-	 * @param entries
-	 * @throws CommunicationException
-	 * @throws RemoteException
-	 */
-	public void insertReplicas(Set<Entry> entries)
-			throws CommunicationException, RemoteException;
+    /**
+     * @param entries
+     * @throws CommunicationException
+     * @throws RemoteException
+     */
+    void insertReplicas(Set<Entry> entries)
+            throws CommunicationException, RemoteException;
 
-	/**
-	 * 
-	 * @param predecessor
-	 * @throws CommunicationException
-	 * @throws RemoteException
-	 */
-	public void leavesNetwork(RemoteNodeInfo predecessor) throws CommunicationException,
-			RemoteException;
+    /**
+     * @param predecessor
+     * @throws CommunicationException
+     * @throws RemoteException
+     */
+    void leavesNetwork(RemoteNodeInfo predecessor) throws CommunicationException,
+            RemoteException;
 
-	/**
-	 * 
-	 * @param potentialPredecessor
-	 * @return
-	 * @throws CommunicationException
-	 * @throws RemoteException
-	 */
-	public List<RemoteNodeInfo> notify(RemoteNodeInfo potentialPredecessor)
-			throws CommunicationException, RemoteException;
+    /**
+     * @param potentialPredecessor
+     * @return
+     * @throws CommunicationException
+     * @throws RemoteException
+     */
+    List<RemoteNodeInfo> notify(RemoteNodeInfo potentialPredecessor)
+            throws CommunicationException, RemoteException;
 
-	/**
-	 * 
-	 * @param potentialPredecessor
-	 * @return
-	 * @throws CommunicationException
-	 * @throws RemoteException
-	 */
-	public RemoteRefsAndEntries notifyAndCopyEntries(RemoteNodeInfo potentialPredecessor)
-			throws CommunicationException, RemoteException;
+    /**
+     * @param potentialPredecessor
+     * @return
+     * @throws CommunicationException
+     * @throws RemoteException
+     */
+    RemoteRefsAndEntries notifyAndCopyEntries(RemoteNodeInfo potentialPredecessor)
+            throws CommunicationException, RemoteException;
 
-	/**
-	 * 
-	 * @throws CommunicationException
-	 * @throws RemoteException
-	 */
-	public void ping() throws CommunicationException, RemoteException;
+    /**
+     * @throws CommunicationException
+     * @throws RemoteException
+     */
+    void ping() throws CommunicationException, RemoteException;
 
-	/**
-	 * 
-	 * @param entryToRemove
-	 * @throws CommunicationException
-	 * @throws RemoteException
-	 */
-	public void removeEntry(Entry entryToRemove) throws CommunicationException,
-			RemoteException;
+    /**
+     * @param entryToRemove
+     * @throws CommunicationException
+     * @throws RemoteException
+     */
+    void removeEntry(Entry entryToRemove) throws CommunicationException,
+            RemoteException;
 
-	/**
-	 * 
-	 * @param sendingNode
-	 * @param replicasToRemove
-	 * @throws CommunicationException
-	 * @throws RemoteException
-	 */
-	public void removeReplicas(ID sendingNode, Set<Entry> replicasToRemove)
-			throws CommunicationException, RemoteException;
+    /**
+     * @param sendingNode
+     * @param replicasToRemove
+     * @throws CommunicationException
+     * @throws RemoteException
+     */
+    void removeReplicas(ID sendingNode, Set<Entry> replicasToRemove)
+            throws CommunicationException, RemoteException;
 
-	/**
-	 * 
-	 * @param id
-	 * @return
-	 * @throws CommunicationException
-	 * @throws RemoteException
-	 */
-	public Set<Entry> retrieveEntries(ID id) throws CommunicationException,
-			RemoteException;
-	
+    /**
+     * @param id
+     * @return
+     * @throws CommunicationException
+     * @throws RemoteException
+     */
+    Set<Entry> retrieveEntries(ID id) throws CommunicationException,
+            RemoteException;
+
 }

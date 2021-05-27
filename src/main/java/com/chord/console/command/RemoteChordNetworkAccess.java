@@ -38,105 +38,103 @@ import com.chord.service.impl.ChordImpl;
  */
 public final class RemoteChordNetworkAccess {
 
-	int protocolType = URL.SOCKET_PROTOCOL; 
-	
-	/**
-	 * Invisible constructor.
-	 */
-	private RemoteChordNetworkAccess() {
-		/*
-		 * nothing to do here. 
-		 */
-	}
+    /**
+     * this is a singleton.
+     */
+    private static final RemoteChordNetworkAccess uniqueInstance = new RemoteChordNetworkAccess();
+    int protocolType = URL.SOCKET_PROTOCOL;
+    /**
+     * contains one instance of a remote chord node
+     */
+    private Chord chordInstance = null;
 
-	/**
-	 * this is a singleton.
-	 */
-	private static final RemoteChordNetworkAccess uniqueInstance = new RemoteChordNetworkAccess();
+    /**
+     * Invisible constructor.
+     */
+    private RemoteChordNetworkAccess() {
+        /*
+         * nothing to do here.
+         */
+    }
 
-	/**
-	 * Provides unique instance of <code>RemoteChordNetworkAccess</code>.
-	 * 
-	 * @return Singleton instance of <code>RemoteChordNetworkAccess</code>.
-	 */
-	public static RemoteChordNetworkAccess getUniqueInstance() {
-		return uniqueInstance;
-	}
+    /**
+     * Provides unique instance of <code>RemoteChordNetworkAccess</code>.
+     *
+     * @return Singleton instance of <code>RemoteChordNetworkAccess</code>.
+     */
+    public static RemoteChordNetworkAccess getUniqueInstance() {
+        return uniqueInstance;
+    }
 
-	/**
-	 * contains one instance of a remote chord node
-	 */
-	private Chord chordInstance = null;
+    /**
+     * Join a remote chord network with help of the provided
+     * <code>bootstrapURL</code>. <code>port</code> must be a valid port
+     * number.
+     *
+     * @param bootstrapURL
+     * @param port
+     * @throws Exception
+     */
+    void join(URL bootstrapURL, int port) throws Exception {
+        if (this.chordInstance != null) {
+            throw new Exception("Already joined chord network!");
+        }
+        this.chordInstance = new ChordImpl();
+        URL acceptIncomingConnections = null;
+        try {
+            //determine how to obtain ip-address on linux system. see bug 1510537. sven
+            String host = java.net.InetAddress.getLocalHost().getHostAddress();
+            if ((port <= 0) || (port >= 65536)) {
+                acceptIncomingConnections = new URL(
+                        URL.KNOWN_PROTOCOLS.get(this.protocolType) + "://" + host
+                                + "/");
+            } else {
+                acceptIncomingConnections = new URL(
+                        URL.KNOWN_PROTOCOLS.get(this.protocolType) + "://" + host
+                                + ":" + port + "/");
+            }
+        } catch (Exception e) {
+            throw new Exception("Could not create url for this host!", e);
+        }
+        try {
+            if (bootstrapURL == null) {
+                this.chordInstance.create(acceptIncomingConnections);
+            } else {
+                this.chordInstance
+                        .join(acceptIncomingConnections, bootstrapURL);
+            }
+        } catch (Exception e) {
+            /*
+             * join/create failed. Set instance to null, so that we can try
+             * again.
+             */
+            this.chordInstance.leave();
+            this.chordInstance = null;
+            throw e;
+        }
+    }
 
-	/**
-	 * Join a remote chord network with help of the provided
-	 * <code>bootstrapURL</code>. <code>port</code> must be a valid port
-	 * number.
-	 * 
-	 * @param bootstrapURL
-	 * @param port
-	 * @throws Exception
-	 */
-	void join(URL bootstrapURL, int port) throws Exception {
-		if (this.chordInstance != null) {
-			throw new Exception("Already joined chord network!");
-		}
-		this.chordInstance = new ChordImpl();
-		URL acceptIncomingConnections = null;
-		try {
-                        //determine how to obtain ip-address on linux system. see bug 1510537. sven
-			String host = java.net.InetAddress.getLocalHost().getHostAddress();
-			if ((port <= 0) || (port >= 65536)) {
-				acceptIncomingConnections = new URL(
-						URL.KNOWN_PROTOCOLS.get(this.protocolType) + "://" + host
-								+ "/");
-			} else {
-				acceptIncomingConnections = new URL(
-						URL.KNOWN_PROTOCOLS.get(this.protocolType) + "://" + host
-								+ ":" + port + "/");
-			}
-		} catch (Exception e) {
-			throw new Exception("Could not create url for this host!", e);
-		}
-		try {
-			if (bootstrapURL == null) {
-				this.chordInstance.create(acceptIncomingConnections);
-			} else {
-				this.chordInstance
-						.join(acceptIncomingConnections, bootstrapURL);
-			}
-		} catch (Exception e) {
-			/*
-			 * join/create failed. Set instance to null, so that we can try
-			 * again.
-			 */
-			this.chordInstance.leave();
-			this.chordInstance = null;
-			throw e;
-		}
-	}
+    /**
+     * Leaves the remote chord network.
+     *
+     * @throws Exception
+     */
+    void leave() throws Exception {
+        if (this.chordInstance == null) {
+            /*
+             * Nothing to do here.
+             */
+            return;
+        }
+        Chord chord = this.chordInstance;
+        this.chordInstance = null;
+        chord.leave();
+    }
 
-	/**
-	 * Leaves the remote chord network.
-	 * 
-	 * @throws Exception
-	 */
-	void leave() throws Exception {
-		if (this.chordInstance == null) {
-			/*
-			 * Nothing to do here.
-			 */
-			return;
-		}
-		Chord chord = this.chordInstance;
-		this.chordInstance = null;
-		chord.leave();
-	}
-
-	/**
-	 * @return Returns the chordInstance.
-	 */
-	Chord getChordInstance() {
-		return this.chordInstance;
-	}
+    /**
+     * @return Returns the chordInstance.
+     */
+    Chord getChordInstance() {
+        return this.chordInstance;
+    }
 }

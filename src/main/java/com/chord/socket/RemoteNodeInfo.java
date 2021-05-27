@@ -33,76 +33,75 @@
  */
 package com.chord.socket;
 
-import java.io.Serializable;
-
 import com.chord.data.ID;
 import com.chord.data.URL;
 
-/** 
- * This class represents information about a remote node 
- * that can be used to construct a {@link SocketProxy}. This class 
- * is sent over the network by {@link SocketEndpoint endpoints} 
- * instead of sending complete {@link SocketProxy proxies}. 
- * The receiver has to construct {@link SocketProxy proxies} from the 
- * information contained within this class. 
- * 
+import java.io.Serializable;
+
+/**
+ * This class represents information about a remote node
+ * that can be used to construct a {@link SocketProxy}. This class
+ * is sent over the network by {@link SocketEndpoint endpoints}
+ * instead of sending complete {@link SocketProxy proxies}.
+ * The receiver has to construct {@link SocketProxy proxies} from the
+ * information contained within this class.
+ *
  * @author sven
  * @version 1.0.5
  */
 final class RemoteNodeInfo implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -2812912784369964792L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = -2812912784369964792L;
 
-	/**
-	 * The {@link URL} of the node that this represents. 
-	 */
-	protected URL nodeURL;
+    /**
+     * The {@link URL} of the node that this represents.
+     */
+    protected URL nodeURL;
 
-	/**
-	 * The {@link ID} of the node that this represents. 
-	 */
-	protected ID nodeID;
+    /**
+     * The {@link ID} of the node that this represents.
+     */
+    protected ID nodeID;
 
-	/**
-	 * Constructs an object containing information about a node. 
-	 * @param nodeURL1
-	 * @param nodeID1
-	 */
-	protected RemoteNodeInfo(URL nodeURL1, ID nodeID1) {
-		this.nodeURL = nodeURL1;
-		this.nodeID = nodeID1;
-	}
+    /**
+     * Constructs an object containing information about a node.
+     *
+     * @param nodeURL1
+     * @param nodeID1
+     */
+    protected RemoteNodeInfo(URL nodeURL1, ID nodeID1) {
+        this.nodeURL = nodeURL1;
+        this.nodeID = nodeID1;
+    }
 
-	/**
-	 * @return Returns the nodeID.
-	 */
-	protected ID getNodeID() {
-		return this.nodeID;
-	}
+    /**
+     * @return Returns the nodeID.
+     */
+    protected ID getNodeID() {
+        return this.nodeID;
+    }
 
-	/**
-	 * @param nodeID1
-	 *            The nodeID to set.
-	 */
-	protected void setNodeID(ID nodeID1) {
-		this.nodeID = nodeID1;
-	}
+    /**
+     * @param nodeID1 The nodeID to set.
+     */
+    protected void setNodeID(ID nodeID1) {
+        this.nodeID = nodeID1;
+    }
 
-	/**
-	 * @return Returns the nodeURL.
-	 */
-	protected URL getNodeURL() {
-		return this.nodeURL;
-	}
+    /**
+     * @return Returns the nodeURL.
+     */
+    protected URL getNodeURL() {
+        return this.nodeURL;
+    }
 
-	/**
-	 * @param nodeURL1
-	 *            The nodeURL to set.
-	 */
-	protected void setNodeURL(URL nodeURL1) {
-		this.nodeURL = nodeURL1;
-	}
+    /**
+     * @param nodeURL1 The nodeURL to set.
+     */
+    protected void setNodeURL(URL nodeURL1) {
+        this.nodeURL = nodeURL1;
+    }
 }

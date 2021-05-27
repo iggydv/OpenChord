@@ -36,46 +36,47 @@ package com.chord.socket;
 import java.io.Serializable;
 
 /**
- * This class represents a message sent over socket protocol supported 
- * by {@link SocketEndpoint} and {@link SocketProxy}. 
- * 
+ * This class represents a message sent over socket protocol supported
+ * by {@link SocketEndpoint} and {@link SocketProxy}.
+ *
  * @author sven
- * @version 1.0.5 
+ * @version 1.0.5
  */
 abstract class Message implements Serializable {
 
-	/**
-	 * Time stamp of this message.
-	 */
-	private final long timeStamp;
+    /**
+     * Time stamp of this message.
+     */
+    private final long timeStamp;
 
-	// private final ID sender;
+    // private final ID sender;
 
-	/**
-	 * Constructs a message with time stamp of current system time. 
-	 */
-	protected Message() {
-		this.timeStamp = System.currentTimeMillis();
-	}
+    /**
+     * Constructs a message with time stamp of current system time.
+     */
+    protected Message() {
+        this.timeStamp = System.currentTimeMillis();
+    }
 
-	/**
-	 * @return Returns the timeStamp.
-	 */
-	public final long getTimeStamp() {
-		return this.timeStamp;
-	}
+    /**
+     * @return Returns the timeStamp.
+     */
+    public final long getTimeStamp() {
+        return this.timeStamp;
+    }
 
-	/**
-	 * Overwritten from {@link java.lang.Object}. 
-	 * @return String representation of this. 
-	 */
-	public String toString() {
-		StringBuilder buffer = new StringBuilder();
-		buffer.append("[Message@");
-		buffer.append(this.hashCode());
-		buffer.append(" from time ");
-		buffer.append(this.timeStamp);
-		buffer.append("]");
-		return buffer.toString();
-	}
+    /**
+     * Overwritten from {@link java.lang.Object}.
+     *
+     * @return String representation of this.
+     */
+    public String toString() {
+        StringBuilder buffer = new StringBuilder();
+        buffer.append("[Message@");
+        buffer.append(this.hashCode());
+        buffer.append(" from time ");
+        buffer.append(this.timeStamp);
+        buffer.append("]");
+        return buffer.toString();
+    }
 }

@@ -10,4 +10,4 @@ com.chord.service
 com.chord.service.impl
 com.chord.console
 com.chord.console.parser
-de.uniba.wiai.lspi.util.logging
+com.util.logging

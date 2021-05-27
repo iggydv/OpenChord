@@ -5,263 +5,137 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5dcec520-fcb9-431d-93cd-de37140b9cab" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/CheckPredecessorTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/ChordImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/Entries.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/FingerTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/FixFingerTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/References.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/StabilizeTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/chord/socket/SocketProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.syntastic_javac_config" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Changelog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Changelog.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/chord.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/chord.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/log4j.properties.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/console.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bin/console.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/api/allclasses-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/allclasses-frame.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/api/allclasses-noframe.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/allclasses-noframe.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/api/constant-values.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/constant-values.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/CommunicationException.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/CommunicationException.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/Endpoint.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/Endpoint.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/EndpointStateListener.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/EndpointStateListener.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/Entry.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/Entry.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/Node.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/Node.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/Proxy.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/Proxy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/RefsAndEntries.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/RefsAndEntries.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/Test.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/Test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/local/ChordImplAccess.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/local/ChordImplAccess.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/local/InvocationListener.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/local/InvocationListener.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/local/Registry.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/local/Registry.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/local/ThreadProxy.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/local/ThreadProxy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/local/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/local/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/local/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/local/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/local/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/local/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/rmi/ListRMIRegistry.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/rmi/ListRMIRegistry.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/rmi/RMIEndpoint.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/rmi/RMIEndpoint.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/rmi/RMIProxy.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/rmi/RMIProxy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/rmi/RemoteNode.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/rmi/RemoteNode.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/rmi/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/rmi/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/rmi/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/rmi/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/rmi/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/rmi/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/socket/SocketEndpoint.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/socket/SocketEndpoint.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/socket/SocketProxy.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/socket/SocketProxy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/socket/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/socket/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/socket/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/socket/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/socket/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/com/socket/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/Main.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/Main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/ChangeProtocol.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/ChangeProtocol.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/CrashNodes.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/CrashNodes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/CreateNodes.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/CreateNodes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/Exit.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/Exit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/Help.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/Help.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/Insert.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/Insert.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/InsertNetwork.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/InsertNetwork.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/JoinNetwork.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/JoinNetwork.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/LeaveNetwork.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/LeaveNetwork.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/RemoteChordNetworkAccess.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/RemoteChordNetworkAccess.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/Remove.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/Remove.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/RemoveNetwork.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/RemoveNetwork.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/Retrieve.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/Retrieve.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/RetrieveNetwork.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/RetrieveNetwork.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/ShowEntries.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/ShowEntries.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/ShowEntriesNetwork.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/ShowEntriesNetwork.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/ShowFingerTable.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/ShowFingerTable.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/ShowFingerTableNetwork.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/ShowFingerTableNetwork.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/ShowNodes.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/ShowNodes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/ShowSuccessorList.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/ShowSuccessorList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/ShutdownNodes.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/ShutdownNodes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/Wait.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/Wait.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/entry/Key.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/entry/Key.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/entry/Value.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/entry/Value.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/entry/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/entry/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/entry/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/entry/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/entry/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/entry/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/command/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/console/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/data/ID.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/data/ID.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/data/URL.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/data/URL.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/data/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/data/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/data/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/data/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/data/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/data/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/AsynChord.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/AsynChord.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/Chord.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/Chord.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/ChordCallback.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/ChordCallback.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/ChordFuture.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/ChordFuture.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/ChordRetrievalFuture.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/ChordRetrievalFuture.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/Key.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/Key.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/PropertiesLoader.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/PropertiesLoader.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/Report.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/Report.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/ServiceException.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/ServiceException.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/impl/ChordImpl.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/impl/ChordImpl.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/impl/NodeImpl.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/impl/NodeImpl.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/impl/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/impl/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/impl/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/impl/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/impl/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/impl/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/chord/service/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/Command.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/Command.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/CommandFactory.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/CommandFactory.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/ConsoleException.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/ConsoleException.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/ConsoleThread.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/ConsoleThread.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/DummyOutputStream.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/DummyOutputStream.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/ExecuteMacro.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/ExecuteMacro.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/MemoryOutputStream.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/MemoryOutputStream.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/ShowOutputCommand.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/ShowOutputCommand.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/parser/CommandParser.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/parser/CommandParser.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/parser/CommandParserConstants.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/parser/CommandParserConstants.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/parser/CommandParserTokenManager.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/parser/CommandParserTokenManager.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/parser/ParseException.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/parser/ParseException.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/parser/SimpleCharStream.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/parser/SimpleCharStream.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/parser/Token.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/parser/Token.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/parser/TokenMgrError.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/parser/TokenMgrError.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/parser/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/parser/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/parser/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/parser/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/parser/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/console/parser/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/deprecated-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/deprecated-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/logging/DummyLogger.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/logging/DummyLogger.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/logging/Log4jLogger.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/logging/Log4jLogger.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/logging/Logger.LogLevel.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/logging/Logger.LogLevel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/logging/Logger.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/logging/Logger.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/logging/SystemOutPrintlnLogger.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/logging/SystemOutPrintlnLogger.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/logging/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/logging/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/logging/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/logging/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/logging/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/de/uniba/wiai/lspi/util/logging/package-tree.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/api/index-all.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/index-all.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/api/overview-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/overview-frame.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/api/overview-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/overview-summary.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/api/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/overview-tree.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/api/package-list" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/package-list" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/api/serialized-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/serialized-form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/README.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/json.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/log4j.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/CommunicationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/CommunicationException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/Endpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/Endpoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/EndpointStateListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/EndpointStateListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/Entry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/Entry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/Node.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/Proxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/Proxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/RefsAndEntries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/RefsAndEntries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/local/ChordImplAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/local/ChordImplAccess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/local/InvocationListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/local/InvocationListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/local/Registry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/local/Registry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/local/ThreadEndpoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/local/ThreadProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/local/ThreadProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/local/package.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/local/package.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/package.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/package.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/rmi/ListRMIRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/rmi/ListRMIRegistry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/rmi/RMIEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/rmi/RMIEndpoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/rmi/RMIProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/rmi/RMIProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/rmi/RemoteNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/rmi/RemoteNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/rmi/RemoteNodeInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/rmi/RemoteNodeInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/rmi/RemoteRefsAndEntries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/rmi/RemoteRefsAndEntries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/rmi/package.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/rmi/package.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/socket/InvocationThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/socket/InvocationThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/socket/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/socket/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/socket/MethodConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/socket/MethodConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/socket/RemoteNodeInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/socket/RemoteNodeInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/socket/RemoteRefsAndEntries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/socket/RemoteRefsAndEntries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/socket/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/socket/Request.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/socket/RequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/socket/RequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/socket/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/socket/Response.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/socket/SocketEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/socket/SocketEndpoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/socket/SocketProxy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/com/socket/package.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/socket/package.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/console/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/console/command/ChangeProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/ChangeProtocol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/console/command/CrashNodes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/CrashNodes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/console/command/CreateNodes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/CreateNodes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/console/command/Exit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/Exit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/console/command/Help.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/Help.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/console/command/Insert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/Insert.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/console/command/InsertNetwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/InsertNetwork.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/console/command/JoinNetwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/JoinNetwork.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/console/command/LeaveNetwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/LeaveNetwork.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/console/command/ListParameter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/ListParameter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/console/command/RemoteChordNetworkAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/RemoteChordNetworkAccess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/console/command/Remove.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/Remove.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/console/command/RemoveNetwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/RemoveNetwork.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/console/command/Retrieve.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/Retrieve.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/console/command/RetrieveNetwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/RetrieveNetwork.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/console/command/ShowEntries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/ShowEntries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/console/command/ShowEntriesNetwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/ShowEntriesNetwork.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/console/command/ShowFingerTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/ShowFingerTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/console/command/ShowFingerTableNetwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/ShowFingerTableNetwork.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/console/command/ShowNodes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/ShowNodes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/console/command/ShowSuccessorList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/ShowSuccessorList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/console/command/ShutdownNodes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/ShutdownNodes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/console/command/Wait.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/Wait.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/console/command/entry/Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/entry/Key.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/console/command/entry/Value.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/entry/Value.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/console/command/entry/package.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/entry/package.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/console/command/package.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/package.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/console/package.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/package.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/data/ID.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/data/ID.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/data/URL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/data/URL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/data/package.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/data/package.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/service/AsynChord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/AsynChord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/service/Chord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/Chord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/service/ChordCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/ChordCallback.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/service/ChordFuture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/ChordFuture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/service/ChordRetrievalFuture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/ChordRetrievalFuture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/service/Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/Key.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/service/PropertiesLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/PropertiesLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/service/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/Report.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/service/ServiceException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/ServiceException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/service/impl/CheckPredecessorTask.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/service/impl/ChordFutureImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/ChordFutureImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/service/impl/ChordImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/service/impl/ChordInsertFuture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/ChordInsertFuture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/service/impl/ChordRemoveFuture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/ChordRemoveFuture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/service/impl/ChordRetrievalFutureImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/ChordRetrievalFutureImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/service/impl/Entries.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/service/impl/FingerTable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/service/impl/FixFingerTask.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/service/impl/HashFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/HashFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/service/impl/NodeImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/NodeImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/service/impl/References.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/service/impl/StabilizeTask.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/service/impl/SuccessorList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/SuccessorList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/service/impl/package.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/package.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/chord/service/package.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/package.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/util/console/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/util/console/CommandFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/CommandFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/util/console/ConsoleException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/ConsoleException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/util/console/ConsoleThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/ConsoleThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/util/console/DummyOutputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/DummyOutputStream.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/util/console/ExecuteMacro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/ExecuteMacro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/util/console/MemoryOutputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/MemoryOutputStream.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/util/console/ShowOutputCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/ShowOutputCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/util/console/package.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/util/console/parser/CommandParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/parser/CommandParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/util/console/parser/CommandParser.jj" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/parser/CommandParser.jj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/util/console/parser/CommandParserConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/parser/CommandParserConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/util/console/parser/CommandParserTokenManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/parser/CommandParserTokenManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/util/console/parser/ParseException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/parser/ParseException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/util/console/parser/SimpleCharStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/parser/SimpleCharStream.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/util/console/parser/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/parser/Token.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/util/console/parser/TokenMgrError.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/parser/TokenMgrError.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/util/console/parser/package.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/parser/package.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/util/logging/DummyLogger.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/util/logging/Log4jLogger.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/util/logging/Logger.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/util/logging/SystemOutPrintlnLogger.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/uniba/wiai/lspi/util/logging/package.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/eclipse/Create.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eclipse/Create.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/eclipse/Delete.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eclipse/Delete.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/eclipse/Insert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eclipse/Insert.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/eclipse/Join.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eclipse/Join.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/eclipse/Retrieve.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eclipse/Retrieve.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/eclipse/StringKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eclipse/StringKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/open-chord.iml" beforeDir="false" afterPath="$PROJECT_DIR$/open-chord.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/CommunicationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/CommunicationException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/Endpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/Endpoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/EndpointStateListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/EndpointStateListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/Entry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/Entry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/Proxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/Proxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/RefsAndEntries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/RefsAndEntries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/CommandFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/CommandFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/ConsoleException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/ConsoleException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/ConsoleThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/ConsoleThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/DummyOutputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/DummyOutputStream.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/ExecuteMacro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/ExecuteMacro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/MemoryOutputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/MemoryOutputStream.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/ShowOutputCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/ShowOutputCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/command/ChangeProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/ChangeProtocol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/command/CrashNodes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/CrashNodes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/command/CreateNodes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/CreateNodes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/command/Exit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/Exit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/command/Help.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/Help.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/command/Insert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/Insert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/command/InsertNetwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/InsertNetwork.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/command/JoinNetwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/JoinNetwork.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/command/LeaveNetwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/LeaveNetwork.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/command/ListParameter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/ListParameter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/command/RemoteChordNetworkAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/RemoteChordNetworkAccess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/command/Remove.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/Remove.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/command/RemoveNetwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/RemoveNetwork.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/command/Retrieve.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/Retrieve.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/command/RetrieveNetwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/RetrieveNetwork.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/command/ShowEntries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/ShowEntries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/command/ShowEntriesNetwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/ShowEntriesNetwork.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/command/ShowFingerTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/ShowFingerTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/command/ShowFingerTableNetwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/ShowFingerTableNetwork.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/command/ShowNodes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/ShowNodes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/command/ShowSuccessorList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/ShowSuccessorList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/command/ShutdownNodes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/ShutdownNodes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/command/Wait.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/Wait.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/command/entry/Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/entry/Key.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/command/entry/Value.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/command/entry/Value.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/parser/CommandParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/parser/CommandParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/parser/CommandParserConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/parser/CommandParserConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/parser/CommandParserTokenManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/parser/CommandParserTokenManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/parser/ParseException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/parser/ParseException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/parser/SimpleCharStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/parser/SimpleCharStream.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/parser/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/parser/Token.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/console/parser/TokenMgrError.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/console/parser/TokenMgrError.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/data/ID.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/data/ID.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/data/URL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/data/URL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/local/ChordImplAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/local/ChordImplAccess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/local/InvocationListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/local/InvocationListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/local/Registry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/local/Registry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/local/ThreadEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/local/ThreadEndpoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/local/ThreadProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/local/ThreadProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/package.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/package.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/rmi/ListRMIRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/rmi/ListRMIRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/rmi/RMIEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/rmi/RMIEndpoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/rmi/RMIProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/rmi/RMIProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/rmi/RemoteNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/rmi/RemoteNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/rmi/RemoteNodeInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/rmi/RemoteNodeInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/rmi/RemoteRefsAndEntries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/rmi/RemoteRefsAndEntries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/rmi/package.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/rmi/package.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/service/AsynChord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/AsynChord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/service/Chord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/Chord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/service/ChordCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/ChordCallback.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/service/ChordFuture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/ChordFuture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/service/ChordRetrievalFuture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/ChordRetrievalFuture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/service/Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/Key.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/service/PropertiesLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/PropertiesLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/service/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/Report.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/service/ServiceException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/ServiceException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/CheckPredecessorTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/CheckPredecessorTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/ChordFutureImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/ChordFutureImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/ChordImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/ChordImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/ChordInsertFuture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/ChordInsertFuture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/ChordRemoveFuture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/ChordRemoveFuture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/ChordRetrievalFutureImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/ChordRetrievalFutureImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/FingerTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/FingerTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/FixFingerTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/FixFingerTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/HashFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/HashFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/NodeImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/NodeImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/References.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/References.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/StabilizeTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/StabilizeTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/SuccessorList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/service/impl/SuccessorList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/socket/InvocationThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/socket/InvocationThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/socket/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/socket/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/socket/MethodConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/socket/MethodConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/socket/RemoteNodeInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/socket/RemoteNodeInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/socket/RemoteRefsAndEntries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/socket/RemoteRefsAndEntries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/socket/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/socket/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/socket/RequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/socket/RequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/socket/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/socket/Response.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/socket/SocketEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/socket/SocketEndpoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chord/socket/SocketProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chord/socket/SocketProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eclipse/StringKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eclipse/StringKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/chord.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/chord.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j.properties.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/chord.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/chord.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/log4j.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/log4j.properties.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/open-chord-1.0.6.jar" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -293,6 +167,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -317,8 +192,10 @@
   </component>
   <component name="RunManager">
     <configuration name="Create" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="BUNDLED" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="eclipse.Create" />
-      <module name="open-chord_1.0.5" />
+      <module name="open-chord" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="eclipse.*" />
@@ -351,8 +228,38 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/chord/service/PropertiesLoader.java</url>
-          <line>94</line>
+          <line>92</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/chord/service/impl/ChordImpl.java</url>
+          <line>270</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/eclipse/Create.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/chord/service/impl/ChordImpl.java</url>
+          <line>167</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/chord/service/impl/ChordImpl.java</url>
+          <line>330</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/chord/service/impl/ChordImpl.java</url>
+          <line>366</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/chord/socket/InvocationThread.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

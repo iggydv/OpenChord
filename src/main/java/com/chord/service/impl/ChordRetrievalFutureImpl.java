@@ -27,149 +27,142 @@
  ***************************************************************************/
 package com.chord.service.impl;
 
-import java.io.Serializable;
-import java.util.Set;
-import java.util.concurrent.Executor;
-
 import com.chord.service.Chord;
 import com.chord.service.ChordRetrievalFuture;
 import com.chord.service.Key;
 import com.chord.service.ServiceException;
 
+import java.io.Serializable;
+import java.util.Set;
+import java.util.concurrent.Executor;
+
 /**
  * Implementation of {@link ChordRetrievalFuture}.
- * 
+ *
  * @author sven
  * @version 1.0.5
- * 
  */
 class ChordRetrievalFutureImpl extends ChordFutureImpl implements
-		ChordRetrievalFuture {
+        ChordRetrievalFuture {
 
-	/**
-	 * The result of the retrieval request associated with this.
-	 */
-	private Set<Serializable> result;
+    /**
+     * The result of the retrieval request associated with this.
+     */
+    private Set<Serializable> result;
 
-	/**
-	 * The chord instance used for the operation that is associated with this. 
-	 */
-	private Chord chord = null;
+    /**
+     * The chord instance used for the operation that is associated with this.
+     */
+    private Chord chord = null;
 
-	/**
-	 * The key to retrieve the associated entries for. 
-	 */
-	private Key key = null;
+    /**
+     * The key to retrieve the associated entries for.
+     */
+    private Key key = null;
 
-	/**
-	 * 
-	 * @param c
-	 * @param k
-	 */
-	private ChordRetrievalFutureImpl(Chord c, Key k) {
-		super();
-		this.chord = c;
-		this.key = k;
-	}
+    /**
+     * @param c
+     * @param k
+     */
+    private ChordRetrievalFutureImpl(Chord c, Key k) {
+        super();
+        this.chord = c;
+        this.key = k;
+    }
 
-	/**
-	 * 
-	 * @param r
-	 */
-	final void setResult(Set<Serializable> r) {
-		this.result = r;
-	}
+    /**
+     * Factory method to create an instance of this class. This method also
+     * prepares execution of the retrieval with help of the provided
+     * {@link Executor} <code>exec</code>.
+     *
+     * @param exec The executor that should asynchronously execute the retrieval
+     *             of entries with key <code>k</code>.
+     * @param c    The {@link Chord} instance to be used for retrieval.
+     * @param k    The {@link Key} for which the entries should be retrieved.
+     * @return An instance of this.
+     */
+    final static ChordRetrievalFutureImpl create(Executor exec, Chord c, Key k) {
+        if (c == null) {
+            throw new IllegalArgumentException(
+                    "ChordRetrievalFuture: chord instance must not be null!");
+        }
+        if (k == null) {
+            throw new IllegalArgumentException(
+                    "ChordRetrievalFuture: key must not be null!");
+        }
 
-	/**
-	 * @see ChordRetrievalFuture
-	 */
-	public final Set<Serializable> getResult() throws ServiceException,
-			InterruptedException {
-		synchronized (this) {
-			while (!this.isDone()) {
-				this.wait();
-			}
-		}
-		Throwable t = this.getThrowable();
-		if (t != null) {
-			throw new ServiceException(t.getMessage(), t);
-		}
-		return this.result;
-	}
+        ChordRetrievalFutureImpl future = new ChordRetrievalFutureImpl(c, k);
+        exec.execute(future.getTask());
+        return future;
+    }
 
-	/**
-	 * 
-	 * @return Runnable that performs the retrieve operation. 
-	 */
-	private Runnable getTask() {
-		return new RetrievalTask(this.chord, this.key);
-	}
+    /**
+     * @see ChordRetrievalFuture
+     */
+    public final Set<Serializable> getResult() throws ServiceException,
+            InterruptedException {
+        synchronized (this) {
+            while (!this.isDone()) {
+                this.wait();
+            }
+        }
+        Throwable t = this.getThrowable();
+        if (t != null) {
+            throw new ServiceException(t.getMessage(), t);
+        }
+        return this.result;
+    }
 
-	/**
-	 * Factory method to create an instance of this class. This method also
-	 * prepares execution of the retrieval with help of the provided
-	 * {@link Executor} <code>exec</code>.
-	 * 
-	 * @param exec
-	 *            The executor that should asynchronously execute the retrieval
-	 *            of entries with key <code>k</code>.
-	 * @param c
-	 *            The {@link Chord} instance to be used for retrieval.
-	 * @param k
-	 *            The {@link Key} for which the entries should be retrieved.
-	 * @return An instance of this.
-	 */
-	final static ChordRetrievalFutureImpl create(Executor exec, Chord c, Key k) {
-		if (c == null) {
-			throw new IllegalArgumentException(
-					"ChordRetrievalFuture: chord instance must not be null!");
-		}
-		if (k == null) {
-			throw new IllegalArgumentException(
-					"ChordRetrievalFuture: key must not be null!");
-		}
+    /**
+     * @param r
+     */
+    final void setResult(Set<Serializable> r) {
+        this.result = r;
+    }
 
-		ChordRetrievalFutureImpl future = new ChordRetrievalFutureImpl(c, k);
-		exec.execute(future.getTask());
-		return future;
-	}
+    /**
+     * @return Runnable that performs the retrieve operation.
+     */
+    private Runnable getTask() {
+        return new RetrievalTask(this.chord, this.key);
+    }
 
-	/**
-	 * Runnable to execute the retrieval of entries associated with key from
-	 * chord.
-	 * 
-	 * @author sven
-	 * @version 1.0
-	 */
-	private class RetrievalTask implements Runnable {
+    /**
+     * Runnable to execute the retrieval of entries associated with key from
+     * chord.
+     *
+     * @author sven
+     * @version 1.0
+     */
+    private class RetrievalTask implements Runnable {
 
-		/**
-		 * The chord instance used for the operation that is associated with this. 
-		 */
-		private Chord chord = null;
+        /**
+         * The chord instance used for the operation that is associated with this.
+         */
+        private Chord chord = null;
 
-		/**
-		 * The key to retrieve the associated entries for. 
-		 */
-		private Key key = null;
-		
-		/**
-		 * @param chord
-		 * @param key
-		 */
-		private RetrievalTask(Chord chord, Key key) {
-			this.chord = chord; 
-			this.key = key; 
-		}
+        /**
+         * The key to retrieve the associated entries for.
+         */
+        private Key key = null;
 
-		public void run() {
-			try {
-				setResult(this.chord.retrieve(this.key));
-			} catch (Throwable t) {
-				setThrowable(t);
-			}
-			setIsDone();
-		}
-	}
+        /**
+         * @param chord
+         * @param key
+         */
+        private RetrievalTask(Chord chord, Key key) {
+            this.chord = chord;
+            this.key = key;
+        }
+
+        public void run() {
+            try {
+                setResult(this.chord.retrieve(this.key));
+            } catch (Throwable t) {
+                setThrowable(t);
+            }
+            setIsDone();
+        }
+    }
 
 }

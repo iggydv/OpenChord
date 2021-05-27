@@ -26,79 +26,76 @@
  ***************************************************************************/
 package com.chord.rmi;
 
-import java.io.Serializable;
-
 import com.chord.data.ID;
 import com.chord.data.URL;
 
+import java.io.Serializable;
+
 /**
- * 
  * @author sven
  * @version 1.0.5
- * 
  */
 final class RemoteNodeInfo implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 105L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 105L;
 
-	/**
-	 * The reference to the remote node represented by this. 
-	 */
-	RemoteNode remoteNode; 
-	
-	/**
-	 * The ID of the remote node represented by this. 
-	 */
-	ID nodeID; 
-	
-	/**
-	 * The URL of the remote node represented by this. 
-	 */
-	URL url;
-	
-	/**
-	 * 
-	 * @param rNode The reference to the remote node represented by this.
-	 * @param nodeID The ID of the remote node represented by this.
-	 * @param url The URL of the remote node represented by this.
-	 */
-	RemoteNodeInfo(RemoteNode rNode, ID nodeID, URL url) {
-		if (rNode == null) {
-			throw new IllegalArgumentException("Reference to remote node must not be null!"); 
-		}
-		if (nodeID == null) {
-			throw new IllegalArgumentException("ID of remote node must not be null!"); 
-		}
-		if (url == null) {
-			throw new IllegalArgumentException("URL of remote node must not be null!"); 
-		}
-		this.remoteNode = rNode; 
-		this.nodeID = nodeID;
-		this.url = url; 
-	}
+    /**
+     * The reference to the remote node represented by this.
+     */
+    RemoteNode remoteNode;
 
-	/**
-	 * @return The reference to the remote node represented by this.
-	 */
-	final RemoteNode getRemoteNode() {
-		return remoteNode;
-	}
+    /**
+     * The ID of the remote node represented by this.
+     */
+    ID nodeID;
 
-	/**
-	 * @return The URL of the remote node represented by this.
-	 */
-	final URL getUrl() {
-		return url;
-	}
+    /**
+     * The URL of the remote node represented by this.
+     */
+    URL url;
 
-	/**
-	 * @return The ID of the remote node represented by this.
-	 */
-	final ID getNodeID() {
-		return this.nodeID;
-	} 
-	
+    /**
+     * @param rNode  The reference to the remote node represented by this.
+     * @param nodeID The ID of the remote node represented by this.
+     * @param url    The URL of the remote node represented by this.
+     */
+    RemoteNodeInfo(RemoteNode rNode, ID nodeID, URL url) {
+        if (rNode == null) {
+            throw new IllegalArgumentException("Reference to remote node must not be null!");
+        }
+        if (nodeID == null) {
+            throw new IllegalArgumentException("ID of remote node must not be null!");
+        }
+        if (url == null) {
+            throw new IllegalArgumentException("URL of remote node must not be null!");
+        }
+        this.remoteNode = rNode;
+        this.nodeID = nodeID;
+        this.url = url;
+    }
+
+    /**
+     * @return The reference to the remote node represented by this.
+     */
+    final RemoteNode getRemoteNode() {
+        return remoteNode;
+    }
+
+    /**
+     * @return The URL of the remote node represented by this.
+     */
+    final URL getUrl() {
+        return url;
+    }
+
+    /**
+     * @return The ID of the remote node represented by this.
+     */
+    final ID getNodeID() {
+        return this.nodeID;
+    }
+
 }

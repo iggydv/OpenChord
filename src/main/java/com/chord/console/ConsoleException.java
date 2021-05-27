@@ -27,24 +27,25 @@
 package com.chord.console;
 
 /**
- *
- * @author  sven
+ * @author sven
  * @version 1.0.5
  */
 public class ConsoleException extends Exception {
-    
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 633088623740052662L;
 
-	/** Creates a new instance of ConsoleException
+    /**
+     *
+     */
+    private static final long serialVersionUID = 633088623740052662L;
+
+    /**
+     * Creates a new instance of ConsoleException
+     *
      * @param message
      */
     public ConsoleException(String message) {
         super(message);
     }
-    
+
     /**
      * @param message
      * @param cause
@@ -52,5 +53,5 @@ public class ConsoleException extends Exception {
     public ConsoleException(String message, Throwable cause) {
         super(message, cause);
     }
-    
+
 }

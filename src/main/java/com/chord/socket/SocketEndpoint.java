@@ -28,18 +28,18 @@
 
 package com.chord.socket;
 
+import com.chord.Endpoint;
+import com.chord.Node;
+import com.chord.data.URL;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ThreadPoolExecutor;
-
-import com.chord.Endpoint;
-import com.chord.Node;
-import com.chord.data.URL;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * This class represents an {@link Endpoint} for communication over socket
@@ -50,218 +50,213 @@ import org.slf4j.LoggerFactory;
  * from remote nodes. These {@link Request}s
  * are sent by one {@link SocketProxy} representing the node, that this is the
  * endpoint for, at another node.
- * 
+ *
  * @author sven
  * @version 1.0.5
  */
 public final class SocketEndpoint extends Endpoint implements Runnable {
 
-	/**
-	 * Logger for this endpoint.
-	 */
-	private final static Logger logger = LoggerFactory.getLogger(SocketEndpoint.class);
+    /**
+     * Logger for this endpoint.
+     */
+    private final static Logger logger = LoggerFactory.getLogger(SocketEndpoint.class);
 
-	private final static boolean debug = logger.isDebugEnabled();
+    private final static boolean debug = logger.isDebugEnabled();
+    /**
+     * The {@link java.util.concurrent.Executor} responsible for carrying out
+     * executions of methods with help of an instance of
+     * {@link InvocationThread}.
+     */
+    private final ThreadPoolExecutor invocationExecutor = InvocationThread
+            .createInvocationThreadPool();
+    /**
+     * {@link Set} containing all {@link RequestHandler}s created by this
+     * endpoint.
+     */
+    private final Set<RequestHandler> handlers = new HashSet<RequestHandler>();
+    /**
+     * The Socket this endpoint listens to for connections.
+     */
+    private ServerSocket mySocket = null;
 
-	/**
-	 * {@link Set} containing all {@link RequestHandler}s created by this
-	 * endpoint.
-	 */
-	private Set<RequestHandler> handlers = new HashSet<RequestHandler>();
+    /**
+     * Creates a new <code>SocketEndpoint</code> for the given {@link Node}
+     * with {@link URL url}. <code>url</code> must have the protocol indexed
+     * by <code>{@link URL#SOCKET_PROTOCOL}</code> in the
+     * <code>{@link URL#KNOWN_PROTOCOLS}</code> array.
+     *
+     * @param node1 The {@link Node} node this endpoint provides connections to.
+     * @param url1  The {@link URL} of this endpoint.
+     */
+    public SocketEndpoint(Node node1, URL url1) {
+        super(node1, url1);
+        SocketEndpoint.logger.info("Initialisation finished.");
+    }
 
-	/**
-	 * The Socket this endpoint listens to for connections.
-	 */
-	private ServerSocket mySocket = null;
+    /*
+     * (non-Javadoc)
+     *
+     * @see com.chord.com.Endpoint#openConnections()
+     */
+    protected void openConnections() {
+        /* Open server socket on port specified by url */
+        try {
+            if (debug) {
+                SocketEndpoint.logger
+                        .debug("Trying to open server socket on port "
+                                + this.url.getPort());
+            }
+            this.mySocket = new ServerSocket(this.url.getPort());
+            this.setState(LISTENING);
+            if (debug) {
+                SocketEndpoint.logger.debug("Server socket opened on port "
+                        + this.url.getPort() + ". Starting listener thread.");
+            }
+            /* and start thread to listen for incoming connections. */
+            Thread listenerThread = new Thread(this, "SocketEndpoint_"
+                    + this.url + "_Thread");
+            listenerThread.start();
+            if (debug) {
+                SocketEndpoint.logger.debug("Listener Thread " + listenerThread
+                        + "started. ");
+            }
+        } catch (IOException e) {
+            /* TODO: change type of exception */
+            throw new RuntimeException(
+                    "SocketEndpoint could not listen on port "
+                            + this.url.getPort() + " " + e.getMessage());
+        }
+    }
 
-	/**
-	 * The {@link java.util.concurrent.Executor} responsible for carrying out
-	 * executions of methods with help of an instance of
-	 * {@link InvocationThread}.
-	 */
-	private final ThreadPoolExecutor invocationExecutor = InvocationThread
-			.createInvocationThreadPool();
+    /*
+     * (non-Javadoc)
+     *
+     * @see com.chord.com.Endpoint#entriesAcceptable()
+     */
+    protected void entriesAcceptable() {
+        if (debug) {
+            SocketEndpoint.logger.debug("entriesAcceptable() called");
+        }
+        this.setState(ACCEPT_ENTRIES);
+    }
 
-	/**
-	 * Creates a new <code>SocketEndpoint</code> for the given {@link Node}
-	 * with {@link URL url}. <code>url</code> must have the protocol indexed
-	 * by <code>{@link URL#SOCKET_PROTOCOL}</code> in the
-	 * <code>{@link URL#KNOWN_PROTOCOLS}</code> array.
-	 * 
-	 * @param node1
-	 *            The {@link Node} node this endpoint provides connections to.
-	 * @param url1
-	 *            The {@link URL} of this endpoint.
-	 */
-	public SocketEndpoint(Node node1, URL url1) {
-		super(node1, url1);
-		SocketEndpoint.logger.info("Initialisation finished.");
-	}
+    /*
+     * (non-Javadoc)
+     *
+     * @see com.chord.com.Endpoint#closeConnections()
+     */
+    protected void closeConnections() {
+        this.setState(STARTED);
+        /* try to close socket */
+        try {
+            this.mySocket.close();
+        } catch (IOException e) {
+            /* should not occur */
+            if (debug) {
+                SocketEndpoint.logger.debug("Could not close socket "
+                        + this.mySocket, e);
+            }
+        }
+        this.invocationExecutor.shutdownNow();
+        /*
+         * Close outgoing connections.
+         */
+        SocketProxy.shutDownAll();
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.chord.com.Endpoint#openConnections()
-	 */
-	protected void openConnections() {
-		/* Open server socket on port specified by url */
-		try {
-			if (debug) {
-				SocketEndpoint.logger
-						.debug("Trying to open server socket on port "
-								+ this.url.getPort());
-			}
-			this.mySocket = new ServerSocket(this.url.getPort());
-			this.setState(LISTENING);
-			if (debug) {
-				SocketEndpoint.logger.debug("Server socket opened on port "
-						+ this.url.getPort() + ". Starting listener thread.");
-			}
-			/* and start thread to listen for incoming connections. */
-			Thread listenerThread = new Thread(this, "SocketEndpoint_"
-					+ this.url + "_Thread");
-			listenerThread.start();
-			if (debug) {
-				SocketEndpoint.logger.debug("Listener Thread " + listenerThread
-						+ "started. ");
-			}
-		} catch (IOException e) {
-			/* TODO: change type of exception */
-			throw new RuntimeException(
-					"SocketEndpoint could not listen on port "
-							+ this.url.getPort() + " " + e.getMessage());
-		}
-	}
+    /**
+     * Run method from {@link Runnable} to accept connections from clients. This
+     * method runs until {@link #closeConnections()} is called. It creates
+     * threads responsible for the handling of requests from other nodes.
+     */
+    public void run() {
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.chord.com.Endpoint#entriesAcceptable()
-	 */
-	protected void entriesAcceptable() {
-		if (debug) {
-			SocketEndpoint.logger.debug("entriesAcceptable() called");
-		}
-		this.setState(ACCEPT_ENTRIES);
-	}
+        // Cleaner cleaner = new Cleaner();
+        while (this.getState() > STARTED) {
+            if (debug) {
+                SocketEndpoint.logger.debug("Waiting for incoming connection.");
+            }
+            Socket incomingConnection = null;
+            try {
+                incomingConnection = this.mySocket.accept();
+                if (debug) {
+                    SocketEndpoint.logger.debug("Incoming connection "
+                            + incomingConnection);
+                }
+                /*
+                 * Create a handler for requests that come in over the newly
+                 * created socket.
+                 */
+                if (debug) {
+                    SocketEndpoint.logger
+                            .debug("Creating request handler for incoming connection.");
+                }
+                RequestHandler handler = new RequestHandler(this.node,
+                        incomingConnection, this);
+                /*
+                 * Remember handler to be able to close its connection (shut it
+                 * down.
+                 */
+                this.handlers.add(handler);
+                /* Start handler thread */
+                if (debug) {
+                    SocketEndpoint.logger
+                            .debug("Request handler created. Starting thread.");
+                }
+                handler.start();
+                if (debug) {
+                    SocketEndpoint.logger
+                            .debug("Request handler thread started.");
+                }
+            } catch (IOException e) {
+                /* Can this happen? */
+                if ((this.getState() > STARTED)) {
+                    if (debug) {
+                        SocketEndpoint.logger.debug(
+                                "Could not accept connection from other node!",
+                                e);
+                    }
+                    if (incomingConnection != null) {
+                        try {
+                            incomingConnection.close();
+                        } catch (IOException e1) {
+                            // can be ignored, as incoming Connection is no longer needed.
+                        }
+                        incomingConnection = null;
+                    }
+                } else {
+                    /* Socket has been closed */
+                }
+                /* TODO: go on or notify some one? */
+            }
+        }
+        SocketEndpoint.logger.info("Listener thread stopped.");
+        /* Disconnect all */
+        for (RequestHandler handler : this.handlers) {
+            handler.disconnect();
+        }
+        this.handlers.clear();
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.chord.com.Endpoint#closeConnections()
-	 */
-	protected void closeConnections() {
-		this.setState(STARTED);
-		/* try to close socket */
-		try {
-			this.mySocket.close();
-		} catch (IOException e) {
-			/* should not occur */
-			if (debug) {
-				SocketEndpoint.logger.debug("Could not close socket "
-						+ this.mySocket, e);
-			}
-		}
-		this.invocationExecutor.shutdownNow();
-		/*
-		 * Close outgoing connections.
-		 */
-		SocketProxy.shutDownAll(); 
-	}
+    /**
+     * Schedule an invocation of a local method to be executed.
+     *
+     * @param invocationThread
+     */
+    void scheduleInvocation(InvocationThread invocationThread) {
+        if (debug) {
+            logger.debug("Scheduling invocation: " + invocationThread);
+        }
+        this.invocationExecutor.execute(invocationThread);
+        if (debug) {
+            logger.debug("Current jobs: "
+                    + this.invocationExecutor.getQueue().size());
+            logger.debug("Active jobs: "
+                    + this.invocationExecutor.getActiveCount());
+            logger.debug("Completed jobs: "
+                    + this.invocationExecutor.getCompletedTaskCount());
+        }
 
-	/**
-	 * Run method from {@link Runnable} to accept connections from clients. This
-	 * method runs until {@link #closeConnections()} is called. It creates
-	 * threads responsible for the handling of requests from other nodes.
-	 */
-	public void run() {
-
-		// Cleaner cleaner = new Cleaner();
-		while (this.getState() > STARTED) {
-			if (debug) {
-				SocketEndpoint.logger.debug("Waiting for incoming connection.");
-			}
-			Socket incomingConnection = null; 
-			try {
-				incomingConnection = this.mySocket.accept();
-				if (debug) {
-					SocketEndpoint.logger.debug("Incoming connection "
-							+ incomingConnection);
-				}
-				/*
-				 * Create a handler for requests that come in over the newly
-				 * created socket.
-				 */
-				if (debug) {
-					SocketEndpoint.logger
-							.debug("Creating request handler for incoming connection.");
-				}
-				RequestHandler handler = new RequestHandler(this.node,
-						incomingConnection, this);
-				/*
-				 * Remember handler to be able to close its connection (shut it
-				 * down.
-				 */
-				this.handlers.add(handler);
-				/* Start handler thread */
-				if (debug) {
-					SocketEndpoint.logger
-							.debug("Request handler created. Starting thread.");
-				}
-				handler.start();
-				if (debug) {
-					SocketEndpoint.logger
-							.debug("Request handler thread started.");
-				}
-			} catch (IOException e) {
-				/* Can this happen? */
-				if ((this.getState() > STARTED)) {
-					if (debug) {
-						SocketEndpoint.logger.debug(
-								"Could not accept connection from other node!",
-								e);
-					}
-					if (incomingConnection != null) {
-						try {
-							incomingConnection.close();
-						} catch (IOException e1) {
-							// can be ignored, as incoming Connection is no longer needed. 
-						} 
-						incomingConnection = null; 
-					}
-				} else {
-					/* Socket has been closed */
-				}
-				/* TODO: go on or notify some one? */
-			}
-		}
-		SocketEndpoint.logger.info("Listener thread stopped.");
-		/* Disconnect all */
-		for (RequestHandler handler : this.handlers) {
-			handler.disconnect();
-		}
-		this.handlers.clear();
-	}
-
-	/**
-	 * Schedule an invocation of a local method to be executed.
-	 * 
-	 * @param invocationThread
-	 */
-	void scheduleInvocation(InvocationThread invocationThread) {
-		if (debug) {
-			logger.debug("Scheduling invocation: " + invocationThread);
-		}
-		this.invocationExecutor.execute(invocationThread);
-		if (debug) {
-			logger.debug("Current jobs: "
-					+ this.invocationExecutor.getQueue().size());
-			logger.debug("Active jobs: "
-					+ this.invocationExecutor.getActiveCount());
-			logger.debug("Completed jobs: "
-					+ this.invocationExecutor.getCompletedTaskCount());
-		}
-
-	}
+    }
 
 }

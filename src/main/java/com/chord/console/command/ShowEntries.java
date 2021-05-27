@@ -28,14 +28,14 @@
 
 package com.chord.console.command;
 
-import java.net.MalformedURLException;
-
+import com.chord.console.Command;
+import com.chord.console.ConsoleException;
+import com.chord.data.URL;
 import com.chord.local.ChordImplAccess;
 import com.chord.local.Registry;
 import com.chord.local.ThreadEndpoint;
-import com.chord.data.URL;
-import com.chord.console.Command;
-import com.chord.console.ConsoleException;
+
+import java.net.MalformedURLException;
 
 /**
  * <p>
@@ -43,69 +43,72 @@ import com.chord.console.ConsoleException;
  * </p>
  * To get a description of this command type <code>entries -help</code> into
  * the {@link com.chord.console.Main console}.
- * 
+ *
  * @author sven
  * @version 1.0.5
  */
 public class ShowEntries extends Command {
 
-	/**
-	 * The name of this command.
-	 */
-	public static final String COMMAND_NAME = "entries";
+    /**
+     * The name of this command.
+     */
+    public static final String COMMAND_NAME = "entries";
 
-	/**
-	 * The name of the parameter, that defines the name of the node.
-	 */
-	public static final String NODE_PARAM = "node";
+    /**
+     * The name of the parameter, that defines the name of the node.
+     */
+    public static final String NODE_PARAM = "node";
 
-	/** Creates a new instance of ShowFingerTable 
-	 * @param toCommand1 
-	 * @param out1 */
-	public ShowEntries(Object[] toCommand1, java.io.PrintStream out1) {
-		super(toCommand1, out1);
-	}
+    /**
+     * Creates a new instance of ShowFingerTable
+     *
+     * @param toCommand1
+     * @param out1
+     */
+    public ShowEntries(Object[] toCommand1, java.io.PrintStream out1) {
+        super(toCommand1, out1);
+    }
 
-	public void exec() throws ConsoleException {
+    public void exec() throws ConsoleException {
 
-		String nodeName = this.parameters.get(NODE_PARAM);
-		Registry reg = (Registry) this.toCommand[0];
-		if ((nodeName == null) || (nodeName.length() == 0)) {
-			// print out all nodes' entries
-			for (ThreadEndpoint ep : reg.lookupAll().values()) {
-				this.out.print("Node " + ep.getURL().getHost() + ": ");
-				this.out.println(ChordImplAccess.fetchChordImplOfNode(ep.getNode())
-						.printEntries());
-			}
-		} else {
-			URL url = null; 
-			try {
-				url = new URL(URL.KNOWN_PROTOCOLS.get(URL.LOCAL_PROTOCOL) + "://" + nodeName + "/");
-			} catch (MalformedURLException e1) {
-				throw new ConsoleException(e1.getMessage());
-			} 
-			
-			this.out.println("Retrieving node " + nodeName);
-			ThreadEndpoint ep = reg.lookup(url);
-			if (ep != null) {
-				this.out.println(ChordImplAccess.fetchChordImplOfNode(ep.getNode())
-						.printEntries());
-			} else {
-				this.out.println("Could not find node with name " + nodeName);
-			}
-		}
-	}
+        String nodeName = this.parameters.get(NODE_PARAM);
+        Registry reg = (Registry) this.toCommand[0];
+        if ((nodeName == null) || (nodeName.length() == 0)) {
+            // print out all nodes' entries
+            for (ThreadEndpoint ep : reg.lookupAll().values()) {
+                this.out.print("Node " + ep.getURL().getHost() + ": ");
+                this.out.println(ChordImplAccess.fetchChordImplOfNode(ep.getNode())
+                        .printEntries());
+            }
+        } else {
+            URL url = null;
+            try {
+                url = new URL(URL.KNOWN_PROTOCOLS.get(URL.LOCAL_PROTOCOL) + "://" + nodeName + "/");
+            } catch (MalformedURLException e1) {
+                throw new ConsoleException(e1.getMessage());
+            }
 
-	public String getCommandName() {
-		return COMMAND_NAME;
-	}
+            this.out.println("Retrieving node " + nodeName);
+            ThreadEndpoint ep = reg.lookup(url);
+            if (ep != null) {
+                this.out.println(ChordImplAccess.fetchChordImplOfNode(ep.getNode())
+                        .printEntries());
+            } else {
+                this.out.println("Could not find node with name " + nodeName);
+            }
+        }
+    }
 
-	public void printOutHelp() {
-		this.out
-				.println("This command displays the entries of a node. The name \n"
-						+ " of the node must be provided with help of parameter '"
-						+ NODE_PARAM
-						+ "'");
-	}
+    public String getCommandName() {
+        return COMMAND_NAME;
+    }
+
+    public void printOutHelp() {
+        this.out
+                .println("This command displays the entries of a node. The name \n"
+                        + " of the node must be provided with help of parameter '"
+                        + NODE_PARAM
+                        + "'");
+    }
 
 }

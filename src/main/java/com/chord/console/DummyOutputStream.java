@@ -33,29 +33,28 @@ import java.io.IOException;
  * {@link System#out} with, so that no calls to e.g.
  * <code>System.out.println()</code> are displayed in the console window. The
  * calls result in nothing being printed.
- * 
+ *
  * @author sven
  * @version 1.0.5
  */
 public class DummyOutputStream extends java.io.OutputStream {
 
-	/** Creates a new instance of DummyOutputStream */
-	public DummyOutputStream() {
-		/* nothing to do here */
-	}
+    /**
+     * Creates a new instance of DummyOutputStream
+     */
+    public DummyOutputStream() {
+        /* nothing to do here */
+    }
 
-	/**
-	 * Overwritten from {@link java.io.OutputStream}. This method does nothing.
-	 * The byte that should be written is thrown away.
-	 * 
-	 * @param b
-	 *            This byte is thrown away. Nothing is really written.
-	 * @throws IOException
-	 *             Does not occur as nothing is really written.
-	 * 
-	 */
-	public void write(int b) throws IOException {
-		/* nothing to do here */
-	}
+    /**
+     * Overwritten from {@link java.io.OutputStream}. This method does nothing.
+     * The byte that should be written is thrown away.
+     *
+     * @param b This byte is thrown away. Nothing is really written.
+     * @throws IOException Does not occur as nothing is really written.
+     */
+    public void write(int b) throws IOException {
+        /* nothing to do here */
+    }
 
 }

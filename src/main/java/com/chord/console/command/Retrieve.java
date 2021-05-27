@@ -28,115 +28,118 @@
 
 package com.chord.console.command;
 
+import com.chord.console.Command;
+import com.chord.console.ConsoleException;
+import com.chord.console.command.entry.Key;
+import com.chord.data.URL;
+import com.chord.local.ChordImplAccess;
+import com.chord.local.Registry;
+import com.chord.local.ThreadEndpoint;
+
 import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.util.Set;
 
-import com.chord.local.ChordImplAccess;
-import com.chord.local.Registry;
-import com.chord.local.ThreadEndpoint;
-import com.chord.console.command.entry.Key;
-import com.chord.data.URL;
-import com.chord.console.Command;
-import com.chord.console.ConsoleException;
-
 /**
  * {@link Command} to retrieve a value from the local chord network.
- * 
+ * <p>
  * To get a description of this command type <code>retrieve -help</code> into
  * the {@link com.chord.console.Main console}.
- * 
+ *
  * @author sven
  * @version 1.0.5
  */
 public class Retrieve extends Command {
 
-	/**
-	 * The name of this {@link Command}.
-	 */
-	public static final String COMMAND_NAME = "retrieve";
+    /**
+     * The name of this {@link Command}.
+     */
+    public static final String COMMAND_NAME = "retrieve";
 
-	/**
-	 * The name of the parameter, that defines the node from which the request
-	 * to retrieve a value is made.
-	 */
-	protected static final String NODE_PARAM = "node";
+    /**
+     * The name of the parameter, that defines the node from which the request
+     * to retrieve a value is made.
+     */
+    protected static final String NODE_PARAM = "node";
 
-	/**
-	 * The name of the parameter, that defines the key of the value to be
-	 * retrieved.
-	 */
-	protected static final String KEY_PARAM = "key";
+    /**
+     * The name of the parameter, that defines the key of the value to be
+     * retrieved.
+     */
+    protected static final String KEY_PARAM = "key";
 
-	/** Creates a new instance of Retrieve 
-	 * @param toCommand1 
-	 * @param out11 */
-	public Retrieve(Object[] toCommand1, java.io.PrintStream out11) {
-		super(toCommand1, out11);
-	}
+    /**
+     * Creates a new instance of Retrieve
+     *
+     * @param toCommand1
+     * @param out11
+     */
+    public Retrieve(Object[] toCommand1, java.io.PrintStream out11) {
+        super(toCommand1, out11);
+    }
 
-	public void exec() throws ConsoleException {
-		String node = this.parameters.get(NODE_PARAM);
-		String key = this.parameters.get(KEY_PARAM);
-		if ((node == null) || (node.length() == 0)) {
-			throw new ConsoleException("Not enough parameters! " + NODE_PARAM
-					+ " is missing.");
-		}
-		if ((key == null) || (key.length() == 0)) {
-			throw new ConsoleException("Not enough parameters! " + KEY_PARAM
-					+ " is missing.");
-		}
-		URL url = null; 
-		try {
-			url = new URL(URL.KNOWN_PROTOCOLS.get(URL.LOCAL_PROTOCOL) + "://" + node + "/");
-		} catch (MalformedURLException e1) {
-			throw new ConsoleException(e1.getMessage());
-		} 
+    public void exec() throws ConsoleException {
+        String node = this.parameters.get(NODE_PARAM);
+        String key = this.parameters.get(KEY_PARAM);
+        if ((node == null) || (node.length() == 0)) {
+            throw new ConsoleException("Not enough parameters! " + NODE_PARAM
+                    + " is missing.");
+        }
+        if ((key == null) || (key.length() == 0)) {
+            throw new ConsoleException("Not enough parameters! " + KEY_PARAM
+                    + " is missing.");
+        }
+        URL url = null;
+        try {
+            url = new URL(URL.KNOWN_PROTOCOLS.get(URL.LOCAL_PROTOCOL) + "://" + node + "/");
+        } catch (MalformedURLException e1) {
+            throw new ConsoleException(e1.getMessage());
+        }
 
-		Key keyObject = new Key(key);
+        Key keyObject = new Key(key);
 
-		ThreadEndpoint ep = Registry.getRegistryInstance().lookup(url);
-		if (ep == null) {
-			this.out.println("Node '" + node + "' does not exist!");
-			return;
-		}
-		try {
-			Set<Serializable> vs = ChordImplAccess.fetchChordImplOfNode(ep.getNode())
-					.retrieve(keyObject);
-			Object[] values = vs.toArray(new Object[vs.size()]);
-			this.out.println("Values associated with key '" + key + "': ");
-			for (int i = 0; i < values.length; i++) {
-				this.out.print(values[i]);
-				if (!(i == (values.length - 1))) {
-					this.out.print(",");
-				}
-				this.out.print(" ");
-			}
-			this.out.println();
-			this.out.println("Values retrieved from node '" + node + "'");
-		} catch (Throwable t) {
-			ConsoleException e = new ConsoleException(
-					"Exception during execution of command. " + t.getMessage());
-			e.setStackTrace(t.getStackTrace());
-			throw e;
-		}
+        ThreadEndpoint ep = Registry.getRegistryInstance().lookup(url);
+        if (ep == null) {
+            this.out.println("Node '" + node + "' does not exist!");
+            return;
+        }
+        try {
+            Set<Serializable> vs = ChordImplAccess.fetchChordImplOfNode(ep.getNode())
+                    .retrieve(keyObject);
+            Object[] values = vs.toArray(new Object[vs.size()]);
+            this.out.println("Values associated with key '" + key + "': ");
+            for (int i = 0; i < values.length; i++) {
+                this.out.print(values[i]);
+                if (!(i == (values.length - 1))) {
+                    this.out.print(",");
+                }
+                this.out.print(" ");
+            }
+            this.out.println();
+            this.out.println("Values retrieved from node '" + node + "'");
+        } catch (Throwable t) {
+            ConsoleException e = new ConsoleException(
+                    "Exception during execution of command. " + t.getMessage());
+            e.setStackTrace(t.getStackTrace());
+            throw e;
+        }
 
-	}
+    }
 
-	public String getCommandName() {
-		return COMMAND_NAME;
-	}
+    public String getCommandName() {
+        return COMMAND_NAME;
+    }
 
-	public void printOutHelp() {
-		this.out
-				.println("This command retrieves and displays the values stored for a provided key in the chord network.");
-		this.out
-				.println("The search is initiated by the node provided as parameter.");
-		this.out.println("Required parameters: ");
-		this.out.println("\t" + NODE_PARAM
-				+ ": The name of the node, by that the search is initiated.");
-		this.out.println("\t" + KEY_PARAM + ": The key for the values.");
-		this.out.println();
-	}
+    public void printOutHelp() {
+        this.out
+                .println("This command retrieves and displays the values stored for a provided key in the chord network.");
+        this.out
+                .println("The search is initiated by the node provided as parameter.");
+        this.out.println("Required parameters: ");
+        this.out.println("\t" + NODE_PARAM
+                + ": The name of the node, by that the search is initiated.");
+        this.out.println("\t" + KEY_PARAM + ": The key for the values.");
+        this.out.println();
+    }
 
 }

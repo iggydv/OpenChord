@@ -7,7 +7,7 @@
 Logger (OpenChord API 1.0.5)
 </TITLE>
 
-<META NAME="keywords" CONTENT="de.uniba.wiai.lspi.util.logging.Logger class">
+<META NAME="keywords" CONTENT="com.util.logging.Logger class">
 
 <LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../../../stylesheet.css" TITLE="Style">
 
@@ -51,8 +51,8 @@ function windowTitle()
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Log4jLogger.html" title="class in de.uniba.wiai.lspi.util.logging"><B>PREV CLASS</B></A>&nbsp;
-&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Logger.LogLevel.html" title="enum in de.uniba.wiai.lspi.util.logging"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Log4jLogger.html" title="class in com.util.logging"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Logger.LogLevel.html" title="enum in com.util.logging"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../../index.html?de/uniba/wiai/lspi/util/logging/Logger.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="Logger.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
@@ -84,18 +84,18 @@ DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor
 <!-- ======== START OF CLASS DATA ======== -->
 <H2>
 <FONT SIZE="-1">
-de.uniba.wiai.lspi.util.logging</FONT>
+com.util.logging</FONT>
 <BR>
 Class Logger</H2>
 <PRE>
 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html" title="class or interface in java.lang">java.lang.Object</A>
-  <IMG SRC="../../../../../../resources/inherit.gif" ALT="extended by "><B>de.uniba.wiai.lspi.util.logging.Logger</B>
+  <IMG SRC="../../../../../../resources/inherit.gif" ALT="extended by "><B>com.util.logging.Logger</B>
 </PRE>
 <DL>
 <DT><B>All Implemented Interfaces:</B> <DD><A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/Serializable.html" title="class or interface in java.io">Serializable</A></DD>
 </DL>
 <DL>
-<DT><B>Direct Known Subclasses:</B> <DD><A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/DummyLogger.html" title="class in de.uniba.wiai.lspi.util.logging">DummyLogger</A>, <A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Log4jLogger.html" title="class in de.uniba.wiai.lspi.util.logging">Log4jLogger</A>, <A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/SystemOutPrintlnLogger.html" title="class in de.uniba.wiai.lspi.util.logging">SystemOutPrintlnLogger</A></DD>
+<DT><B>Direct Known Subclasses:</B> <DD><A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/DummyLogger.html" title="class in com.util.logging">DummyLogger</A>, <A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Log4jLogger.html" title="class in com.util.logging">Log4jLogger</A>, <A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/SystemOutPrintlnLogger.html" title="class in com.util.logging">SystemOutPrintlnLogger</A></DD>
 </DL>
 <HR>
 <DL>
@@ -107,15 +107,15 @@ This class is the abstract class to be implemented by a logger that should be
  used within the framework. <br/> A reference to a logger can be obtained by
  <A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Logger.html#getLogger(java.lang.String)"><CODE>getLogger(java.lang.String)</CODE></A> or <A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Logger.html#getLogger(java.lang.Class)"><CODE>getLogger(java.lang.Class)</CODE></A>.
  <br/> You can use a custom logger by extending this class and setting the
- system property de.uniba.wiai.lspi.util.logging.logger.class to the FQN of
+ system property com.util.logging.logger.class to the FQN of
  your logger class. <br/> <A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Logger.html#getLogger(java.lang.String)"><CODE>getLogger(java.lang.String)</CODE></A> or
  <A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Logger.html#getLogger(java.lang.Class)"><CODE>getLogger(java.lang.Class)</CODE></A> then try to instantiate your logger. If
  that fails one of the standard loggers is created. The standard logger is
- <A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Log4jLogger.html" title="class in de.uniba.wiai.lspi.util.logging"><CODE>Log4jLogger</CODE></A>. If log4j is not availalbe from the classpath
- <A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/DummyLogger.html" title="class in de.uniba.wiai.lspi.util.logging"><CODE>DummyLogger</CODE></A> is the standard logger.
+ <A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Log4jLogger.html" title="class in com.util.logging"><CODE>Log4jLogger</CODE></A>. If log4j is not availalbe from the classpath
+ <A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/DummyLogger.html" title="class in com.util.logging"><CODE>DummyLogger</CODE></A> is the standard logger.
  
- If you set the system property de.uniba.wiai.lspi.util.logging.off to true
- <A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/DummyLogger.html" title="class in de.uniba.wiai.lspi.util.logging"><CODE>DummyLogger</CODE></A> is the standard logger.
+ If you set the system property com.util.logging.off to true
+ <A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/DummyLogger.html" title="class in com.util.logging"><CODE>DummyLogger</CODE></A> is the standard logger.
  
  <br/> When implementing a custom logger you have to consider that the logger
  may be transferred over the network when classes are passed as parameters to
@@ -125,7 +125,7 @@ This class is the abstract class to be implemented by a logger that should be
 
 <P>
 <DL>
-<DT><B>See Also:</B><DD><A HREF="../../../../../../serialized-form.html#de.uniba.wiai.lspi.util.logging.Logger">Serialized Form</A></DL>
+<DT><B>See Also:</B><DD><A HREF="../../../../../../serialized-form.html#com.util.logging.Logger">Serialized Form</A></DL>
 <HR>
 
 <P>
@@ -140,7 +140,7 @@ This class is the abstract class to be implemented by a logger that should be
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;class</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Logger.LogLevel.html" title="enum in de.uniba.wiai.lspi.util.logging">Logger.LogLevel</A></B></CODE>
+<TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Logger.LogLevel.html" title="enum in com.util.logging">Logger.LogLevel</A></B></CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
@@ -259,7 +259,7 @@ This class is the abstract class to be implemented by a logger that should be
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>static&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Logger.html" title="class in de.uniba.wiai.lspi.util.logging">Logger</A></CODE></FONT></TD>
+<CODE>static&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Logger.html" title="class in com.util.logging">Logger</A></CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Logger.html#getLogger(java.lang.Class)">getLogger</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Class.html" title="class or interface in java.lang">Class</A>&nbsp;_class)</CODE>
 
 <BR>
@@ -267,7 +267,7 @@ This class is the abstract class to be implemented by a logger that should be
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>static&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Logger.html" title="class in de.uniba.wiai.lspi.util.logging">Logger</A></CODE></FONT></TD>
+<CODE>static&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Logger.html" title="class in com.util.logging">Logger</A></CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Logger.html#getLogger(java.lang.String)">getLogger</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>&nbsp;name)</CODE>
 
 <BR>
@@ -293,7 +293,7 @@ This class is the abstract class to be implemented by a logger that should be
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>abstract &nbsp;boolean</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Logger.html#isEnabledFor(de.uniba.wiai.lspi.util.logging.Logger.LogLevel)">isEnabledFor</A></B>(<A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Logger.LogLevel.html" title="enum in de.uniba.wiai.lspi.util.logging">Logger.LogLevel</A>&nbsp;l)</CODE>
+<TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Logger.html#isEnabledFor(com.util.logging.Logger.LogLevel)">isEnabledFor</A></B>(<A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Logger.LogLevel.html" title="enum in com.util.logging">Logger.LogLevel</A>&nbsp;l)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
@@ -346,7 +346,7 @@ public static final <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/S
 <DD>Name of property that specifies the name of the logger class to be used.
 <P>
 <DL>
-<DT><B>See Also:</B><DD><A HREF="../../../../../../constant-values.html#de.uniba.wiai.lspi.util.logging.Logger.LOGGER_CLASS_NAME_PROPERTY_NAME">Constant Field Values</A></DL>
+<DT><B>See Also:</B><DD><A HREF="../../../../../../constant-values.html#com.util.logging.Logger.LOGGER_CLASS_NAME_PROPERTY_NAME">Constant Field Values</A></DL>
 </DL>
 <HR>
 
@@ -358,7 +358,7 @@ public static final <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/S
 <DD>Name of property that defines if logging is off.
 <P>
 <DL>
-<DT><B>See Also:</B><DD><A HREF="../../../../../../constant-values.html#de.uniba.wiai.lspi.util.logging.Logger.LOGGING_OFF_PROPERTY_NAME">Constant Field Values</A></DL>
+<DT><B>See Also:</B><DD><A HREF="../../../../../../constant-values.html#com.util.logging.Logger.LOGGING_OFF_PROPERTY_NAME">Constant Field Values</A></DL>
 </DL>
 <HR>
 
@@ -407,7 +407,7 @@ protected <B>Logger</B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/la
 <A NAME="getLogger(java.lang.Class)"><!-- --></A><H3>
 getLogger</H3>
 <PRE>
-public static <A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Logger.html" title="class in de.uniba.wiai.lspi.util.logging">Logger</A> <B>getLogger</B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Class.html" title="class or interface in java.lang">Class</A>&nbsp;_class)</PRE>
+public static <A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Logger.html" title="class in com.util.logging">Logger</A> <B>getLogger</B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Class.html" title="class or interface in java.lang">Class</A>&nbsp;_class)</PRE>
 <DL>
 <DD><DL>
 </DL>
@@ -422,7 +422,7 @@ public static <A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Logger.
 <A NAME="getLogger(java.lang.String)"><!-- --></A><H3>
 getLogger</H3>
 <PRE>
-public static <A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Logger.html" title="class in de.uniba.wiai.lspi.util.logging">Logger</A> <B>getLogger</B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>&nbsp;name)</PRE>
+public static <A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Logger.html" title="class in com.util.logging">Logger</A> <B>getLogger</B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>&nbsp;name)</PRE>
 <DL>
 <DD><DL>
 </DL>
@@ -434,10 +434,10 @@ public static <A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Logger.
 </DL>
 <HR>
 
-<A NAME="isEnabledFor(de.uniba.wiai.lspi.util.logging.Logger.LogLevel)"><!-- --></A><H3>
+<A NAME="isEnabledFor(com.util.logging.Logger.LogLevel)"><!-- --></A><H3>
 isEnabledFor</H3>
 <PRE>
-public abstract boolean <B>isEnabledFor</B>(<A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Logger.LogLevel.html" title="enum in de.uniba.wiai.lspi.util.logging">Logger.LogLevel</A>&nbsp;l)</PRE>
+public abstract boolean <B>isEnabledFor</B>(<A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Logger.LogLevel.html" title="enum in com.util.logging">Logger.LogLevel</A>&nbsp;l)</PRE>
 <DL>
 <DD><DL>
 </DL>
@@ -621,8 +621,8 @@ public abstract void <B>fatal</B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/a
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Log4jLogger.html" title="class in de.uniba.wiai.lspi.util.logging"><B>PREV CLASS</B></A>&nbsp;
-&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Logger.LogLevel.html" title="enum in de.uniba.wiai.lspi.util.logging"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Log4jLogger.html" title="class in com.util.logging"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/util/logging/Logger.LogLevel.html" title="enum in com.util.logging"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../../index.html?de/uniba/wiai/lspi/util/logging/Logger.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="Logger.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;

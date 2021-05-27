@@ -27,75 +27,71 @@
  ***************************************************************************/
 package com.chord.rmi;
 
-import java.util.List;
-import java.io.Serializable;
-import java.util.Set;
-
 import com.chord.Entry;
 
+import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
+
 /**
- * This class represents entries and {@link RemoteNodeInfo references} that 
- * have to be transferred between two nodes.  
- * 
+ * This class represents entries and {@link RemoteNodeInfo references} that
+ * have to be transferred between two nodes.
+ *
  * @author sven
  * @version 1.0.5
  */
 final class RemoteRefsAndEntries implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 4409136500599950164L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 4409136500599950164L;
 
-	/**
-	 * Set of {@link Entry}.
-	 * 
-	 */
-	protected Set<Entry> entries;
+    /**
+     * Set of {@link Entry}.
+     */
+    protected Set<Entry> entries;
 
-	/**
-	 * List of {@link RemoteNodeInfo}.
-	 * 
-	 */
-	protected List<RemoteNodeInfo> nodeInfos;
+    /**
+     * List of {@link RemoteNodeInfo}.
+     */
+    protected List<RemoteNodeInfo> nodeInfos;
 
-	/**
-	 * @param entries1
-	 * @param nodeInfos1
-	 */
-	protected RemoteRefsAndEntries(Set<Entry> entries1,
-			List<RemoteNodeInfo> nodeInfos1) {
-		this.entries = entries1;
-		this.nodeInfos = nodeInfos1;
-	}
+    /**
+     * @param entries1
+     * @param nodeInfos1
+     */
+    protected RemoteRefsAndEntries(Set<Entry> entries1,
+                                   List<RemoteNodeInfo> nodeInfos1) {
+        this.entries = entries1;
+        this.nodeInfos = nodeInfos1;
+    }
 
-	/**
-	 * @return Returns the entries.
-	 */
-	protected Set<Entry> getEntries() {
-		return this.entries;
-	}
+    /**
+     * @return Returns the entries.
+     */
+    protected Set<Entry> getEntries() {
+        return this.entries;
+    }
 
-	/**
-	 * @param entries1
-	 *            The entries to set.
-	 */
-	protected void setEntries(Set<Entry> entries1) {
-		this.entries = entries1;
-	}
+    /**
+     * @param entries1 The entries to set.
+     */
+    protected void setEntries(Set<Entry> entries1) {
+        this.entries = entries1;
+    }
 
-	/**
-	 * @return Returns the nodeInfos.
-	 */
-	protected List<RemoteNodeInfo> getNodeInfos() {
-		return this.nodeInfos;
-	}
+    /**
+     * @return Returns the nodeInfos.
+     */
+    protected List<RemoteNodeInfo> getNodeInfos() {
+        return this.nodeInfos;
+    }
 
-	/**
-	 * @param nodeInfos1
-	 *            The nodeInfos to set.
-	 */
-	protected void setNodeInfos(List<RemoteNodeInfo> nodeInfos1) {
-		this.nodeInfos = nodeInfos1;
-	}
+    /**
+     * @param nodeInfos1 The nodeInfos to set.
+     */
+    protected void setNodeInfos(List<RemoteNodeInfo> nodeInfos1) {
+        this.nodeInfos = nodeInfos1;
+    }
 }

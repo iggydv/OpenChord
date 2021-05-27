@@ -33,10 +33,10 @@
  */
 package com.chord;
 
+import com.chord.data.URL;
 import com.chord.local.ThreadProxy;
 import com.chord.rmi.RMIProxy;
 import com.chord.socket.SocketProxy;
-import com.chord.data.URL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -48,86 +48,83 @@ import org.slf4j.LoggerFactory;
  * {@link Endpoint} of the node that is represented by this proxy. So all
  * protocol specific implementation for connections between nodes must be
  * realized in an pair of {@link Endpoint} and {@link Proxy}.
- * 
+ * <p>
  * This class has to be extended by all Proxies that are used to provide a
  * connection to a remote node via the {@link Node} interface.
- * 
+ *
  * @author sven
  * @version 1.0.5
  */
 public abstract class Proxy extends Node {
 
-	/**
-	 * The logger for instances of this class.
-	 */
-	private final static Logger logger = LoggerFactory.getLogger(Proxy.class.getName());
+    /**
+     * The logger for instances of this class.
+     */
+    private final static Logger logger = LoggerFactory.getLogger(Proxy.class.getName());
 
-	/**
-	 * 
-	 * @param url
-	 */
-	protected Proxy(URL url) {
-		if (url == null) {
-			throw new IllegalArgumentException("URL must not be null!");
-		}
-		this.nodeURL = url;
-		logger.info("Proxy with url " + url + " initialised.");
-	}
+    /**
+     * @param url
+     */
+    protected Proxy(URL url) {
+        if (url == null) {
+            throw new IllegalArgumentException("URL must not be null!");
+        }
+        this.nodeURL = url;
+        logger.info("Proxy with url " + url + " initialised.");
+    }
 
-	/**
-	 * Factory method to create a proxy to connect to the given {@link URL}.
-	 * The protocol of url is used to determine the type of the proxy to create.
-	 * The protocol of url must be a known protocol.
-	 * 
-	 * @param sourceUrl
-	 *            {@link URL} of the local node, that wants to establish the
-	 *            connection.
-	 * @param destinationUrl
-	 *            {@link URL} of the remote endpoint.
-	 * @return Proxy to make invocations on a {@link Node} remote node.
-	 * @throws CommunicationException
-	 */
-	public static Node createConnection(URL sourceUrl, URL destinationUrl)
-			throws CommunicationException {
+    /**
+     * Factory method to create a proxy to connect to the given {@link URL}.
+     * The protocol of url is used to determine the type of the proxy to create.
+     * The protocol of url must be a known protocol.
+     *
+     * @param sourceUrl      {@link URL} of the local node, that wants to establish the
+     *                       connection.
+     * @param destinationUrl {@link URL} of the remote endpoint.
+     * @return Proxy to make invocations on a {@link Node} remote node.
+     * @throws CommunicationException
+     */
+    public static Node createConnection(URL sourceUrl, URL destinationUrl)
+            throws CommunicationException {
 
-		if (sourceUrl == null || destinationUrl == null) {
-			throw new NullPointerException("URL must not be null!");
-		}
+        if (sourceUrl == null || destinationUrl == null) {
+            throw new NullPointerException("URL must not be null!");
+        }
 
-		if (sourceUrl.equals(destinationUrl)) {
-			logger.error("URLs are equal: this url= " + sourceUrl.toString()
-					+ ", the other url= " + destinationUrl.toString());
-			throw new IllegalArgumentException("URLs must not be equal!");
-		}
+        if (sourceUrl.equals(destinationUrl)) {
+            logger.error("URLs are equal: this url= " + sourceUrl
+                    + ", the other url= " + destinationUrl);
+            throw new IllegalArgumentException("URLs must not be equal!");
+        }
 
-		boolean debug = logger.isDebugEnabled();
-		if (debug) {
-			logger.debug("Trying to create Proxy for connection to "
-					+ destinationUrl);
-		}
-		String protocol = destinationUrl.getProtocol();
-		Node node = null;
-		if (protocol.equals(URL.KNOWN_PROTOCOLS.get(URL.SOCKET_PROTOCOL))) {
-			node = SocketProxy.create(sourceUrl, destinationUrl);
-			if (debug) {
-				logger.debug("SocketProxy " + node + " created.");
-			}
-		} else if (protocol.equals(URL.KNOWN_PROTOCOLS.get(URL.LOCAL_PROTOCOL))) {
-			node = new ThreadProxy(sourceUrl, destinationUrl);
-			if (debug) {
-				logger.debug("ThreadProxy " + node + " created.");
-			}
-		} else if (protocol.equals(URL.KNOWN_PROTOCOLS.get(URL.RMI_PROTOCOL))) {
-			node = RMIProxy.create(sourceUrl, destinationUrl); 
-			if (debug) {
-				logger.debug("RMIProxy " + node + " created.");
-			}
-		} else {
-			// does not happen - if it does, abort
-			throw new RuntimeException(
-					"This should not happen! Unknown Protocol " + protocol);
-		}
-		return node;
-	}
+        boolean debug = logger.isDebugEnabled();
+        if (debug) {
+            logger.debug("Trying to create Proxy for connection to "
+                    + destinationUrl);
+        }
+        String protocol = destinationUrl.getProtocol();
+        Node node = null;
+        if (protocol.equals(URL.KNOWN_PROTOCOLS.get(URL.SOCKET_PROTOCOL))) {
+            node = SocketProxy.create(sourceUrl, destinationUrl);
+            if (debug) {
+                logger.debug("SocketProxy " + node + " created.");
+            }
+        } else if (protocol.equals(URL.KNOWN_PROTOCOLS.get(URL.LOCAL_PROTOCOL))) {
+            node = new ThreadProxy(sourceUrl, destinationUrl);
+            if (debug) {
+                logger.debug("ThreadProxy " + node + " created.");
+            }
+        } else if (protocol.equals(URL.KNOWN_PROTOCOLS.get(URL.RMI_PROTOCOL))) {
+            node = RMIProxy.create(sourceUrl, destinationUrl);
+            if (debug) {
+                logger.debug("RMIProxy " + node + " created.");
+            }
+        } else {
+            // does not happen - if it does, abort
+            throw new RuntimeException(
+                    "This should not happen! Unknown Protocol " + protocol);
+        }
+        return node;
+    }
 
 }

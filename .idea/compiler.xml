@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="open-chord" target="1.5" />
+      <module name="open-chord" target="1.8" />
       <module name="open-chord_1.0.5" target="8" />
     </bytecodeTargetLevel>
   </component>

@@ -28,79 +28,79 @@
 
 package com.chord.console.command;
 
+import com.chord.console.Command;
+import com.chord.console.ConsoleException;
 import com.chord.console.command.entry.Key;
 import com.chord.console.command.entry.Value;
 import com.chord.service.Chord;
-import com.chord.console.Command;
-import com.chord.console.ConsoleException;
-
-
 
 import java.io.PrintStream;
 
 /**
  * <p>
  * This command can be used to insert a value into the remote chord network.
- * </p> 
- * 
- * To get a description of this command type <code>insertN -help</code> 
+ * </p>
+ * <p>
+ * To get a description of this command type <code>insertN -help</code>
  * into the {@link com.chord.console.Main console}.
- * 
- * @author  sven
+ *
+ * @author sven
  * @version 1.0.5
  */
 public class InsertNetwork extends Command {
-    
-	/**
-	 * The name of this {@link Command}. 
-	 */
-    public static final String COMMAND_NAME = "insertN";
-    
+
     /**
-     * The name of the parameter, that defines the key of the value to insert. 
+     * The name of this {@link Command}.
+     */
+    public static final String COMMAND_NAME = "insertN";
+
+    /**
+     * The name of the parameter, that defines the key of the value to insert.
      */
     protected static final String KEY_PARAM = "key";
-    
+
     /**
-     * The name of the parameter, that defines the value to insert. 
+     * The name of the parameter, that defines the value to insert.
      */
     protected static final String VALUE_PARAM = "value";
-    
-    /** Creates a new instance of Insert 
-     * @param toCommand1 
-     * @param out1 */
+
+    /**
+     * Creates a new instance of Insert
+     *
+     * @param toCommand1
+     * @param out1
+     */
     public InsertNetwork(Object[] toCommand1, PrintStream out1) {
         super(toCommand1, out1);
     }
-    
+
     public void exec() throws ConsoleException {
         String key = this.parameters.get(KEY_PARAM);
         String value = this.parameters.get(VALUE_PARAM);
-        if ( (key == null) || (key.length() == 0) ){
+        if ((key == null) || (key.length() == 0)) {
             throw new ConsoleException("Not enough parameters! " + KEY_PARAM + " is missing.");
         }
-        if ( (value == null) || (value.length() == 0) ){
+        if ((value == null) || (value.length() == 0)) {
             throw new ConsoleException("Not enough parameters! " + VALUE_PARAM + " is missing.");
         }
-        Chord chord = ((RemoteChordNetworkAccess)this.toCommand[1]).getChordInstance(); 
-        
+        Chord chord = ((RemoteChordNetworkAccess) this.toCommand[1]).getChordInstance();
+
         Key keyObject = new Key(key);
         Value valueObject = new Value(value);
         try {
             chord.insert(keyObject, valueObject);
-        }
-        catch (Throwable t){
-            ConsoleException e 
-                    = new ConsoleException("Exception during execution of command. " 
+        } catch (Throwable t) {
+            ConsoleException e
+                    = new ConsoleException("Exception during execution of command. "
                     + t.getMessage(), t);
             throw e;
         }
     }
-    
+
     public String getCommandName() {
         return COMMAND_NAME;
     }
-    
+
     public void printOutHelp() {
         this.out.println("This command inserts a value with a provided key into the (remote) chord network.");
         this.out.println("The key is inserted starting from the node provided as parameter.");
@@ -109,5 +109,5 @@ public class InsertNetwork extends Command {
         this.out.println("\t" + VALUE_PARAM + ": The value to insert.");
         this.out.println();
     }
-    
+
 }

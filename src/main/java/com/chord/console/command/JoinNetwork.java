@@ -28,126 +28,125 @@
 
 package com.chord.console.command;
 
-import java.io.PrintStream;
-
 import com.chord.console.Command;
 import com.chord.console.ConsoleException;
 import com.chord.data.URL;
 import com.chord.service.Chord;
 
+import java.io.PrintStream;
 import java.net.MalformedURLException;
 import java.util.Iterator;
 
 /**
  * {@link Command} to join a remote chord network. </br>
  * {@link Chord#join(URL, URL)}.
- * 
+ *
  * <p>
  * To get a description of this command type <code>joinN -help</code> into the
  * {@link com.chord.console.Main console}.
  * </p>
- * 
+ *
  * @author sven
  * @version 1.0.5
  */
 public class JoinNetwork extends Command {
 
-	/**
-	 * The name of this {@link Command}.
-	 */
-	public static final String COMMAND_NAME = "joinN";
+    /**
+     * The name of this {@link Command}.
+     */
+    public static final String COMMAND_NAME = "joinN";
 
-	/**
-	 * The name of the parameter that defines the bootstrap node to use.
-	 */
-	public static final String BOOTSTRAP_PARAM = "bootstrap";
+    /**
+     * The name of the parameter that defines the bootstrap node to use.
+     */
+    public static final String BOOTSTRAP_PARAM = "bootstrap";
 
-	/**
-	 * The port on which the local node should listen.
-	 */
-	public static final String PORT_PARAM = "port";
+    /**
+     * The port on which the local node should listen.
+     */
+    public static final String PORT_PARAM = "port";
 
-	/**
-	 * Creates a new instance of CreateNodes
-	 * 
-	 * @param toCommand11
-	 * @param out1
-	 */
-	public JoinNetwork(Object[] toCommand11, PrintStream out1) {
-		super(toCommand11, out1);
-	}
+    /**
+     * Creates a new instance of CreateNodes
+     *
+     * @param toCommand11
+     * @param out1
+     */
+    public JoinNetwork(Object[] toCommand11, PrintStream out1) {
+        super(toCommand11, out1);
+    }
 
-	public void exec() throws ConsoleException {
+    public void exec() throws ConsoleException {
 
-		int port = -1;
-		if (this.parameters.containsKey(PORT_PARAM)) {
-			try {
-				port = Integer.parseInt(this.parameters.remove(PORT_PARAM));
-			} catch (NumberFormatException e) {
-				throw new ConsoleException("Port is no integer value! "
-						+ e.getMessage());
-			}
-		}
+        int port = -1;
+        if (this.parameters.containsKey(PORT_PARAM)) {
+            try {
+                port = Integer.parseInt(this.parameters.remove(PORT_PARAM));
+            } catch (NumberFormatException e) {
+                throw new ConsoleException("Port is no integer value! "
+                        + e.getMessage());
+            }
+        }
 
-		if (!this.parameters.containsKey(BOOTSTRAP_PARAM)) {
-			this.out.println("Creating new chord overlay network!");
-		}
-		String bootStrap = this.parameters.remove(BOOTSTRAP_PARAM);
+        if (!this.parameters.containsKey(BOOTSTRAP_PARAM)) {
+            this.out.println("Creating new chord overlay network!");
+        }
+        String bootStrap = this.parameters.remove(BOOTSTRAP_PARAM);
 
-		if (this.parameters.size() > 0) {
-			StringBuilder msg = new StringBuilder();
-			msg.append("Too many parameters. Unknown parameters: ");
-			Iterator<String> params = this.parameters.keySet().iterator();
-			while (params.hasNext()) {
-				msg.append(params.next());
-				msg.append(" ");
-			}
-			throw new ConsoleException(msg.toString());
-		}
+        if (this.parameters.size() > 0) {
+            StringBuilder msg = new StringBuilder();
+            msg.append("Too many parameters. Unknown parameters: ");
+            Iterator<String> params = this.parameters.keySet().iterator();
+            while (params.hasNext()) {
+                msg.append(params.next());
+                msg.append(" ");
+            }
+            throw new ConsoleException(msg.toString());
+        }
 
-		URL bootstrapURL = null;
-		if (bootStrap != null) {
-			try {
-				bootstrapURL = new URL(
-						URL.KNOWN_PROTOCOLS.get(RemoteChordNetworkAccess
-								.getUniqueInstance().protocolType)
-								+ "://" + bootStrap + "/");
-			} catch (MalformedURLException e) {
-				throw new ConsoleException("URL " + bootStrap + " provided by "
-						+ BOOTSTRAP_PARAM + " parameter is malformed!", e);
-			}
-			this.out.println("Trying to join chord network with boostrap URL "
-					+ bootstrapURL);
-		}
-		RemoteChordNetworkAccess remote = (RemoteChordNetworkAccess) this.toCommand[1];
-		try {
-			remote.join(bootstrapURL, port);
-		} catch (Exception e) {
-			e.printStackTrace(this.out);
-			throw new ConsoleException("Join/Creation of network failed. "
-					+ "Reason: " + e.getMessage(), e);
-		}
-		this.out.println("URL of created chord node "
-				+ remote.getChordInstance().getURL() + ".");
-	}
+        URL bootstrapURL = null;
+        if (bootStrap != null) {
+            try {
+                bootstrapURL = new URL(
+                        URL.KNOWN_PROTOCOLS.get(RemoteChordNetworkAccess
+                                .getUniqueInstance().protocolType)
+                                + "://" + bootStrap + "/");
+            } catch (MalformedURLException e) {
+                throw new ConsoleException("URL " + bootStrap + " provided by "
+                        + BOOTSTRAP_PARAM + " parameter is malformed!", e);
+            }
+            this.out.println("Trying to join chord network with boostrap URL "
+                    + bootstrapURL);
+        }
+        RemoteChordNetworkAccess remote = (RemoteChordNetworkAccess) this.toCommand[1];
+        try {
+            remote.join(bootstrapURL, port);
+        } catch (Exception e) {
+            e.printStackTrace(this.out);
+            throw new ConsoleException("Join/Creation of network failed. "
+                    + "Reason: " + e.getMessage(), e);
+        }
+        this.out.println("URL of created chord node "
+                + remote.getChordInstance().getURL() + ".");
+    }
 
-	public String getCommandName() {
-		return COMMAND_NAME;
-	}
+    public String getCommandName() {
+        return COMMAND_NAME;
+    }
 
-	public void printOutHelp() {
-		this.out.println("The " + COMMAND_NAME
-				+ " command creates a chord node \n"
-				+ "to which remote nodes can connect.");
-		this.out.println("______________");
-		this.out.println("Parameters: ");
-		this.out
-				.println("'"
-						+ BOOTSTRAP_PARAM
-						+ "' takes a part of an URL of a remote chord \n"
-						+ "node, that is then used as bootstrap node. \n"
-						+ "If no bootstrap node is provided a new chord network "
-						+ "is created. \n The parameter must be in the form hostname:port");
-	}
+    public void printOutHelp() {
+        this.out.println("The " + COMMAND_NAME
+                + " command creates a chord node \n"
+                + "to which remote nodes can connect.");
+        this.out.println("______________");
+        this.out.println("Parameters: ");
+        this.out
+                .println("'"
+                        + BOOTSTRAP_PARAM
+                        + "' takes a part of an URL of a remote chord \n"
+                        + "node, that is then used as bootstrap node. \n"
+                        + "If no bootstrap node is provided a new chord network "
+                        + "is created. \n The parameter must be in the form hostname:port");
+    }
 
 }

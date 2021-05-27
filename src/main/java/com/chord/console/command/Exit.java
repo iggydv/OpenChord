@@ -28,53 +28,56 @@
 
 package com.chord.console.command;
 
-import java.io.PrintStream;
-
-import com.chord.local.Registry;
 import com.chord.console.Command;
+import com.chord.local.Registry;
+
+import java.io.PrintStream;
 
 /**
  * The command to close the {@link com.chord.console.Main console}.
- * 
+ *
  * @author sven
  * @version 1.0.5
  */
 public class Exit extends Command {
 
-	/**
-	 * The name of this command, that can be typed into the console. 
-	 */
-	public static final String COMMAND_NAME = "exit";
+    /**
+     * The name of this command, that can be typed into the console.
+     */
+    public static final String COMMAND_NAME = "exit";
 
-	/** Creates a new instance of Exit 
-	 * @param toCommand1 
-	 * @param out1 */
-	public Exit(Object[] toCommand1, PrintStream out1) {
-		super(toCommand1, out1);
-	}
+    /**
+     * Creates a new instance of Exit
+     *
+     * @param toCommand1
+     * @param out1
+     */
+    public Exit(Object[] toCommand1, PrintStream out1) {
+        super(toCommand1, out1);
+    }
 
-	public void exec() {
-		try {
-			((Registry)this.toCommand[0]).shutdown();
-		} catch (Exception e) {
-			// do nothing
-		}
-		try {
-			((RemoteChordNetworkAccess) this.toCommand[1]).getChordInstance()
-					.leave();
-		} catch (Exception e) {
-			// do nothing
-		}
-		this.out.println("Bye, bye!");
-		// System.exit(0);
-	}
+    public void exec() {
+        try {
+            ((Registry) this.toCommand[0]).shutdown();
+        } catch (Exception e) {
+            // do nothing
+        }
+        try {
+            ((RemoteChordNetworkAccess) this.toCommand[1]).getChordInstance()
+                    .leave();
+        } catch (Exception e) {
+            // do nothing
+        }
+        this.out.println("Bye, bye!");
+        // System.exit(0);
+    }
 
-	public String getCommandName() {
-		return COMMAND_NAME;
-	}
+    public String getCommandName() {
+        return COMMAND_NAME;
+    }
 
-	public void printOutHelp() {
-		// do nothing
-	}
+    public void printOutHelp() {
+        // do nothing
+    }
 
 }

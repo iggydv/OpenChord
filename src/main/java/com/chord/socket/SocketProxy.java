@@ -71,7 +71,7 @@ public final class SocketProxy extends Proxy implements Runnable {
      * changed on 21.03.2006 by sven. See documentation of method
      * {@link #createProxyKey(URL, URL)}
      */
-    private static Map<String, SocketProxy> proxies = new HashMap<String, SocketProxy>();
+    private static final Map<String, SocketProxy> proxies = new HashMap<String, SocketProxy>();
 
     /**
      * The {@link URL}of the node that uses this proxy to connect to the node,
@@ -127,6 +127,48 @@ public final class SocketProxy extends Proxy implements Runnable {
      * for, could not be reestablished.
      */
     private volatile boolean disconnected = false;
+    /**
+     * The string representation of this proxy. Created when {@link #toString()}
+     * is invoked for the first time.
+     */
+    private String stringRepresentation = null;
+
+    /**
+     * Corresponding constructor to factory method {@link #create(URL, URL, ID)}.
+     *
+     * @param url
+     * @param urlOfLocalNode1
+     * @param nodeID1
+     * @see #create(URL, URL, ID)
+     */
+    protected SocketProxy(URL url, URL urlOfLocalNode1, ID nodeID1) {
+        super(url);
+        if (url == null || urlOfLocalNode1 == null || nodeID1 == null) {
+            throw new IllegalArgumentException("null");
+        }
+        this.urlOfLocalNode = urlOfLocalNode1;
+        this.nodeID = nodeID1;
+    }
+
+    /**
+     * Corresponding constructor to factory method {@link #create(URL, URL)}.
+     *
+     * @param url
+     * @param urlOfLocalNode1
+     * @throws CommunicationException
+     * @see #create(URL, URL)
+     */
+    private SocketProxy(URL url, URL urlOfLocalNode1)
+            throws CommunicationException {
+        super(url);
+        if (url == null || urlOfLocalNode1 == null) {
+            throw new IllegalArgumentException(
+                    "URLs must not be null!");
+        }
+        this.urlOfLocalNode = urlOfLocalNode1;
+        this.initializeNodeID();
+        logger.info("SocketProxy for " + url + " has been created.");
+    }
 
     /**
      * Establishes a connection from <code>urlOfLocalNode</code> to
@@ -225,43 +267,6 @@ public final class SocketProxy extends Proxy implements Runnable {
      */
     private static String createProxyKey(URL localURL, URL remoteURL) {
         return localURL.toString() + "->" + remoteURL.toString();
-    }
-
-    /**
-     * Corresponding constructor to factory method {@link #create(URL, URL, ID)}.
-     *
-     * @param url
-     * @param urlOfLocalNode1
-     * @param nodeID1
-     * @see #create(URL, URL, ID)
-     */
-    protected SocketProxy(URL url, URL urlOfLocalNode1, ID nodeID1) {
-        super(url);
-        if (url == null || urlOfLocalNode1 == null || nodeID1 == null) {
-            throw new IllegalArgumentException("null");
-        }
-        this.urlOfLocalNode = urlOfLocalNode1;
-        this.nodeID = nodeID1;
-    }
-
-    /**
-     * Corresponding constructor to factory method {@link #create(URL, URL)}.
-     *
-     * @param url
-     * @param urlOfLocalNode1
-     * @throws CommunicationException
-     * @see #create(URL, URL)
-     */
-    private SocketProxy(URL url, URL urlOfLocalNode1)
-            throws CommunicationException {
-        super(url);
-        if (url == null || urlOfLocalNode1 == null) {
-            throw new IllegalArgumentException(
-                    "URLs must not be null!");
-        }
-        this.urlOfLocalNode = urlOfLocalNode1;
-        this.initializeNodeID();
-        logger.info("SocketProxy for " + url + " has been created.");
     }
 
     /**
@@ -1096,12 +1101,6 @@ public final class SocketProxy extends Proxy implements Runnable {
     }
 
     /**
-     * The string representation of this proxy. Created when {@link #toString()}
-     * is invoked for the first time.
-     */
-    private String stringRepresentation = null;
-
-    /**
      * @return String representation of this.
      */
     public String toString() {
@@ -1133,7 +1132,7 @@ public final class SocketProxy extends Proxy implements Runnable {
 
         private boolean hasBeenWokenUp = false;
 
-        private Thread thread;
+        private final Thread thread;
 
         private WaitingThread(Thread thread) {
             this.thread = thread;

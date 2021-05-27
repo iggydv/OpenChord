@@ -44,21 +44,18 @@ import java.util.List;
 final class StabilizeTask implements Runnable {
 
     /**
-     * Parent object for performing stabilization.
-     */
-    private NodeImpl parent;
-
-    /**
-     * Reference on routing table.
-     */
-    private References references;
-
-    private Entries entries;
-
-    /**
      * Object logger.
      */
     protected final static Logger logger = LoggerFactory.getLogger(StabilizeTask.class);
+    /**
+     * Parent object for performing stabilization.
+     */
+    private final NodeImpl parent;
+    /**
+     * Reference on routing table.
+     */
+    private final References references;
+    private final Entries entries;
 
     /**
      * Creates a new instance, but without starting a thread running it.

@@ -34,85 +34,82 @@ import com.chord.service.ServiceException;
 /**
  * Abstract implementation of {@link ChordFuture}. Provides common
  * functionality for all {@link ChordFuture} implementations in this package.
- * 
+ *
  * @author sven
  * @version 1.0.5
- * 
  */
 abstract class ChordFutureImpl implements ChordFuture {
 
-	/**
-	 * Indicates that the request to {@link AsynChord} has been completed.
-	 */
-	private boolean isDone = false;
+    /**
+     * Indicates that the request to {@link AsynChord} has been completed.
+     */
+    private boolean isDone = false;
 
-	/**
-	 * Any Exception/Throwable that occured during execution of request
-	 * associated with this future.
-	 */
-	private Throwable throwable = null;
+    /**
+     * Any Exception/Throwable that occured during execution of request
+     * associated with this future.
+     */
+    private Throwable throwable = null;
 
-	/**
-	 * Instances of this can only be created by sub classes. 
-	 * 
-	 */
-	protected ChordFutureImpl() {
-		/*
-		 * Nothing to do here. 
-		 */
-	}
+    /**
+     * Instances of this can only be created by sub classes.
+     */
+    protected ChordFutureImpl() {
+        /*
+         * Nothing to do here.
+         */
+    }
 
-	/**
-	 * Indicate that the method associated with this has completed.
-	 * 
-	 */
-	final void setIsDone() {
-		synchronized (this) {
-			this.isDone = true;
-			this.notifyAll();
-		}
-	}
+    /**
+     * Indicate that the method associated with this has completed.
+     */
+    final void setIsDone() {
+        synchronized (this) {
+            this.isDone = true;
+            this.notifyAll();
+        }
+    }
 
-	/**
-	 * Set a {@link Throwable} that occured during execution of method
-	 * associated with this.
-	 * 
-	 * @param t
-	 */
-	final void setThrowable(Throwable t) {
-		this.throwable = t;
-	}
+    /**
+     * @see ChordFuture
+     */
+    public Throwable getThrowable() {
+        return this.throwable;
+    }
 
-	/**
-	 * @see ChordFuture
-	 */
-	public Throwable getThrowable() {
-		return this.throwable;
-	}
+    /**
+     * Set a {@link Throwable} that occured during execution of method
+     * associated with this.
+     *
+     * @param t
+     */
+    final void setThrowable(Throwable t) {
+        this.throwable = t;
+    }
 
-	/**
-	 * @see ChordFuture
-	 * @return <code>true</code> if operation associated with this has been performed. 
-	 * @throws ServiceException
-	 */
-	public final boolean isDone() throws ServiceException {
-		if (this.throwable != null) {
-			throw new ServiceException(this.throwable.getMessage(),
-					this.throwable);
-		}
-		return this.isDone;
-	}
+    /**
+     * @return <code>true</code> if operation associated with this has been performed.
+     * @throws ServiceException
+     * @see ChordFuture
+     */
+    public final boolean isDone() throws ServiceException {
+        if (this.throwable != null) {
+            throw new ServiceException(this.throwable.getMessage(),
+                    this.throwable);
+        }
+        return this.isDone;
+    }
 
-	/**
-	 * @see ChordFuture
-	 */
-	public void waitForBeingDone() throws ServiceException,
-			InterruptedException {
-		synchronized (this) {
-			while (!this.isDone()) {
-				this.wait();
-			}
-		}
-	}
+    /**
+     * @see ChordFuture
+     */
+    public void waitForBeingDone() throws ServiceException,
+            InterruptedException {
+        synchronized (this) {
+            while (!this.isDone()) {
+                this.wait();
+            }
+        }
+    }
 
 }

@@ -28,12 +28,6 @@
 
 package com.chord.local;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
 import com.chord.CommunicationException;
 import com.chord.Endpoint;
 import com.chord.Entry;
@@ -45,452 +39,451 @@ import com.chord.service.impl.ChordImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
 /**
  * This represents the {@link Endpoint} for the protocol that can be used to
  * build a (local) chord network within one JVM.
- * 
+ *
  * @author sven
  * @version 1.0.5
  */
 public final class ThreadEndpoint extends Endpoint {
 
-	/**
-	 * The logger for this instance.
-	 */
-	private Logger logger = null;
+    /**
+     * Constant indicating that this has crashed.
+     */
+    private final static int CRASHED = Integer.MAX_VALUE;
+    /**
+     * The {@link Registry registry}of local endpoints.
+     */
+    protected final Registry registry;
+    /**
+     * {@link List}of {@link InvocationListener listeners}that want to be
+     * notified if a method is invoked on this endpoint.
+     */
+    protected List<InvocationListener> invocationListeners = null;
+    /**
+     * The logger for this instance.
+     */
+    private Logger logger = null;
+    /**
+     * Object to synchronize threads at. Used to block and wake up threads that
+     * are waiting for this endpoint to get into a state.
+     */
+    private final Object lock = new Object();
 
-	/**
-	 * Constant indicating that this has crashed.
-	 */
-	private final static int CRASHED = Integer.MAX_VALUE;
+    /**
+     * Creates a new Endpoint for communication via Java Threads.
+     *
+     * @param node1 The {@link Node}this endpoint invocates methods on.
+     * @param url1  The {@link URL}of this endpoint. The hostname of url is the
+     *              name of the node.
+     */
+    public ThreadEndpoint(Node node1, URL url1) {
+        super(node1, url1);
+        this.logger = LoggerFactory.getLogger(ThreadEndpoint.class.getName() + "."
+                + node1.getNodeID());
+        this.invocationListeners = new LinkedList<InvocationListener>();
+        this.registry = Registry.getRegistryInstance();
+        this.logger.info(this + " initialised.");
+    }
 
-	/**
-	 * The {@link Registry registry}of local endpoints.
-	 */
-	protected final Registry registry;
+    /**
+     * @return Implementation of {@link Node#notify(Node)}. See documentation
+     * of {@link Node}.
+     */
+    public ID getNodeID() {
+        return this.node.getNodeID();
+    }
 
-	/**
-	 * Object to synchronize threads at. Used to block and wake up threads that
-	 * are waiting for this endpoint to get into a state.
-	 */
-	private Object lock = new Object();
+    /**
+     * @param listener
+     */
+    public void register(InvocationListener listener) {
+        this.logger.debug("register(" + listener + ")");
+        // synchronized (this.invocationListeners) {
+        this.invocationListeners.add(listener);
+        // }
+        this.logger.debug("No. of invocation listeners "
+                + this.invocationListeners.size());
+    }
 
-	/**
-	 * {@link List}of {@link InvocationListener listeners}that want to be
-	 * notified if a method is invoked on this endpoint.
-	 */
-	protected List<InvocationListener> invocationListeners = null;
+    /**
+     * @param method
+     */
+    private void notifyInvocationListeners(int method) {
+        for (InvocationListener l : this.invocationListeners) {
+            l.notifyInvocationOf(method);
+        }
+    }
 
-	/**
-	 * Creates a new Endpoint for communication via Java Threads.
-	 * 
-	 * @param node1
-	 *            The {@link Node}this endpoint invocates methods on.
-	 * @param url1
-	 *            The {@link URL}of this endpoint. The hostname of url is the
-	 *            name of the node.
-	 */
-	public ThreadEndpoint(Node node1, URL url1) {
-		super(node1, url1);
-		this.logger = LoggerFactory.getLogger(ThreadEndpoint.class.getName() + "."
-				+ node1.getNodeID());
-		this.invocationListeners = new LinkedList<InvocationListener>();
-		this.registry = Registry.getRegistryInstance();
-		this.logger.info(this + " initialised.");
-	}
+    /**
+     * @param method
+     */
+    private void notifyInvocationListenersFinished(int method) {
+        for (InvocationListener l : this.invocationListeners) {
+            l.notifyInvocationOfFinished(method);
+        }
+    }
 
-	/**
-	 * @return Implementation of {@link Node#notify(Node)}. See documentation
-	 *         of {@link Node}.
-	 */
-	public ID getNodeID() {
-		return this.node.getNodeID();
-	}
+    /**
+     * @param key
+     * @return The successor of <code>key</code>.
+     * @throws CommunicationException
+     */
+    public Node findSuccessor(ID key) throws CommunicationException {
+        this.checkIfCrashed();
+        this.waitFor(Endpoint.LISTENING);
+        /* delegate invocation to node. */
+        this.notifyInvocationListeners(InvocationListener.FIND_SUCCESSOR);
+        Node n = this.node.findSuccessor(key);
+        if (n == this.node) {
+            this.logger
+                    .debug("Returned node is local node. Converting to 'remote' reference. ");
+            ThreadProxy t = new ThreadProxy(this.url, this.url);
+            t.reSetNodeID(n.getNodeID());
+            n = t;
+        }
+        this
+                .notifyInvocationListenersFinished(InvocationListener.FIND_SUCCESSOR);
+        return n;
+    }
 
-	/**
-	 * @param listener
-	 */
-	public void register(InvocationListener listener) {
-		this.logger.debug("register(" + listener + ")");
-		// synchronized (this.invocationListeners) {
-		this.invocationListeners.add(listener);
-		// }
-		this.logger.debug("No. of invocation listeners "
-				+ this.invocationListeners.size());
-	}
+    /**
+     * @param entry
+     * @throws CommunicationException
+     */
+    public void insertEntry(Entry entry) throws CommunicationException {
+        this.checkIfCrashed();
+        this.waitFor(Endpoint.ACCEPT_ENTRIES);
+        /* delegate invocation to node. */
+        this.notifyInvocationListeners(InvocationListener.INSERT_ENTRY);
+        this.node.insertEntry(entry);
+        this.notifyInvocationListenersFinished(InvocationListener.INSERT_ENTRY);
+    }
 
-	/**
-	 * @param method
-	 */
-	private void notifyInvocationListeners(int method) {
-		for (InvocationListener l : this.invocationListeners) {
-			l.notifyInvocationOf(method);
-		}
-	}
+    /**
+     * @param entry
+     * @throws CommunicationException
+     */
+    public void removeEntry(Entry entry) throws CommunicationException {
+        this.checkIfCrashed();
+        this.waitFor(Endpoint.ACCEPT_ENTRIES);
+        /* delegate invocation to node. */
+        this.notifyInvocationListeners(InvocationListener.REMOVE_ENTRY);
+        this.node.removeEntry(entry);
+        this.notifyInvocationListenersFinished(InvocationListener.REMOVE_ENTRY);
+    }
 
-	/**
-	 * @param method
-	 */
-	private void notifyInvocationListenersFinished(int method) {
-		for (InvocationListener l : this.invocationListeners) {
-			l.notifyInvocationOfFinished(method);
-		}
-	}
+    /**
+     * @param potentialPredecessor
+     * @return Implementation of {@link Node#notify(Node)}. See documentation
+     * of {@link Node}.
+     * @throws CommunicationException
+     */
+    public List<Node> notify(Node potentialPredecessor)
+            throws CommunicationException {
+        this.checkIfCrashed();
+        this.waitFor(Endpoint.LISTENING);
+        this.notifyInvocationListeners(InvocationListener.NOTIFY);
+        this.logger.debug("Invoking notify on local node " + this.node);
+        List<Node> n = this.node.notify(potentialPredecessor);
+        this.logger.debug("Notify resulted in " + n);
 
-	/**
-	 * @param key
-	 * @return The successor of <code>key</code>.
-	 * @throws CommunicationException
-	 */
-	public Node findSuccessor(ID key) throws CommunicationException {
-		this.checkIfCrashed();
-		this.waitFor(Endpoint.LISTENING);
-		/* delegate invocation to node. */
-		this.notifyInvocationListeners(InvocationListener.FIND_SUCCESSOR);
-		Node n = this.node.findSuccessor(key);
-		if (n == this.node) {
-			this.logger
-					.debug("Returned node is local node. Converting to 'remote' reference. ");
-			ThreadProxy t = new ThreadProxy(this.url, this.url);
-			t.reSetNodeID(n.getNodeID());
-			n = t;
-		}
-		this
-				.notifyInvocationListenersFinished(InvocationListener.FIND_SUCCESSOR);
-		return n;
-	}
+        for (Node current : n) {
+            if (current == this.node) {
+                n.remove(current);
 
-	/**
-	 * @param entry
-	 * @throws CommunicationException
-	 */
-	public void insertEntry(Entry entry) throws CommunicationException {
-		this.checkIfCrashed();
-		this.waitFor(Endpoint.ACCEPT_ENTRIES);
-		/* delegate invocation to node. */
-		this.notifyInvocationListeners(InvocationListener.INSERT_ENTRY);
-		this.node.insertEntry(entry);
-		this.notifyInvocationListenersFinished(InvocationListener.INSERT_ENTRY);
-	}
+                this.logger
+                        .debug("Returned node is local node. Converting to 'remote' reference. ");
+                n.add(new ThreadProxy(this.url, this.url));
+            }
+        }
+        this.notifyInvocationListenersFinished(InvocationListener.NOTIFY);
+        return n;
+    }
 
-	/**
-	 * @param entry
-	 * @throws CommunicationException
-	 */
-	public void removeEntry(Entry entry) throws CommunicationException {
-		this.checkIfCrashed();
-		this.waitFor(Endpoint.ACCEPT_ENTRIES);
-		/* delegate invocation to node. */
-		this.notifyInvocationListeners(InvocationListener.REMOVE_ENTRY);
-		this.node.removeEntry(entry);
-		this.notifyInvocationListenersFinished(InvocationListener.REMOVE_ENTRY);
-	}
+    /**
+     * @throws CommunicationException
+     */
+    public void ping() throws CommunicationException {
+        this.checkIfCrashed();
+        this.waitFor(Endpoint.LISTENING);
+        this.notifyInvocationListeners(InvocationListener.PING);
+        this.node.ping();
+        this.notifyInvocationListenersFinished(InvocationListener.PING);
+    }
 
-	/**
-	 * @param potentialPredecessor
-	 * @return Implementation of {@link Node#notify(Node)}. See documentation
-	 *         of {@link Node}.
-	 * @throws CommunicationException
-	 */
-	public List<Node> notify(Node potentialPredecessor)
-			throws CommunicationException {
-		this.checkIfCrashed();
-		this.waitFor(Endpoint.LISTENING);
-		this.notifyInvocationListeners(InvocationListener.NOTIFY);
-		this.logger.debug("Invoking notify on local node " + this.node);
-		List<Node> n = this.node.notify(potentialPredecessor);
-		this.logger.debug("Notify resulted in " + n);
+    /**
+     * @param id
+     * @return The retrieved entries.
+     * @throws CommunicationException
+     */
+    public Set<Entry> retrieveEntries(ID id) throws CommunicationException {
+        this.checkIfCrashed();
+        this.waitFor(Endpoint.ACCEPT_ENTRIES);
+        this.notifyInvocationListeners(InvocationListener.RETRIEVE_ENTRIES);
+        Set<Entry> s = this.node.retrieveEntries(id);
+        this
+                .notifyInvocationListenersFinished(InvocationListener.RETRIEVE_ENTRIES);
+        return s;
+    }
 
-		for (Node current : n) {
-			if (current == this.node) {
-				n.remove(current);
+    /**
+     * @param predecessor
+     * @throws CommunicationException
+     */
+    public void leavesNetwork(Node predecessor) throws CommunicationException {
+        this.checkIfCrashed();
+        this.notifyInvocationListeners(InvocationListener.LEAVES_NETWORK);
+        this.node.leavesNetwork(predecessor);
+        this
+                .notifyInvocationListenersFinished(InvocationListener.LEAVES_NETWORK);
+    }
 
-				this.logger
-						.debug("Returned node is local node. Converting to 'remote' reference. ");
-				n.add(new ThreadProxy(this.url, this.url));
-			}
-		}
-		this.notifyInvocationListenersFinished(InvocationListener.NOTIFY);
-		return n;
-	}
+    /**
+     * @param sendingNodeID
+     * @param entriesToRemove
+     * @throws CommunicationException
+     */
+    public void removeReplicas(ID sendingNodeID, Set<Entry> entriesToRemove)
+            throws CommunicationException {
+        this.checkIfCrashed();
+        this.waitFor(Endpoint.LISTENING);
+        this.notifyInvocationListeners(InvocationListener.REMOVE_REPLICAS);
+        this.node.removeReplicas(sendingNodeID, entriesToRemove);
+        this
+                .notifyInvocationListenersFinished(InvocationListener.REMOVE_REPLICAS);
+    }
 
-	/**
-	 * @throws CommunicationException
-	 */
-	public void ping() throws CommunicationException {
-		this.checkIfCrashed();
-		this.waitFor(Endpoint.LISTENING);
-		this.notifyInvocationListeners(InvocationListener.PING);
-		this.node.ping();
-		this.notifyInvocationListenersFinished(InvocationListener.PING);
-	}
+    /**
+     * @param entries
+     * @throws CommunicationException
+     */
+    public void insertReplicas(Set<Entry> entries)
+            throws CommunicationException {
+        this.checkIfCrashed();
+        this.waitFor(Endpoint.LISTENING);
+        this.notifyInvocationListeners(InvocationListener.INSERT_REPLICAS);
+        this.node.insertReplicas(entries);
+        this
+                .notifyInvocationListenersFinished(InvocationListener.INSERT_REPLICAS);
+    }
 
-	/**
-	 * @param id
-	 * @return The retrieved entries.
-	 * @throws CommunicationException
-	 */
-	public Set<Entry> retrieveEntries(ID id) throws CommunicationException {
-		this.checkIfCrashed();
-		this.waitFor(Endpoint.ACCEPT_ENTRIES);
-		this.notifyInvocationListeners(InvocationListener.RETRIEVE_ENTRIES);
-		Set<Entry> s = this.node.retrieveEntries(id);
-		this
-				.notifyInvocationListenersFinished(InvocationListener.RETRIEVE_ENTRIES);
-		return s;
-	}
+    /**
+     * @param potentialPredecessor
+     * @return Implementation of {@link Node#notify(Node)}. See documentation
+     * of {@link Node}.
+     * @throws CommunicationException
+     */
+    public RefsAndEntries notifyAndCopyEntries(Node potentialPredecessor)
+            throws CommunicationException {
+        this.checkIfCrashed();
+        this.waitFor(Endpoint.ACCEPT_ENTRIES);
+        this.notifyInvocationListeners(InvocationListener.NOTIFY_AND_COPY);
+        RefsAndEntries refs = this.node
+                .notifyAndCopyEntries(potentialPredecessor);
+        List<Node> nodes = refs.getRefs();
 
-	/**
-	 * @param predecessor
-	 * @throws CommunicationException
-	 */
-	public void leavesNetwork(Node predecessor) throws CommunicationException {
-		this.checkIfCrashed();
-		this.notifyInvocationListeners(InvocationListener.LEAVES_NETWORK);
-		this.node.leavesNetwork(predecessor);
-		this
-				.notifyInvocationListenersFinished(InvocationListener.LEAVES_NETWORK);
-	}
+        for (Node current : nodes) {
+            if (current == this.node) {
+                nodes.remove(current);
 
-	/**
-	 * @param sendingNodeID
-	 * @param entriesToRemove
-	 * @throws CommunicationException
-	 */
-	public void removeReplicas(ID sendingNodeID, Set<Entry> entriesToRemove)
-			throws CommunicationException {
-		this.checkIfCrashed();
-		this.waitFor(Endpoint.LISTENING);
-		this.notifyInvocationListeners(InvocationListener.REMOVE_REPLICAS);
-		this.node.removeReplicas(sendingNodeID, entriesToRemove);
-		this
-				.notifyInvocationListenersFinished(InvocationListener.REMOVE_REPLICAS);
-	}
+                this.logger
+                        .debug("Returned node is local node. Converting to 'remote' reference. ");
+                nodes.add(new ThreadProxy(this.url, this.url));
+            }
+        }
+        this
+                .notifyInvocationListenersFinished(InvocationListener.NOTIFY_AND_COPY);
+        return new RefsAndEntries(nodes, refs.getEntries());
+    }
 
-	/**
-	 * @param entries
-	 * @throws CommunicationException
-	 */
-	public void insertReplicas(Set<Entry> entries)
-			throws CommunicationException {
-		this.checkIfCrashed();
-		this.waitFor(Endpoint.LISTENING);
-		this.notifyInvocationListeners(InvocationListener.INSERT_REPLICAS);
-		this.node.insertReplicas(entries);
-		this
-				.notifyInvocationListenersFinished(InvocationListener.INSERT_REPLICAS);
-	}
+    /**
+     * Wait for the endpoint to get into given state.
+     *
+     * @param state_ The state to wait for.
+     * @throws CommunicationException
+     */
+    private void waitFor(int state_) throws CommunicationException {
+        synchronized (this.lock) {
+            while (this.getState() < state_) {
+                try {
+                    this.logger.debug(Thread.currentThread()
+                            + " waiting for state: " + state_);
+                    this.lock.wait();
+                    if (state_ == CRASHED) {
+                        throw new CommunicationException(
+                                "Connection destroyed!");
+                    }
+                } catch (InterruptedException t) {
+                    this.logger.warn("Unexpected exception while waiting!", t);
+                }
+            }
+        }
+    }
 
-	/**
-	 * @param potentialPredecessor
-	 * @return Implementation of {@link Node#notify(Node)}. See documentation
-	 *         of {@link Node}.
-	 * @throws CommunicationException
-	 */
-	public RefsAndEntries notifyAndCopyEntries(Node potentialPredecessor)
-			throws CommunicationException {
-		this.checkIfCrashed();
-		this.waitFor(Endpoint.ACCEPT_ENTRIES);
-		this.notifyInvocationListeners(InvocationListener.NOTIFY_AND_COPY);
-		RefsAndEntries refs = this.node
-				.notifyAndCopyEntries(potentialPredecessor);
-		List<Node> nodes = refs.getRefs();
+    /**
+     * Notify threads waiting for monitor on lock.
+     */
+    private void notifyWaitingThreads() {
+        synchronized (this.lock) {
+            this.logger.debug("Notifying waiting threads.");
+            this.lock.notifyAll();
+        }
+    }
 
-		for (Node current : nodes) {
-			if (current == this.node) {
-				nodes.remove(current);
+    /*
+     * (non-Javadoc)
+     *
+     * @see com.chord.com.Endpoint#openConnections()
+     */
+    protected void openConnections() {
+        /** state has changed. notify waiting threads */
+        this.logger.debug("openConnections()");
+        this.notifyWaitingThreads();
+        this.registry.bind(this);
+    }
 
-				this.logger
-						.debug("Returned node is local node. Converting to 'remote' reference. ");
-				nodes.add(new ThreadProxy(this.url, this.url));
-			}
-		}
-		this
-				.notifyInvocationListenersFinished(InvocationListener.NOTIFY_AND_COPY);
-		return new RefsAndEntries(nodes, refs.getEntries());
-	}
+    /*
+     * (non-Javadoc)
+     *
+     * @see com.chord.com.Endpoint#closeConnections()
+     */
+    protected void closeConnections() {
+        this.registry.unbind(this);
+        this.registry.removeProxiesInUseBy(this.getURL());
+        /** state has changed. notify waiting threads */
+        this.notifyWaitingThreads();
+    }
 
-	/**
-	 * Wait for the endpoint to get into given state.
-	 * 
-	 * @param state_
-	 *            The state to wait for.
-	 * @throws CommunicationException
-	 */
-	private void waitFor(int state_) throws CommunicationException {
-		synchronized (this.lock) {
-			while (this.getState() < state_) {
-				try {
-					this.logger.debug(Thread.currentThread()
-							+ " waiting for state: " + state_);
-					this.lock.wait();
-					if (state_ == CRASHED) {
-						throw new CommunicationException(
-								"Connection destroyed!");
-					}
-				} catch (InterruptedException t) {
-					this.logger.warn("Unexpected exception while waiting!", t);
-				}
-			}
-		}
-	}
+    /*
+     * (non-Javadoc)
+     *
+     * @see com.chord.com.Endpoint#entriesAcceptable()
+     */
+    protected void entriesAcceptable() {
+        /** state has changed. notify waiting threads */
+        this.notifyWaitingThreads();
+    }
 
-	/**
-	 * Notify threads waiting for monitor on lock.
-	 */
-	private void notifyWaitingThreads() {
-		synchronized (this.lock) {
-			this.logger.debug("Notifying waiting threads.");
-			this.lock.notifyAll();
-		}
-	}
+    /**
+     * Method to emulate a crash of the node that this is the endpoint for. This
+     * method heavily relise on the internal structure of service layer
+     * implementation to make it possible to emulate a chord overlay network
+     * within one JVM.
+     * <p>
+     * This method may cause problems at runtime.
+     */
+    public void crash() {
+        this.logger.debug("crash() invoked!");
+        this.registry.unbind(this);
+        List<ThreadProxy> proxies = this.registry.getProxiesInUseBy(this
+                .getURL());
+        if (proxies != null) {
+            for (ThreadProxy p : proxies) {
+                p.invalidate();
+            }
+        }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.chord.com.Endpoint#openConnections()
-	 */
-	protected void openConnections() {
-		/** state has changed. notify waiting threads */
-		this.logger.debug("openConnections()");
-		this.notifyWaitingThreads();
-		this.registry.bind(this);
-	}
+        this.registry.removeProxiesInUseBy(this.getURL());
+        this.setState(CRASHED);
+        this.notifyWaitingThreads();
+        /* kill threads of node (gefrickelt) */
+        ChordImpl impl = ChordImplAccess.fetchChordImplOfNode(this.node);
+        Field[] fields = impl.getClass().getDeclaredFields();
+        this.logger.debug(fields.length + " fields obtained from class "
+                + impl.getClass());
+        for (Field field : fields) {
+            this.logger.debug("Examining field " + field + " of node "
+                    + this.node);
+            try {
+                if (field.getName().equals("maintenanceTasks")) {
+                    field.setAccessible(true);
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.chord.com.Endpoint#closeConnections()
-	 */
-	protected void closeConnections() {
-		this.registry.unbind(this);
-		this.registry.removeProxiesInUseBy(this.getURL());
-		/** state has changed. notify waiting threads */
-		this.notifyWaitingThreads();
-	}
+                    Object executor = field.get(impl);
+                    this.logger.debug("Shutting down TaskExecutor " + executor
+                            + ".");
+                    Method m = executor.getClass().getMethod("shutdown"
+                    );
+                    m.setAccessible(true);
+                    m.invoke(executor);
+                }
+            } catch (Throwable t) {
+                this.logger.warn("Could not kill threads of node " + this.node,
+                        t);
+                t.printStackTrace();
+            }
+        }
+        Endpoint.endpoints.remove(this.url);
+        this.invocationListeners = null;
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.chord.com.Endpoint#entriesAcceptable()
-	 */
-	protected void entriesAcceptable() {
-		/** state has changed. notify waiting threads */
-		this.notifyWaitingThreads();
-	}
+    /**
+     * Checks if this has crashed.
+     *
+     * @throws CommunicationException
+     */
+    private void checkIfCrashed() throws CommunicationException {
+        if ((this.getState() == CRASHED)
+                || (this.getState() < Endpoint.LISTENING)) {
+            this.logger.debug(this + " has crashed. Throwing Exception.");
+            throw new CommunicationException();
+        }
+    }
 
-	/**
-	 * Method to emulate a crash of the node that this is the endpoint for. This
-	 * method heavily relise on the internal structure of service layer
-	 * implementation to make it possible to emulate a chord overlay network
-	 * within one JVM.
-	 * 
-	 * This method may cause problems at runtime.
-	 */
-	public void crash() {
-		this.logger.debug("crash() invoked!");
-		this.registry.unbind(this);
-		List<ThreadProxy> proxies = this.registry.getProxiesInUseBy(this
-				.getURL());
-		if (proxies != null) {
-			for (ThreadProxy p : proxies) {
-				p.invalidate();
-			}
-		}
-		
-		this.registry.removeProxiesInUseBy(this.getURL());
-		this.setState(CRASHED);
-		this.notifyWaitingThreads();
-		/* kill threads of node (gefrickelt) */
-		ChordImpl impl = ChordImplAccess.fetchChordImplOfNode(this.node);
-		Field[] fields = impl.getClass().getDeclaredFields();
-		this.logger.debug(fields.length + " fields obtained from class "
-				+ impl.getClass());
-		for (Field field : fields) {
-			this.logger.debug("Examining field " + field + " of node "
-					+ this.node);
-			try {
-				if (field.getName().equals("maintenanceTasks")) {
-					field.setAccessible(true);
+    /** ********************************************************** */
+    /* START: Methods overwritten from java.lang.Object */
+    /** ********************************************************** */
 
-					Object executor = field.get(impl);
-					this.logger.debug("Shutting down TaskExecutor " + executor
-							+ ".");
-					Method m = executor.getClass().getMethod("shutdown",
-							new Class[0]);
-					m.setAccessible(true);
-					m.invoke(executor, new Object[0]);
-				}
-			} catch (Throwable t) {
-				this.logger.warn("Could not kill threads of node " + this.node,
-						t);
-				t.printStackTrace();
-			}
-		}
-		Endpoint.endpoints.remove(this.url);
-		this.invocationListeners = null;
-	}
+    /**
+     * Overwritten from {@link java.lang.Object}. Two ThreadEndpoints A and B
+     * are equal if they are endpoints for the node with the same name. (A.name ==
+     * B.name).
+     *
+     * @param obj
+     * @return <code>true</code> if this equals the provided <code>obj</code>.
+     */
+    public boolean equals(Object obj) {
+        if (obj instanceof ThreadEndpoint) {
+            ThreadEndpoint ep = (ThreadEndpoint) obj;
+            URL epURL = ep.getURL();
+            return ((epURL.equals(this.getURL())) && (ep.hashCode() == this
+                    .hashCode()));
+        } else {
+            return false;
+        }
+    }
 
-	/**
-	 * Checks if this has crashed.
-	 * 
-	 * @throws CommunicationException
-	 */
-	private void checkIfCrashed() throws CommunicationException {
-		if ((this.getState() == CRASHED)
-				|| (this.getState() < Endpoint.LISTENING)) {
-			this.logger.debug(this + " has crashed. Throwing Exception.");
-			throw new CommunicationException();
-		}
-	}
+    /**
+     * Overwritten from {@link java.lang.Object}.
+     *
+     * @return Overwritten from {@link java.lang.Object}.
+     */
+    public int hashCode() {
+        return super.hashCode();
+    }
 
-	/** ********************************************************** */
-	/* START: Methods overwritten from java.lang.Object */
-	/** ********************************************************** */
+    /**
+     * Overwritten from {@link java.lang.Object}.
+     */
+    public String toString() {
+        StringBuilder buffer = new StringBuilder();
+        buffer.append("[ThreadEndpoint for node ");
+        buffer.append(this.node);
+        buffer.append(" with URL ");
+        buffer.append(this.url);
+        buffer.append("]");
+        return buffer.toString();
+    }
 
-	/**
-	 * Overwritten from {@link java.lang.Object}. Two ThreadEndpoints A and B
-	 * are equal if they are endpoints for the node with the same name. (A.name ==
-	 * B.name).
-	 * 
-	 * @param obj
-	 * @return <code>true</code> if this equals the provided <code>obj</code>.
-	 */
-	public boolean equals(Object obj) {
-		if (obj instanceof ThreadEndpoint) {
-			ThreadEndpoint ep = (ThreadEndpoint) obj;
-			URL epURL = ep.getURL();
-			return ((epURL.equals(this.getURL())) && (ep.hashCode() == this
-					.hashCode()));
-		} else {
-			return false;
-		}
-	}
-
-	/**
-	 * Overwritten from {@link java.lang.Object}.
-	 * 
-	 * @return Overwritten from {@link java.lang.Object}.
-	 */
-	public int hashCode() {
-		return super.hashCode();
-	}
-
-	/**
-	 * Overwritten from {@link java.lang.Object}.
-	 */
-	public String toString() {
-		StringBuilder buffer = new StringBuilder();
-		buffer.append("[ThreadEndpoint for node ");
-		buffer.append(this.node);
-		buffer.append(" with URL ");
-		buffer.append(this.url);
-		buffer.append("]");
-		return buffer.toString();
-	}
-
-	/** ********************************************************** */
-	/* END: Methods overwritten from java.lang.Object */
-	/** ********************************************************** */
+    /** ********************************************************** */
+    /* END: Methods overwritten from java.lang.Object */
+    /** ********************************************************** */
 
 }

@@ -74,30 +74,28 @@ public final class ChordImpl implements Chord, Report, AsynChord {
     /**
      * Time in seconds until the stabilize task is started for the first time.
      */
-    private static final int STABILIZE_TASK_START = Integer
-            .parseInt(System
-                    .getProperty("de.uniba.wiai.lspi.chord.service.impl.ChordImpl.StabilizeTask.start"));
+    private static final int STABILIZE_TASK_START = Integer.parseInt(System.getProperty("com.chord.service.impl.ChordImpl.StabilizeTask.start"));
 
     /**
      * Time in seconds between two invocations of the stabilize task.
      */
     private static final int STABILIZE_TASK_INTERVAL = Integer
             .parseInt(System
-                    .getProperty("de.uniba.wiai.lspi.chord.service.impl.ChordImpl.StabilizeTask.interval"));
+                    .getProperty("com.chord.service.impl.ChordImpl.StabilizeTask.interval"));
 
     /**
      * Time in seconds until the fix finger task is started for the first time.
      */
     private static final int FIX_FINGER_TASK_START = Integer
             .parseInt(System
-                    .getProperty("de.uniba.wiai.lspi.chord.service.impl.ChordImpl.FixFingerTask.start"));
+                    .getProperty("com.chord.service.impl.ChordImpl.FixFingerTask.start"));
 
     /**
      * Time in seconds between two invocations of the fix finger task.
      */
     private static final int FIX_FINGER_TASK_INTERVAL = Integer
             .parseInt(System
-                    .getProperty("de.uniba.wiai.lspi.chord.service.impl.ChordImpl.FixFingerTask.interval"));
+                    .getProperty("com.chord.service.impl.ChordImpl.FixFingerTask.interval"));
 
     /**
      * Time in seconds until the check predecessor task is started for the first
@@ -105,94 +103,62 @@ public final class ChordImpl implements Chord, Report, AsynChord {
      */
     private static final int CHECK_PREDECESSOR_TASK_START = Integer
             .parseInt(System
-                    .getProperty("de.uniba.wiai.lspi.chord.service.impl.ChordImpl.CheckPredecessorTask.start"));
+                    .getProperty("com.chord.service.impl.ChordImpl.CheckPredecessorTask.start"));
 
     /**
      * Time in seconds between two invocations of the check predecessor task.
      */
     private static final int CHECK_PREDECESSOR_TASK_INTERVAL = Integer
             .parseInt(System
-                    .getProperty("de.uniba.wiai.lspi.chord.service.impl.ChordImpl.CheckPredecessorTask.interval"));
+                    .getProperty("com.chord.service.impl.ChordImpl.CheckPredecessorTask.interval"));
 
     /**
      * Number of references in the successor list.
      */
     private static final int NUMBER_OF_SUCCESSORS = (Integer
             .parseInt(System
-                    .getProperty("de.uniba.wiai.lspi.chord.service.impl.ChordImpl.successors")) < 1) ? 1
+                    .getProperty("com.chord.service.impl.ChordImpl.successors")) < 1) ? 1
             : Integer
             .parseInt(System
-                    .getProperty("de.uniba.wiai.lspi.chord.service.impl.ChordImpl.successors"));
+                    .getProperty("com.chord.service.impl.ChordImpl.successors"));
 
     /**
      * Object logger.
      */
     protected Logger logger;
-
+    /**
+     * References to remote nodes.
+     */
+    protected References references;
     /**
      * Reference on that part of the node implementation which is accessible by
      * other nodes; if <code>null</code>, this node is not connected
      */
     private NodeImpl localNode;
-
     /**
      * Entries stored at this node, including replicas.
      */
     private Entries entries;
-
     /**
      * Executor service for local maintenance tasks.
      */
-    private ScheduledExecutorService maintenanceTasks;
-
+    private final ScheduledExecutorService maintenanceTasks;
     /**
      * Executor service for asynch requests.
      */
-    private ExecutorService asyncExecutor;
-
-    /**
-     * ThreadFactory used with Executor services.
-     *
-     * @author sven
-     */
-    private static class ChordThreadFactory implements
-            java.util.concurrent.ThreadFactory {
-
-        private String executorName;
-
-        ChordThreadFactory(String executorName) {
-            this.executorName = executorName;
-        }
-
-        public Thread newThread(Runnable r) {
-            Thread newThread = new Thread(r);
-            newThread.setName(this.executorName + "-" + newThread.getName());
-            return newThread;
-        }
-
-    }
-
-    /**
-     * References to remote nodes.
-     */
-    protected References references;
-
+    private final ExecutorService asyncExecutor;
     /**
      * Reference on hash function (singleton instance).
      */
-    private HashFunction hashFunction;
-
+    private final HashFunction hashFunction;
     /**
      * This node's URL.
      */
     private URL localURL;
-
     /**
      * This node's ID.
      */
     private ID localID;
-
-    /* constructor */
 
     /**
      * Creates a new instance of ChordImpl which initially is disconnected.
@@ -212,6 +178,8 @@ public final class ChordImpl implements Chord, Report, AsynChord {
         logger.info("ChordImpl initialized!");
     }
 
+    /* constructor */
+
     /**
      * @return The Executor executing asynchronous request.
      */
@@ -222,11 +190,11 @@ public final class ChordImpl implements Chord, Report, AsynChord {
         return this.asyncExecutor;
     }
 
-    /* implementation of Chord interface */
-
     public final URL getURL() {
         return this.localURL;
     }
+
+    /* implementation of Chord interface */
 
     public final void setURL(URL nodeURL) {
 
@@ -553,7 +521,7 @@ public final class ChordImpl implements Chord, Report, AsynChord {
         } catch (CommunicationException e1) {
             throw new ServiceException("An error occured when trying to find "
                     + "the successor of this node using bootstrap node "
-                    + "with url " + bootstrapURL.toString() + "! Join "
+                    + "with url " + bootstrapURL + "! Join "
                     + "operation failed!", e1);
         }
 
@@ -838,7 +806,7 @@ public final class ChordImpl implements Chord, Report, AsynChord {
         return "Chord node: id = "
                 + (this.localID == null ? "null" : this.localID.toString())
                 + ", url = "
-                + (this.localURL == null ? "null" : this.localURL.toString()
+                + (this.localURL == null ? "null" : this.localURL
                 + "\n");
     }
 
@@ -924,9 +892,9 @@ public final class ChordImpl implements Chord, Report, AsynChord {
                                 + "for key "
                                 + key
                                 + " from node "
-                                + closestPrecedingNode.toString()
+                                + closestPrecedingNode
                                 + " - looking up successor for failed node "
-                                + closestPrecedingNode.toString());
+                                + closestPrecedingNode);
                 this.references.removeReference(closestPrecedingNode);
                 return findSuccessor(key);
             }
@@ -955,7 +923,7 @@ public final class ChordImpl implements Chord, Report, AsynChord {
         if (pre == null) {
             return "Predecessor: null";
         } else {
-            return "Predecessor: " + pre.toString();
+            return "Predecessor: " + pre;
         }
     }
 
@@ -1023,6 +991,28 @@ public final class ChordImpl implements Chord, Report, AsynChord {
 
     public ChordFuture removeAsync(Key key, Serializable entry) {
         return ChordRemoveFuture.create(this.asyncExecutor, this, key, entry);
+    }
+
+    /**
+     * ThreadFactory used with Executor services.
+     *
+     * @author sven
+     */
+    private static class ChordThreadFactory implements
+            java.util.concurrent.ThreadFactory {
+
+        private final String executorName;
+
+        ChordThreadFactory(String executorName) {
+            this.executorName = executorName;
+        }
+
+        public Thread newThread(Runnable r) {
+            Thread newThread = new Thread(r);
+            newThread.setName(this.executorName + "-" + newThread.getName());
+            return newThread;
+        }
+
     }
 
 }

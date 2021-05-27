@@ -26,58 +26,55 @@
  ***************************************************************************/
 package com.chord.console.command;
 
-import java.io.PrintStream;
-
-import com.chord.data.URL;
 import com.chord.console.Command;
 import com.chord.console.ConsoleException;
+import com.chord.data.URL;
+
+import java.io.PrintStream;
 
 public class ChangeProtocol extends Command {
 
-	private static final String RMI_PROTOCOL = URL.KNOWN_PROTOCOLS
-			.get(URL.RMI_PROTOCOL);
+    public static final String COMMAND_NAME = "cprotocol";
+    private static final String RMI_PROTOCOL = URL.KNOWN_PROTOCOLS
+            .get(URL.RMI_PROTOCOL);
+    private static final String SOCKET_PROTOCOL = URL.KNOWN_PROTOCOLS
+            .get(URL.SOCKET_PROTOCOL);
+    private static final String TYPE_PARAM = "t";
 
-	private static final String SOCKET_PROTOCOL = URL.KNOWN_PROTOCOLS
-			.get(URL.SOCKET_PROTOCOL);
+    private static final String STATUS_PARAM = "s";
 
-	public static final String COMMAND_NAME = "cprotocol";
+    public ChangeProtocol(Object[] toCommand, PrintStream out) {
+        super(toCommand, out);
+    }
 
-	private static final String TYPE_PARAM = "t";
+    @Override
+    public void exec() throws ConsoleException {
+        if (this.parameters.containsKey(TYPE_PARAM)) {
+            String type = this.parameters.get(TYPE_PARAM);
+            if (type != null && type.length() > 0) {
+                if (type.equalsIgnoreCase(RMI_PROTOCOL)) {
+                    RemoteChordNetworkAccess.getUniqueInstance().protocolType = URL.RMI_PROTOCOL;
+                } else if (type.equalsIgnoreCase(SOCKET_PROTOCOL)) {
+                    RemoteChordNetworkAccess.getUniqueInstance().protocolType = URL.SOCKET_PROTOCOL;
+                }
+            }
+        }
+        if (this.parameters.containsKey(STATUS_PARAM)) {
+            int type = RemoteChordNetworkAccess.getUniqueInstance().protocolType;
+            out.println("Current protocol: " + URL.KNOWN_PROTOCOLS.get(type));
+        }
+    }
 
-	private static final String STATUS_PARAM = "s";
+    @Override
+    public String getCommandName() {
+        return COMMAND_NAME;
+    }
 
-	public ChangeProtocol(Object[] toCommand, PrintStream out) {
-		super(toCommand, out);
-	}
-
-	@Override
-	public void exec() throws ConsoleException {
-		if (this.parameters.containsKey(TYPE_PARAM)) {
-			String type = this.parameters.get(TYPE_PARAM);
-			if (type != null && type.length() > 0) {
-				if (type.equalsIgnoreCase(RMI_PROTOCOL)) {
-					RemoteChordNetworkAccess.getUniqueInstance().protocolType = URL.RMI_PROTOCOL;
-				} else if (type.equalsIgnoreCase(SOCKET_PROTOCOL)) {
-					RemoteChordNetworkAccess.getUniqueInstance().protocolType = URL.SOCKET_PROTOCOL;
-				}
-			}
-		}
-		if (this.parameters.containsKey(STATUS_PARAM)) {
-			int type = RemoteChordNetworkAccess.getUniqueInstance().protocolType;
-			out.println("Current protocol: " + URL.KNOWN_PROTOCOLS.get(type));
-		}
-	}
-
-	@Override
-	public String getCommandName() {
-		return COMMAND_NAME;
-	}
-
-	@Override
-	public void printOutHelp() {
-		out
-				.println("Changes the protocol for remote chord networks used for this console.");
-		out.println("Currently supported protocols: {ocsocket, ocrmi}");
-	}
+    @Override
+    public void printOutHelp() {
+        out
+                .println("Changes the protocol for remote chord networks used for this console.");
+        out.println("Currently supported protocols: {ocsocket, ocrmi}");
+    }
 
 }

@@ -31,44 +31,45 @@ package com.chord.console.command.entry;
 import java.io.Serializable;
 
 /**
- * A Value to be stored within a chord network by a command issued from 
+ * A Value to be stored within a chord network by a command issued from
  * {@link com.chord.console.Main console}.
- * 
- * @author sven 
+ *
+ * @author sven
  * @version 1.0.5
  */
 public final class Value implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 2144157610883545352L;
-	/**
-	 * 
-	 */
-	private String value;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 2144157610883545352L;
+    /**
+     *
+     */
+    private final String value;
 
-	/** 
-	 * Creates a new instance of Value 
-	 * @param value1 
-	 */
-	public Value(String value1) {
-		this.value = value1;
-	}
+    /**
+     * Creates a new instance of Value
+     *
+     * @param value1
+     */
+    public Value(String value1) {
+        this.value = value1;
+    }
 
-	public String toString() {
-		return this.value;
-	}
+    public String toString() {
+        return this.value;
+    }
 
-	public boolean equals(Object o) {
-		if (o instanceof Value) {
-			return (this.value.equals(((Value) o).value));
-		}
-		return false;
-	}
+    public boolean equals(Object o) {
+        if (o instanceof Value) {
+            return (this.value.equals(((Value) o).value));
+        }
+        return false;
+    }
 
-	public int hashCode() {
-		return this.value.hashCode();
-	}
+    public int hashCode() {
+        return this.value.hashCode();
+    }
 
 }

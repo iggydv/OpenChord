@@ -29,63 +29,64 @@ package com.chord.console;
 import java.io.PrintStream;
 
 /**
- * @author   sven
+ * @author sven
  * @version 1.0.5
  */
 public class ShowOutputCommand extends Command {
-    
+
     /**
-     * 
+     *
      */
     public static final String COMMAND_NAME = "displaySystemOut";
-    
+
     /**
-     * 
+     *
      */
     public static final String CLEAR_PARAM = "clear";
-    
+
     /**
-     * 
+     *
      */
     private MemoryOutputStream memOut;
-    
-    /** Creates a new instance of ShowOutputCommand 
-     * @param objects 
-     * @param out */
+
+    /**
+     * Creates a new instance of ShowOutputCommand
+     *
+     * @param objects
+     * @param out
+     */
     public ShowOutputCommand(Object[] objects, PrintStream out) {
         super(objects, out);
     }
-    
-    public void exec() throws ConsoleException{
+
+    public void exec() throws ConsoleException {
         /* Get refernce to memory output stream */
-        if (this.memOut == null){
+        if (this.memOut == null) {
             try {
                 ConsoleThread console = ConsoleThread.getConsole();
-                this.memOut = (MemoryOutputStream)console.getSystemOutputStream();
-            }
-            catch (ClassCastException e){
-                throw new ConsoleException("Current System.out does not print " 
-                            + " to a MemoryOutputStream. " + e.getMessage());
+                this.memOut = (MemoryOutputStream) console.getSystemOutputStream();
+            } catch (ClassCastException e) {
+                throw new ConsoleException("Current System.out does not print "
+                        + " to a MemoryOutputStream. " + e.getMessage());
             }
         }
         try {
             this.memOut.printOutputTo(this.out);
-            if ( this.parameters.containsKey(CLEAR_PARAM) ) {
+            if (this.parameters.containsKey(CLEAR_PARAM)) {
                 this.memOut.clearBuffer();
             }
-        }
-        catch (Throwable t){
+        } catch (Throwable t) {
             //t.printStackTrace();
             throw new ConsoleException("Error while printing saved System.out. "
-                        + t.getMessage() + " Maybe current OutputStream is no " 
-                        + "MemoryOutputStream.");
+                    + t.getMessage() + " Maybe current OutputStream is no "
+                    + "MemoryOutputStream.");
         }
     }
-    
+
     public String getCommandName() {
         return COMMAND_NAME;
     }
-    
+
     public void printOutHelp() {
         StringBuffer buffer = new StringBuffer();
         buffer.append("The command '");
@@ -103,7 +104,7 @@ public class ShowOutputCommand extends Command {
         buffer.append("-clear");
         buffer.append("\t");
         buffer.append("The output buffer is cleared after output has been displayed.");
-        this.out.println(buffer.toString());
+        this.out.println(buffer);
     }
-    
+
 }

@@ -48,7 +48,7 @@ final class CheckPredecessorTask implements Runnable {
     /**
      * Reference on routing table.
      */
-    private References references;
+    private final References references;
 
     /**
      * Creates a new instance, but without starting a thread running it.

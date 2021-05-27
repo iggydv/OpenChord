@@ -30,34 +30,34 @@ package com.chord.service;
 /**
  * Whenever this exception is thrown, an error has occured which cannot be
  * resolved by the service layer.
- * 
+ *
  * @author Sven Kaffille, Karsten Loesing
  * @version 1.0.5
  */
 public final class ServiceException extends Exception {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1039630030458301201L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1039630030458301201L;
 
-	/**
-	 * Creates a new service exception with the given description.
-	 * 
-	 * @param message Description for the user.
-	 */
-	public ServiceException(String message) {
+    /**
+     * Creates a new service exception with the given description.
+     *
+     * @param message Description for the user.
+     */
+    public ServiceException(String message) {
         super(message);
     }
-    
-	/**
-	 * Creates a new service exception with the given description.
-	 * 
-	 * @param message Description for the user.
-	 * @param cause Throwable which led to throwing this exception.
-	 */
-	public ServiceException(String message, Throwable cause) {
-        super(message, cause); 
+
+    /**
+     * Creates a new service exception with the given description.
+     *
+     * @param message Description for the user.
+     * @param cause   Throwable which led to throwing this exception.
+     */
+    public ServiceException(String message, Throwable cause) {
+        super(message, cause);
     }
 
 }

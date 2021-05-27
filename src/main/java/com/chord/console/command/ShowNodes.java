@@ -28,91 +28,94 @@
 
 package com.chord.console.command;
 
+import com.chord.console.Command;
+import com.chord.data.ID;
+import com.chord.local.Registry;
+import com.chord.local.ThreadEndpoint;
+
 import java.io.PrintStream;
-import java.util.Map;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
-
-import com.chord.local.Registry;
-import com.chord.local.ThreadEndpoint;
-import com.chord.data.ID;
-import com.chord.console.Command;
+import java.util.Map;
 
 /**
  * <p>
- * {@link Command} to show all nodes present in local chord network. 
+ * {@link Command} to show all nodes present in local chord network.
  * </p>
- * To get a description of this command type <code>showNodes -help</code> 
+ * To get a description of this command type <code>showNodes -help</code>
  * into the {@link com.chord.console.Main console}.
- * 
+ *
  * @author sven
  * @version 1.0.5
  */
 public class ShowNodes extends Command {
 
-	/**
-	 * Name of this commmand. 
-	 */
-	public static final String COMMAND_NAME = "show";
+    /**
+     * Name of this commmand.
+     */
+    public static final String COMMAND_NAME = "show";
 
-	/**
-	 * 
-	 */
-	public static final String COUNT_PARAM = "count";
+    /**
+     *
+     */
+    public static final String COUNT_PARAM = "count";
 
-	/** Creates a new instance of ShowNodes 
-	 * @param toCommand1 
-	 * @param out1 */
-	public ShowNodes(Object[] toCommand1, PrintStream out1) {
-		super(toCommand1, out1);
-	}
+    /**
+     * Creates a new instance of ShowNodes
+     *
+     * @param toCommand1
+     * @param out1
+     */
+    public ShowNodes(Object[] toCommand1, PrintStream out1) {
+        super(toCommand1, out1);
+    }
 
-	public void exec() {
-		Registry reg = (Registry) this.toCommand[0];
-		Map eps = reg.lookupAll();
-		Map<ID, ThreadEndpoint> temp = new HashMap<ID, ThreadEndpoint>();
+    public void exec() {
+        Registry reg = (Registry) this.toCommand[0];
+        Map eps = reg.lookupAll();
+        Map<ID, ThreadEndpoint> temp = new HashMap<ID, ThreadEndpoint>();
 
-		if (this.parameters.containsKey(COUNT_PARAM)) {
-			this.out.println("No. of nodes currently running " + eps.size());
-			return;
-		}
+        if (this.parameters.containsKey(COUNT_PARAM)) {
+            this.out.println("No. of nodes currently running " + eps.size());
+            return;
+        }
 
-		if (eps.size() != 0) {
-			Iterator valueIterator = eps.values().iterator();
-			ID[] ids = new ID[eps.size()];
-			int index = 0;
-			while (valueIterator.hasNext()) {
-				ThreadEndpoint ep = (ThreadEndpoint) valueIterator.next();
-				ids[index] = ep.getNodeID();
-				temp.put(ids[index], ep);
-				index++;
-			}
-			Arrays.sort(ids);
-			this.out
-					.println("Node list in the order as nodes are located on chord ring: ");
-			for (int i = 0; i < ids.length; i++) {
-				ThreadEndpoint ep = temp.get(ids[i]);
-				this.out.println("Node " + ep.getURL().getHost() + " with id " + ids[i]);
-			}
-		} else {
-			this.out.println("No nodes running.");
-		}
-	}
+        if (eps.size() != 0) {
+            Iterator valueIterator = eps.values().iterator();
+            ID[] ids = new ID[eps.size()];
+            int index = 0;
+            while (valueIterator.hasNext()) {
+                ThreadEndpoint ep = (ThreadEndpoint) valueIterator.next();
+                ids[index] = ep.getNodeID();
+                temp.put(ids[index], ep);
+                index++;
+            }
+            Arrays.sort(ids);
+            this.out
+                    .println("Node list in the order as nodes are located on chord ring: ");
+            for (int i = 0; i < ids.length; i++) {
+                ThreadEndpoint ep = temp.get(ids[i]);
+                this.out.println("Node " + ep.getURL().getHost() + " with id " + ids[i]);
+            }
+        } else {
+            this.out.println("No nodes running.");
+        }
+    }
 
-	public String getCommandName() {
-		return COMMAND_NAME;
-	}
+    public String getCommandName() {
+        return COMMAND_NAME;
+    }
 
-	public void printOutHelp() {
-		this.out.println("The " + COMMAND_NAME
-				+ " command prints out a list of all "
-				+ "nodes currently present in this JVM.");
-		this.out
-				.println("The nodes are listed in the same order, in that they are arranged "
-						+ "on the chord ring.");
-		this.out.println("If you want to know the number of nodes currently "
-				+ "running just provide '" + COUNT_PARAM + "' parameter.");
-	}
+    public void printOutHelp() {
+        this.out.println("The " + COMMAND_NAME
+                + " command prints out a list of all "
+                + "nodes currently present in this JVM.");
+        this.out
+                .println("The nodes are listed in the same order, in that they are arranged "
+                        + "on the chord ring.");
+        this.out.println("If you want to know the number of nodes currently "
+                + "running just provide '" + COUNT_PARAM + "' parameter.");
+    }
 
 }

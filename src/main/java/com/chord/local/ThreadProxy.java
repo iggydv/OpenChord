@@ -43,309 +43,305 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * This class represents a {@link Proxy} for the protocol that allows 
- * to be build a (local) chord network within one JVM. 
- * 
+ * This class represents a {@link Proxy} for the protocol that allows
+ * to be build a (local) chord network within one JVM.
+ *
  * @author sven
  * @version 1.0.5
  */
 public final class ThreadProxy extends Proxy {
 
-	/**
-	 * The logger for instances of this. 
-	 */
-	private static final Logger logger = LoggerFactory.getLogger(ThreadProxy.class.getName());
+    /**
+     * The logger for instances of this.
+     */
+    private static final Logger logger = LoggerFactory.getLogger(ThreadProxy.class.getName());
 
-	/**
-	 * Reference to the {@link Registry registry}singleton.
-	 */
-	protected Registry registry = null;
+    /**
+     * Reference to the {@link Registry registry}singleton.
+     */
+    protected Registry registry = null;
 
-	/**
-	 * The {@link URL}of the node that created this proxy.
-	 */
-	protected URL creatorURL;
+    /**
+     * The {@link URL}of the node that created this proxy.
+     */
+    protected URL creatorURL;
 
-	/**
-	 * Indicates if this proxy can be used for communication;
-	 */
-	protected boolean isValid = true;
+    /**
+     * Indicates if this proxy can be used for communication;
+     */
+    protected boolean isValid = true;
 
-	/**
-	 * Indicates if this proxy has been used to make a invocation.
-	 */
-	protected boolean hasBeenUsed = false;
+    /**
+     * Indicates if this proxy has been used to make a invocation.
+     */
+    protected boolean hasBeenUsed = false;
 
-	/**
-	 * The endpoint, to which this delegates method invocations. 
-	 */
-	private ThreadEndpoint endpoint = null;
+    /**
+     * The endpoint, to which this delegates method invocations.
+     */
+    private ThreadEndpoint endpoint = null;
 
-	/**
-	 * 
-	 * @param creatorURL1
-	 * @param url
-	 * @param nodeID1
-	 */
-	private ThreadProxy(URL creatorURL1, URL url, ID nodeID1) {
-		super(url);
-		this.registry = Registry.getRegistryInstance();
-		this.nodeID = nodeID1;
-		this.creatorURL = creatorURL1;
-	}
+    /**
+     * @param creatorURL1
+     * @param url
+     * @param nodeID1
+     */
+    private ThreadProxy(URL creatorURL1, URL url, ID nodeID1) {
+        super(url);
+        this.registry = Registry.getRegistryInstance();
+        this.nodeID = nodeID1;
+        this.creatorURL = creatorURL1;
+    }
 
-	/**
-	 * Creates a Proxy for the <code>jchordlocal</code> protocol. The host
-	 * name part of {@link URL url}is the name of the node in the
-	 * <code>jchordlocal</code> protocol.
-	 * @param creatorURL1 
-	 * 
-	 * @param url
-	 *            The {@link URL}of the node this proxy represents.
-	 * @throws CommunicationException 
-	 */
-	public ThreadProxy(URL creatorURL1, URL url) throws CommunicationException {
-		super(url);
-		this.registry = Registry.getRegistryInstance();
-		this.creatorURL = creatorURL1;
-		logger.debug("Trying to get id of node.");
-		ThreadEndpoint endpoint_ = this.registry.lookup(this.nodeURL);
-		logger.debug("Found endpoint " + endpoint_);
-		if (endpoint_ == null) {
-			throw new CommunicationException();
-		}
-		this.nodeID = endpoint_.getNodeID();
-	}
-	
-	void reSetNodeID(ID id){
-		this.setNodeID(id); 
-	}
+    /**
+     * Creates a Proxy for the <code>jchordlocal</code> protocol. The host
+     * name part of {@link URL url}is the name of the node in the
+     * <code>jchordlocal</code> protocol.
+     *
+     * @param creatorURL1
+     * @param url         The {@link URL}of the node this proxy represents.
+     * @throws CommunicationException
+     */
+    public ThreadProxy(URL creatorURL1, URL url) throws CommunicationException {
+        super(url);
+        this.registry = Registry.getRegistryInstance();
+        this.creatorURL = creatorURL1;
+        logger.debug("Trying to get id of node.");
+        ThreadEndpoint endpoint_ = this.registry.lookup(this.nodeURL);
+        logger.debug("Found endpoint " + endpoint_);
+        if (endpoint_ == null) {
+            throw new CommunicationException();
+        }
+        this.nodeID = endpoint_.getNodeID();
+    }
 
-	/**
-	 * Method to check if this proxy is valid.
-	 * 
-	 * @throws CommunicationException
-	 */
-	private void checkValidity() throws CommunicationException {
+    void reSetNodeID(ID id) {
+        this.setNodeID(id);
+    }
 
-		if (!this.isValid) {
-			throw new CommunicationException("No valid connection!");
-		}
+    /**
+     * Method to check if this proxy is valid.
+     *
+     * @throws CommunicationException
+     */
+    private void checkValidity() throws CommunicationException {
 
-		if (this.endpoint == null) {
-			this.endpoint = this.registry.lookup(this.nodeURL);
-			if (this.endpoint == null) {
-				throw new CommunicationException();
-			}
-		}
+        if (!this.isValid) {
+            throw new CommunicationException("No valid connection!");
+        }
 
-		/*
-		 * Ensure that node id is set, if has not been set before.
-		 */
-		this.getNodeID();
+        if (this.endpoint == null) {
+            this.endpoint = this.registry.lookup(this.nodeURL);
+            if (this.endpoint == null) {
+                throw new CommunicationException();
+            }
+        }
 
-		if (!this.hasBeenUsed) {
-			this.hasBeenUsed = true;
-			Registry.getRegistryInstance().addProxyUsedBy(
-					this.creatorURL, this);
-		}
-	}
+        /*
+         * Ensure that node id is set, if has not been set before.
+         */
+        this.getNodeID();
 
-	/**
-	 * Test if this Proxy is valid.
-	 * 
-	 * @return <code>true</code> if this Proxy is valid.
-	 */
-	public boolean isValid() {
-		return this.isValid;
-	}
+        if (!this.hasBeenUsed) {
+            this.hasBeenUsed = true;
+            Registry.getRegistryInstance().addProxyUsedBy(
+                    this.creatorURL, this);
+        }
+    }
 
-	/**
-	 * Invalidates this proxy.
-	 * 
-	 */
-	public void invalidate() {
-		this.isValid = false;
-		this.endpoint = null;
-	}
+    /**
+     * Test if this Proxy is valid.
+     *
+     * @return <code>true</code> if this Proxy is valid.
+     */
+    public boolean isValid() {
+        return this.isValid;
+    }
 
-	/**
-	 * Get a reference to the {@link ThreadEndpoint   endpoint} this proxy
-	 * delegates methods to. If there is no endpoint a
-	 * {@link CommunicationException   exception} is thrown.
-	 * 
-	 * @return Reference to the {@link ThreadEndpoint   endpoint} this proxy
-	 *         delegates methods to.
-	 * @throws CommunicationException
-	 *             If there is no endpoint this exception is thrown.
-	 */
-	public ThreadEndpoint getEndpoint() throws CommunicationException {
-		ThreadEndpoint ep = this.registry.lookup(this.nodeURL);
-		if (ep == null) {
-			throw new CommunicationException();
-		}
-		return ep;
-	}
+    /**
+     * Invalidates this proxy.
+     */
+    public void invalidate() {
+        this.isValid = false;
+        this.endpoint = null;
+    }
 
-	public Node findSuccessor(ID key) throws CommunicationException {
-		this.checkValidity();
-		// ThreadEndpoint endpoint = this.registry.lookup(this.nodeName);
-		// if (endpoint == null) {
-		// throw new CommunicationException();
-		// }
-		Node succ = this.endpoint.findSuccessor(key);
-		try {
-			logger.debug("Creating clone of proxy " + succ);
-			ThreadProxy temp = (ThreadProxy) succ;
-			logger.debug("Clone created");
-			return temp.cloneMeAt(this.creatorURL);
-		} catch (Throwable t) {
-			logger.debug("Exception during clone of proxy.", t);
-			throw new CommunicationException(t);
-		}
-	}
+    /**
+     * Get a reference to the {@link ThreadEndpoint   endpoint} this proxy
+     * delegates methods to. If there is no endpoint a
+     * {@link CommunicationException   exception} is thrown.
+     *
+     * @return Reference to the {@link ThreadEndpoint   endpoint} this proxy
+     * delegates methods to.
+     * @throws CommunicationException If there is no endpoint this exception is thrown.
+     */
+    public ThreadEndpoint getEndpoint() throws CommunicationException {
+        ThreadEndpoint ep = this.registry.lookup(this.nodeURL);
+        if (ep == null) {
+            throw new CommunicationException();
+        }
+        return ep;
+    }
 
-	public void insertEntry(Entry entry) throws CommunicationException {
-		this.checkValidity();
-		logger.debug("Trying to execute insert().");
-		// ThreadEndpoint endpoint = this.registry.lookup(this.nodeName);
-		logger.debug("Found endpoint " + this.endpoint);
-		// if (endpoint == null) {
-		// throw new CommunicationException();
-		// }
-		this.endpoint.insertEntry(entry);
-		logger.debug("insert() executed");
-	}
+    public Node findSuccessor(ID key) throws CommunicationException {
+        this.checkValidity();
+        // ThreadEndpoint endpoint = this.registry.lookup(this.nodeName);
+        // if (endpoint == null) {
+        // throw new CommunicationException();
+        // }
+        Node succ = this.endpoint.findSuccessor(key);
+        try {
+            logger.debug("Creating clone of proxy " + succ);
+            ThreadProxy temp = (ThreadProxy) succ;
+            logger.debug("Clone created");
+            return temp.cloneMeAt(this.creatorURL);
+        } catch (Throwable t) {
+            logger.debug("Exception during clone of proxy.", t);
+            throw new CommunicationException(t);
+        }
+    }
 
-	public void removeEntry(Entry entry) throws CommunicationException {
-		this.checkValidity();
-		this.endpoint.removeEntry(entry);
-	}
+    public void insertEntry(Entry entry) throws CommunicationException {
+        this.checkValidity();
+        logger.debug("Trying to execute insert().");
+        // ThreadEndpoint endpoint = this.registry.lookup(this.nodeName);
+        logger.debug("Found endpoint " + this.endpoint);
+        // if (endpoint == null) {
+        // throw new CommunicationException();
+        // }
+        this.endpoint.insertEntry(entry);
+        logger.debug("insert() executed");
+    }
 
-	/**
-	 * 
-	 */
-	public String toString() {
-		StringBuilder buffer = new StringBuilder();
-		buffer.append("[ThreadProxy ");
-		buffer.append(this.nodeURL);
-		buffer.append("]");
-		return buffer.toString();
-	}
+    public void removeEntry(Entry entry) throws CommunicationException {
+        this.checkValidity();
+        this.endpoint.removeEntry(entry);
+    }
 
-	public List<Node> notify(Node potentialPredecessor)
-			throws CommunicationException {
-		this.checkValidity();
+    /**
+     *
+     */
+    public String toString() {
+        StringBuilder buffer = new StringBuilder();
+        buffer.append("[ThreadProxy ");
+        buffer.append(this.nodeURL);
+        buffer.append("]");
+        return buffer.toString();
+    }
 
-		ThreadProxy potentialPredecessorProxy = new ThreadProxy(
-				this.creatorURL, potentialPredecessor.getNodeURL());
+    public List<Node> notify(Node potentialPredecessor)
+            throws CommunicationException {
+        this.checkValidity();
 
-		logger.debug("Trying to execute notify().");
-		// ThreadEndpoint endpoint = this.registry.lookup(this.nodeName);
-		logger.debug("Found endpoint " + this.endpoint);
-		// if (endpoint == null) {
-		// throw new CommunicationException();
-		// }
-		List<Node> nodes = this.endpoint.notify(potentialPredecessorProxy);
-		Node[] proxies = new Node[nodes.size()];
-		try {
-			int currentIndex = 0;
-			// TODO Document why ThreadProxy instead of Node
-			for (Iterator<Node> i = nodes.iterator(); i.hasNext();) {
-				Object o = i.next();
-				ThreadProxy current = (ThreadProxy) o;
-				proxies[currentIndex++] = current.cloneMeAt(this.creatorURL);
-			}
-		} catch (Throwable t) {
-			throw new CommunicationException(t);
-		}
-		return Arrays.asList(proxies);
-	}
+        ThreadProxy potentialPredecessorProxy = new ThreadProxy(
+                this.creatorURL, potentialPredecessor.getNodeURL());
 
-	public void ping() throws CommunicationException {
-		this.checkValidity();
-		logger.debug("Trying to execute ping().");
-		logger.debug("Found endpoint " + this.endpoint);
-		this.endpoint.ping();
-	}
+        logger.debug("Trying to execute notify().");
+        // ThreadEndpoint endpoint = this.registry.lookup(this.nodeName);
+        logger.debug("Found endpoint " + this.endpoint);
+        // if (endpoint == null) {
+        // throw new CommunicationException();
+        // }
+        List<Node> nodes = this.endpoint.notify(potentialPredecessorProxy);
+        Node[] proxies = new Node[nodes.size()];
+        try {
+            int currentIndex = 0;
+            // TODO Document why ThreadProxy instead of Node
+            for (Iterator<Node> i = nodes.iterator(); i.hasNext(); ) {
+                Object o = i.next();
+                ThreadProxy current = (ThreadProxy) o;
+                proxies[currentIndex++] = current.cloneMeAt(this.creatorURL);
+            }
+        } catch (Throwable t) {
+            throw new CommunicationException(t);
+        }
+        return Arrays.asList(proxies);
+    }
 
-	public Set<Entry> retrieveEntries(ID id) throws CommunicationException {
-		this.checkValidity();
-		logger.debug("Trying to execute retrieve().");
-		logger.debug("Found endpoint " + this.endpoint);
-		return this.endpoint.retrieveEntries(id);
-	}
+    public void ping() throws CommunicationException {
+        this.checkValidity();
+        logger.debug("Trying to execute ping().");
+        logger.debug("Found endpoint " + this.endpoint);
+        this.endpoint.ping();
+    }
 
-	/**
-	 * Creates a copy of this. 
-	 * 
-	 * @param creatorUrl The url of the node where this is being copied. 
-	 * @return The copy of this. 
-	 */
-	private ThreadProxy cloneMeAt(URL creatorUrl) {
-		return new ThreadProxy(creatorUrl, this.nodeURL, this.nodeID);
-	}
+    public Set<Entry> retrieveEntries(ID id) throws CommunicationException {
+        this.checkValidity();
+        logger.debug("Trying to execute retrieve().");
+        logger.debug("Found endpoint " + this.endpoint);
+        return this.endpoint.retrieveEntries(id);
+    }
 
-	public void leavesNetwork(Node predecessor) throws CommunicationException {
-		this.checkValidity();
+    /**
+     * Creates a copy of this.
+     *
+     * @param creatorUrl The url of the node where this is being copied.
+     * @return The copy of this.
+     */
+    private ThreadProxy cloneMeAt(URL creatorUrl) {
+        return new ThreadProxy(creatorUrl, this.nodeURL, this.nodeID);
+    }
 
-		ThreadProxy predecessorProxy = new ThreadProxy(this.creatorURL,
-				predecessor.getNodeURL());
+    public void leavesNetwork(Node predecessor) throws CommunicationException {
+        this.checkValidity();
 
-		logger.debug("Trying to execute leavesNetwork(" + predecessor + ").");
-		// ThreadEndpoint endpoint = this.registry.lookup(this.nodeName);
-		logger.debug("Found endpoint " + this.endpoint);
-		// if (endpoint == null) {
-		// throw new CommunicationException();
-		// }
-		this.endpoint.leavesNetwork(predecessorProxy);
-	}
+        ThreadProxy predecessorProxy = new ThreadProxy(this.creatorURL,
+                predecessor.getNodeURL());
 
-	public void removeReplicas(ID sendingNodeID, Set<Entry> entriesToRemove)
-			throws CommunicationException {
-		this.checkValidity();
-		logger.debug("Trying to execute removeReplicas(" + entriesToRemove
-				+ ").");
-		// ThreadEndpoint endpoint = this.registry.lookup(this.nodeName);
-		logger.debug("Found endpoint " + this.endpoint);
-		// if (endpoint == null) {
-		// throw new CommunicationException();
-		// }
-		this.endpoint.removeReplicas(sendingNodeID, entriesToRemove);
-	}
+        logger.debug("Trying to execute leavesNetwork(" + predecessor + ").");
+        // ThreadEndpoint endpoint = this.registry.lookup(this.nodeName);
+        logger.debug("Found endpoint " + this.endpoint);
+        // if (endpoint == null) {
+        // throw new CommunicationException();
+        // }
+        this.endpoint.leavesNetwork(predecessorProxy);
+    }
 
-	public void insertReplicas(Set<Entry> entries)
-			throws CommunicationException {
-		this.checkValidity();
-		logger.debug("Trying to execute insertReplicas(" + entries + ").");
-		// ThreadEndpoint endpoint = this.registry.lookup(this.nodeName);
-		logger.debug("Found endpoint " + this.endpoint);
-		// if (endpoint == null) {
-		// throw new CommunicationException();
-		// }
-		this.endpoint.insertReplicas(entries);
-	}
+    public void removeReplicas(ID sendingNodeID, Set<Entry> entriesToRemove)
+            throws CommunicationException {
+        this.checkValidity();
+        logger.debug("Trying to execute removeReplicas(" + entriesToRemove
+                + ").");
+        // ThreadEndpoint endpoint = this.registry.lookup(this.nodeName);
+        logger.debug("Found endpoint " + this.endpoint);
+        // if (endpoint == null) {
+        // throw new CommunicationException();
+        // }
+        this.endpoint.removeReplicas(sendingNodeID, entriesToRemove);
+    }
 
-	public RefsAndEntries notifyAndCopyEntries(Node potentialPredecessor)
-			throws CommunicationException {
-		this.checkValidity();
+    public void insertReplicas(Set<Entry> entries)
+            throws CommunicationException {
+        this.checkValidity();
+        logger.debug("Trying to execute insertReplicas(" + entries + ").");
+        // ThreadEndpoint endpoint = this.registry.lookup(this.nodeName);
+        logger.debug("Found endpoint " + this.endpoint);
+        // if (endpoint == null) {
+        // throw new CommunicationException();
+        // }
+        this.endpoint.insertReplicas(entries);
+    }
 
-		ThreadProxy potentialPredecessorProxy = new ThreadProxy(
-				this.creatorURL, potentialPredecessor.getNodeURL());
+    public RefsAndEntries notifyAndCopyEntries(Node potentialPredecessor)
+            throws CommunicationException {
+        this.checkValidity();
 
-		logger.debug("Trying to execute notifyAndCopyEntries().");
-		// ThreadEndpoint endpoint = this.registry.lookup(this.nodeName);
-		logger.debug("Found endpoint " + this.endpoint);
-		// if (endpoint == null) {
-		// throw new CommunicationException();
-		// }
-		return this.endpoint.notifyAndCopyEntries(potentialPredecessorProxy);
-	}
+        ThreadProxy potentialPredecessorProxy = new ThreadProxy(
+                this.creatorURL, potentialPredecessor.getNodeURL());
 
-	@Override
-	public void disconnect() {
-		// TODO Auto-generated method stub
-		
-	}
+        logger.debug("Trying to execute notifyAndCopyEntries().");
+        // ThreadEndpoint endpoint = this.registry.lookup(this.nodeName);
+        logger.debug("Found endpoint " + this.endpoint);
+        // if (endpoint == null) {
+        // throw new CommunicationException();
+        // }
+        return this.endpoint.notifyAndCopyEntries(potentialPredecessorProxy);
+    }
+
+    @Override
+    public void disconnect() {
+        // TODO Auto-generated method stub
+
+    }
 
 }

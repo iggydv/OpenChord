@@ -33,45 +33,45 @@ import java.rmi.registry.Registry;
 
 public class ListRMIRegistry {
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
 //		if (System.getSecurityManager() == null) {
 //			System.setSecurityManager(new SecurityManager()); 
 //		}
-		String host = args[0];
-		int port = 0;
-		try {
-			port = Integer.parseInt(args[1]);
-		} catch (Exception e) {
+        String host = args[0];
+        int port = 0;
+        try {
+            port = Integer.parseInt(args[1]);
+        } catch (Exception e) {
 
-		}
-		Registry r = null;
-		try {
-			if (port != 0) {
-				r = LocateRegistry.getRegistry(host, port);
-			} else {
-				r = LocateRegistry.getRegistry(host);
-			}
-			String[] names = r.list();
-			System.out.println("Registered services in RMIRegistry at " + host + ":" + port); 
-			for (String name : names) {
-				System.out.print("- " + name + ", Stub: "); 
-				try {
-					Remote stub = r.lookup(name);
-					System.out.println(stub.toString()); 
-				} catch (Exception e) {
-					System.out.println("UNKNOWN");
-				} 
-			}
-		} catch (RemoteException e) {
-			System.err.println("Could not connect to RMIRegistry at " + host
-					+ " on port " + port);
-			System.err.println(e.getMessage());
-			e.printStackTrace(); 
-			System.exit(-1);
-		}
+        }
+        Registry r = null;
+        try {
+            if (port != 0) {
+                r = LocateRegistry.getRegistry(host, port);
+            } else {
+                r = LocateRegistry.getRegistry(host);
+            }
+            String[] names = r.list();
+            System.out.println("Registered services in RMIRegistry at " + host + ":" + port);
+            for (String name : names) {
+                System.out.print("- " + name + ", Stub: ");
+                try {
+                    Remote stub = r.lookup(name);
+                    System.out.println(stub.toString());
+                } catch (Exception e) {
+                    System.out.println("UNKNOWN");
+                }
+            }
+        } catch (RemoteException e) {
+            System.err.println("Could not connect to RMIRegistry at " + host
+                    + " on port " + port);
+            System.err.println(e.getMessage());
+            e.printStackTrace();
+            System.exit(-1);
+        }
 
-	}
+    }
 }

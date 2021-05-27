@@ -28,74 +28,77 @@
 
 package com.chord.console.command;
 
-import java.io.PrintStream;
-
 import com.chord.console.Command;
 import com.chord.console.ConsoleException;
 
+import java.io.PrintStream;
+
 /**
  * <p>
- * {@link Command} to block the console for a provided time. 
+ * {@link Command} to block the console for a provided time.
  * </p>
- * To get a description of this command type <code>wait -help</code> 
+ * To get a description of this command type <code>wait -help</code>
  * into the {@link com.chord.console.Main console}.
- * 
- * @author  sven
+ *
+ * @author sven
  * @version 1.0.5
  */
 public class Wait extends Command {
-    
-	/**
-	 * The name of this {@link Command}. 
-	 */
-    public static final String COMMAND_NAME = "wait";
-    
+
     /**
-     * The parameter, that defines the time to wait in milliseconds. 
+     * The name of this {@link Command}.
+     */
+    public static final String COMMAND_NAME = "wait";
+
+    /**
+     * The parameter, that defines the time to wait in milliseconds.
      */
     public static final String MILLIS_PARAM = "millis";
-    
-    /** Creates a new instance of Wait 
-     * @param toCommand1 
-     * @param out1 */
+
+    /**
+     * Creates a new instance of Wait
+     *
+     * @param toCommand1
+     * @param out1
+     */
     public Wait(Object[] toCommand1, PrintStream out1) {
         super(toCommand1, out1);
     }
-    
+
     public void exec() throws ConsoleException {
-        if (!this.parameters.containsKey(MILLIS_PARAM)){
+        if (!this.parameters.containsKey(MILLIS_PARAM)) {
             throw new ConsoleException("Not enough parameters. Provide the "
                     + "wait time in millis using the parameter '" + MILLIS_PARAM + "'.");
         }
         String millisString = this.parameters.get(MILLIS_PARAM);
-        
+
         try {
             long waitTime = Long.parseLong(millisString);
-            
+
             Thread.sleep(waitTime);
-            
+
         } catch (NumberFormatException e) {
             throw new ConsoleException("Parameter '" + MILLIS_PARAM + "' has "
                     + "wrong format.");
         } catch (InterruptedException e) {
             /*
-             * nothing to do here. 
+             * nothing to do here.
              */
         }
-        
-        
+
+
     }
-    
+
     public String getCommandName() {
         return COMMAND_NAME;
     }
-    
+
     public void printOutHelp() {
         this.out.println("The " + COMMAND_NAME + " command makes the console wait "
-                   + "a given time until the next step is done. This is meant "
-                   + "to be used in macros.");
+                + "a given time until the next step is done. This is meant "
+                + "to be used in macros.");
         this.out.println("Parameters: ");
         this.out.println(MILLIS_PARAM + " takes the number of millis to wait for.");
     }
-    
+
 }

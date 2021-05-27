@@ -27,137 +27,131 @@
  ***************************************************************************/
 package com.chord.service.impl;
 
-import java.io.Serializable;
-import java.util.concurrent.Executor;
-
 import com.chord.service.Chord;
 import com.chord.service.ChordFuture;
 import com.chord.service.Key;
 
+import java.io.Serializable;
+import java.util.concurrent.Executor;
+
 /**
  * Implementation of {@link ChordFuture} for removal of an entry from the chord
  * distributed hash table.
- * 
+ *
  * @author sven
  * @version 1.0.5
- * 
  */
 class ChordRemoveFuture extends ChordFutureImpl {
 
-	/**
-	 * The instance of chord used for the invocation represented by this. 
-	 */
-	private Chord chord;
+    /**
+     * The instance of chord used for the invocation represented by this.
+     */
+    private final Chord chord;
 
-	
-	/**
-	 * The key used for the insertion. 
-	 */
-	private Key key;
 
-	/**
-	 * The entry to remove. 
-	 */
-	private Serializable entry;
+    /**
+     * The key used for the insertion.
+     */
+    private final Key key;
 
-	/**
-	 * @param c
-	 * @param k
-	 * @param entry
-	 */
-	private ChordRemoveFuture(Chord c, Key k, Serializable entry) {
-		this.chord = c;
-		this.key = k;
-		this.entry = entry;
-	}
+    /**
+     * The entry to remove.
+     */
+    private final Serializable entry;
 
-	/**
-	 * Factory method to create an instance of this class. This method also
-	 * prepares execution of the removal with help of the provided
-	 * {@link Executor} <code>exec</code>.
-	 * 
-	 * @param exec
-	 *            The executor that should asynchronously execute the removal of
-	 *            <code>entry</code> with key <code>k</code>.
-	 * 
-	 * @param c
-	 *            The instance of {@link Chord} that should be used to remove
-	 *            <code>entry</code>.
-	 * @param k
-	 *            The {@link Key} for <code>entry</code>.
-	 * @param entry
-	 *            The entry to be removed.
-	 * @return Instance of this class.
-	 */
-	final static ChordRemoveFuture create(Executor exec, Chord c, Key k,
-			Serializable entry) {
-		if (c == null) {
-			throw new IllegalArgumentException(
-					"ChordRemoveFuture: chord instance must not be null!");
-		}
-		if (k == null) {
-			throw new IllegalArgumentException(
-					"ChordRemoveFuture: key must not be null!");
-		}
-		if (entry == null) {
-			throw new IllegalArgumentException(
-					"ChordRemoveFuture: entry must not be null!");
-		}
-		
-		ChordRemoveFuture f = new ChordRemoveFuture(c, k, entry);
-		exec.execute(f.getTask());
-		return f;
-	}
+    /**
+     * @param c
+     * @param k
+     * @param entry
+     */
+    private ChordRemoveFuture(Chord c, Key k, Serializable entry) {
+        this.chord = c;
+        this.key = k;
+        this.entry = entry;
+    }
 
-	/**
-	 * @return The runnable that executes the operation associated with this. 
-	 */
-	private final Runnable getTask() {
-		return new RemoveTask(this.chord, this.key, this.entry);
-	}
+    /**
+     * Factory method to create an instance of this class. This method also
+     * prepares execution of the removal with help of the provided
+     * {@link Executor} <code>exec</code>.
+     *
+     * @param exec  The executor that should asynchronously execute the removal of
+     *              <code>entry</code> with key <code>k</code>.
+     * @param c     The instance of {@link Chord} that should be used to remove
+     *              <code>entry</code>.
+     * @param k     The {@link Key} for <code>entry</code>.
+     * @param entry The entry to be removed.
+     * @return Instance of this class.
+     */
+    final static ChordRemoveFuture create(Executor exec, Chord c, Key k,
+                                          Serializable entry) {
+        if (c == null) {
+            throw new IllegalArgumentException(
+                    "ChordRemoveFuture: chord instance must not be null!");
+        }
+        if (k == null) {
+            throw new IllegalArgumentException(
+                    "ChordRemoveFuture: key must not be null!");
+        }
+        if (entry == null) {
+            throw new IllegalArgumentException(
+                    "ChordRemoveFuture: entry must not be null!");
+        }
 
-	/**
-	 * Runnable to execute the removal of entry with help of chord.
-	 * 
-	 * @author sven
-	 * @version 1.0
-	 */
-	private class RemoveTask implements Runnable {
+        ChordRemoveFuture f = new ChordRemoveFuture(c, k, entry);
+        exec.execute(f.getTask());
+        return f;
+    }
 
-		/**
-		 * The instance of chord used for the invocation represented by this. 
-		 */
-		private Chord chord;
+    /**
+     * @return The runnable that executes the operation associated with this.
+     */
+    private final Runnable getTask() {
+        return new RemoveTask(this.chord, this.key, this.entry);
+    }
 
-		
-		/**
-		 * The key used for the insertion. 
-		 */
-		private Key key;
+    /**
+     * Runnable to execute the removal of entry with help of chord.
+     *
+     * @author sven
+     * @version 1.0
+     */
+    private class RemoveTask implements Runnable {
 
-		/**
-		 * The entry to remove. 
-		 */
-		private Serializable entry;
-		
-		/**
-		 * @param chord
-		 * @param key
-		 * @param entry
-		 */
-		RemoveTask(Chord chord, Key key, Serializable entry){
-			this.chord = chord; 
-			this.key = key; 
-			this.entry = entry; 
-		}
-		
-		public void run() {
-			try {
-				this.chord.remove(this.key, this.entry);
-			} catch (Throwable t) {
-				setThrowable(t);
-			}
-			setIsDone();
-		}
-	}
+        /**
+         * The instance of chord used for the invocation represented by this.
+         */
+        private final Chord chord;
+
+
+        /**
+         * The key used for the insertion.
+         */
+        private final Key key;
+
+        /**
+         * The entry to remove.
+         */
+        private final Serializable entry;
+
+        /**
+         * @param chord
+         * @param key
+         * @param entry
+         */
+        RemoveTask(Chord chord, Key key, Serializable entry) {
+            this.chord = chord;
+            this.key = key;
+            this.entry = entry;
+        }
+
+        public void run() {
+            try {
+                this.chord.remove(this.key, this.entry);
+            } catch (Throwable t) {
+                setThrowable(t);
+            }
+            setIsDone();
+        }
+    }
 }

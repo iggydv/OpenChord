@@ -46,27 +46,27 @@ final class FixFingerTask implements Runnable {
     /**
      * Instance of random generator for randomly picking another finger to fix.
      */
-    private Random random = new Random();
+    private final Random random = new Random();
 
     /**
      * Parent object for invoking findSuccessor.
      */
-    private NodeImpl parent;
+    private final NodeImpl parent;
 
     /**
      * Object logger.
      */
-    private Logger logger;
+    private final Logger logger;
 
     /**
      * Copy of the local node's ID for determining which ID to look up.
      */
-    private ID localID;
+    private final ID localID;
 
     /**
      * Reference on routing table.
      */
-    private References references;
+    private final References references;
 
     /**
      * Creates a new instance, but without starting a thread running it.
@@ -99,8 +99,7 @@ final class FixFingerTask implements Runnable {
             int nextFingerToFix = this.random.nextInt(this.localID.getLength());
             if (this.logger.isDebugEnabled()) {
                 this.logger.debug("fixFingers tries to get finger for key "
-                        + this.localID.addPowerOfTwo(nextFingerToFix)
-                        .toString());
+                        + this.localID.addPowerOfTwo(nextFingerToFix));
             }
 
             // look up reference

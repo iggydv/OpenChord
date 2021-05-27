@@ -3,22 +3,22 @@ package com.chord.console.parser;
 
 public interface CommandParserConstants {
 
-  int EOF = 0;
-  int PARAMSTART = 5;
-  int WORD = 6;
-  int LETTER = 7;
+    int EOF = 0;
+    int PARAMSTART = 5;
+    int WORD = 6;
+    int LETTER = 7;
 
-  int DEFAULT = 0;
+    int DEFAULT = 0;
 
-  String[] tokenImage = {
-    "<EOF>",
-    "\" \"",
-    "\"\\t\"",
-    "\"\\n\"",
-    "\"\\r\"",
-    "\"-\"",
-    "<WORD>",
-    "<LETTER>",
-  };
+    String[] tokenImage = {
+            "<EOF>",
+            "\" \"",
+            "\"\\t\"",
+            "\"\\n\"",
+            "\"\\r\"",
+            "\"-\"",
+            "<WORD>",
+            "<LETTER>",
+    };
 
 }

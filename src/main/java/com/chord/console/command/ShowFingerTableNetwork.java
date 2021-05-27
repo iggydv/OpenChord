@@ -25,56 +25,59 @@
  *   with this software or at: http://www.gnu.org/copyleft/gpl.html        *
  *                                                                         *
  ***************************************************************************/
- 
+
 package com.chord.console.command;
 
-import com.chord.service.Report;
 import com.chord.console.Command;
+import com.chord.service.Report;
 
 /**
  * <p>
  * {@link Command} to show the finger table of a chord node of the local chord
  * network.
  * </p>
- * 
+ * <p>
  * To get a description of this command type <code>finger -help</code> into
  * the {@link com.chord.console.Main console}.
- * 
+ *
  * @author sven
  * @version 1.0.5
  */
 public class ShowFingerTableNetwork extends Command {
 
-	/**
-	 * The name of this {@link Command}.
-	 */
-	public static final String COMMAND_NAME = "refsN";
+    /**
+     * The name of this {@link Command}.
+     */
+    public static final String COMMAND_NAME = "refsN";
 
-	/** Creates a new instance of ShowFingerTable 
-	 * @param toCommand1 
-	 * @param out1 */
-	public ShowFingerTableNetwork(Object[] toCommand1, java.io.PrintStream out1) {
-		super(toCommand1, out1);
-	}
-	
-	/**
-	 * @param node
-	 */
-	private void printFingerTableForEndpoint(Report node) {
-    	this.out.println(node.printReferences());
-	}
-    
-	public void exec() {
-		this.printFingerTableForEndpoint((Report)((RemoteChordNetworkAccess) this.toCommand[1]).getChordInstance());
-	}
+    /**
+     * Creates a new instance of ShowFingerTable
+     *
+     * @param toCommand1
+     * @param out1
+     */
+    public ShowFingerTableNetwork(Object[] toCommand1, java.io.PrintStream out1) {
+        super(toCommand1, out1);
+    }
 
-	public String getCommandName() {
-		return COMMAND_NAME;
-	}
+    /**
+     * @param node
+     */
+    private void printFingerTableForEndpoint(Report node) {
+        this.out.println(node.printReferences());
+    }
 
-	public void printOutHelp() {
-		this.out
-				.println("This command displays the finger table of the chord node");
-	}
+    public void exec() {
+        this.printFingerTableForEndpoint((Report) ((RemoteChordNetworkAccess) this.toCommand[1]).getChordInstance());
+    }
+
+    public String getCommandName() {
+        return COMMAND_NAME;
+    }
+
+    public void printOutHelp() {
+        this.out
+                .println("This command displays the finger table of the chord node");
+    }
 
 }

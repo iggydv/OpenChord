@@ -28,29 +28,32 @@
 
 package com.chord.console.command;
 
-import com.chord.service.Report;
 import com.chord.console.Command;
+import com.chord.service.Report;
 
 /**
  * <p>
- * {@link Command} to show the entries of a node of local chord network. 
+ * {@link Command} to show the entries of a node of local chord network.
  * </p>
- * To get a description of this command type <code>entries -help</code> 
+ * To get a description of this command type <code>entries -help</code>
  * into the {@link com.chord.console.Main console}.
- * 
+ *
  * @author sven
  * @version 1.0.5
  */
 public class ShowEntriesNetwork extends Command {
 
-	/**
-	 * The name of this command. 
-	 */
+    /**
+     * The name of this command.
+     */
     public static final String COMMAND_NAME = "entriesN";
 
-    /** Creates a new instance of ShowFingerTable 
-     * @param toCommand1 
-     * @param out1 */
+    /**
+     * Creates a new instance of ShowFingerTable
+     *
+     * @param toCommand1
+     * @param out1
+     */
     public ShowEntriesNetwork(Object[] toCommand1, java.io.PrintStream out1) {
         super(toCommand1, out1);
     }
@@ -59,7 +62,7 @@ public class ShowEntriesNetwork extends Command {
      * @param node
      */
     private void printEntriesForEndpoint(Report node) {
-    	this.out.println(node.printEntries());
+        this.out.println(node.printEntries());
 //    	if (node == null) {
 //			out.println("No node present in JVM!");
 //			return; 
@@ -82,10 +85,10 @@ public class ShowEntriesNetwork extends Command {
     }
 
     public void exec() {
-    	/*
-    	 * Quick & dirty!!!
-    	 */
-        this.printEntriesForEndpoint((Report)((RemoteChordNetworkAccess) this.toCommand[1]).getChordInstance());
+        /*
+         * Quick & dirty!!!
+         */
+        this.printEntriesForEndpoint((Report) ((RemoteChordNetworkAccess) this.toCommand[1]).getChordInstance());
     }
 
     public String getCommandName() {
@@ -94,7 +97,7 @@ public class ShowEntriesNetwork extends Command {
 
     public void printOutHelp() {
         this.out
-                .println("This command displays the entries of the chord node."); 
+                .println("This command displays the entries of the chord node.");
     }
 
 }

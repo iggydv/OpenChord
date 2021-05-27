@@ -36,152 +36,145 @@ import java.io.Serializable;
  */
 final class Response extends Message {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -3635544762985447437L;
+    /**
+     * Constant holding the value that indicates that the {@link Request} that
+     * caused this response has been executed successfully.
+     */
+    public static final int REQUEST_SUCCESSFUL = 1;
+    /**
+     * Constant holding the value that indicates that the {@link Request} that
+     * caused this response failed.
+     */
+    public static final int REQUEST_FAILED = 0;
+    /**
+     *
+     */
+    private static final long serialVersionUID = -3635544762985447437L;
+    /**
+     * A String describing the failure if this is a failure response.
+     */
+    private String failureReason;
 
-	/**
-	 * Constant holding the value that indicates that the {@link Request} that
-	 * caused this response has been executed successfully.
-	 */
-	public static final int REQUEST_SUCCESSFUL = 1;
+    /**
+     * The result of the invocation if successful and the invocation has a
+     * result.
+     */
+    private Serializable result;
 
-	/**
-	 * Constant holding the value that indicates that the {@link Request} that
-	 * caused this response failed.
-	 */
-	public static final int REQUEST_FAILED = 0;
+    /**
+     * The method to invoke. Must be one of the constants defined in
+     * {@link MethodConstants} .
+     */
+    private int methodIdentifier = -1;
 
-	/**
-	 * A String describing the failure if this is a failure response.
-	 * 
-	 */
-	private String failureReason;
+    /**
+     * Status of the request {@link #REQUEST_FAILED} or {@link #REQUEST_SUCCESSFUL}.
+     */
+    private int status = REQUEST_SUCCESSFUL;
 
-	/**
-	 * The result of the invocation if successful and the invocation has a
-	 * result.
-	 * 
-	 */
-	private Serializable result;
+    /**
+     * String defining the request that this is the response for.
+     */
+    private final String inReplyTo;
 
-	/**
-	 * The method to invoke. Must be one of the constants defined in
-	 * {@link MethodConstants} .
-	 * 
-	 */
-	private int methodIdentifier = -1;
+    /**
+     * If this is a failure response and the failure has been caused by any
+     * {@link Throwable} this can be set to the <code>Throwable</code>.
+     */
+    private Throwable throwable = null;
 
-	/**
-	 * Status of the request {@link #REQUEST_FAILED} or {@link #REQUEST_SUCCESSFUL}.
-	 */
-	private int status = REQUEST_SUCCESSFUL;
+    /**
+     * Creates a new instance of Response
+     *
+     * @param status1
+     * @param methodIdentifier1
+     * @param inReplyTo1
+     */
+    Response(int status1, int methodIdentifier1, String inReplyTo1) {
+        super();
+        this.status = status1;
+        this.methodIdentifier = methodIdentifier1;
+        this.inReplyTo = inReplyTo1;
+    }
 
-	/**
-	 * String defining the request that this is the response for.
-	 */
-	private String inReplyTo;
+    /**
+     * @return The identifier of the method that was requested by the request,
+     * for which this is the response. See {@link MethodConstants}.
+     */
+    int getMethodIdentifier() {
+        return this.methodIdentifier;
+    }
 
-	/**
-	 * If this is a failure response and the failure has been caused by any
-	 * {@link Throwable} this can be set to the <code>Throwable</code>.
-	 */
-	private Throwable throwable = null;
+    /**
+     * @return Integer representing the state of this response. See
+     * {@link Response#REQUEST_FAILED},
+     * {@link Response#REQUEST_SUCCESSFUL}.
+     */
+    int getStatus() {
+        return this.status;
+    }
 
-	/**
-	 * Creates a new instance of Response
-	 * 
-	 * @param status1
-	 * @param methodIdentifier1
-	 * @param inReplyTo1
-	 */
-	Response(int status1, int methodIdentifier1, String inReplyTo1) {
-		super();
-		this.status = status1;
-		this.methodIdentifier = methodIdentifier1;
-		this.inReplyTo = inReplyTo1;
-	}
+    /**
+     * @return <code>true</code> if the request, for which this is a response,
+     * caused a failure on the remote node.
+     */
+    boolean isFailureResponse() {
+        return (this.status == REQUEST_FAILED);
+    }
 
-	/**
-	 * @return The identifier of the method that was requested by the request,
-	 *         for which this is the response. See {@link MethodConstants}. 
-	 */
-	int getMethodIdentifier() {
-		return this.methodIdentifier;
-	}
+    /**
+     * If this a failure reponse, this method returns the Throwable that caused
+     * the failure. Otherwise <code>null</code>.
+     *
+     * @return If this a failure reponse, this method returns the Throwable that
+     * caused the failure. Otherwise <code>null</code>.
+     */
+    Throwable getThrowable() {
+        return this.throwable;
+    }
 
-	/**
-	 * @return Integer representing the state of this response. See
-	 *         {@link Response#REQUEST_FAILED},
-	 *         {@link Response#REQUEST_SUCCESSFUL}.
-	 */
-	int getStatus() {
-		return this.status;
-	}
+    /**
+     * @param t The throwable to set.
+     */
+    void setThrowable(Throwable t) {
+        this.throwable = t;
+    }
 
-	/**
-	 * @return <code>true</code> if the request, for which this is a response,
-	 *         caused a failure on the remote node.
-	 */
-	boolean isFailureResponse() {
-		return (this.status == REQUEST_FAILED);
-	}
+    /**
+     * @return The reason for failure of the request, for which this is the
+     * response.
+     */
+    String getFailureReason() {
+        return this.failureReason;
+    }
 
-	/**
-	 * If this a failure reponse, this method returns the Throwable that caused
-	 * the failure. Otherwise <code>null</code>.
-	 * 
-	 * @return If this a failure reponse, this method returns the Throwable that
-	 *         caused the failure. Otherwise <code>null</code>.
-	 */
-	Throwable getThrowable() {
-		return this.throwable;
-	}
+    /**
+     * @param reason
+     */
+    void setFailureReason(String reason) {
+        this.status = REQUEST_FAILED;
+        this.failureReason = reason;
+    }
 
-	/**
-	 * @return The reason for failure of the request, for which this is the
-	 *         response.
-	 */
-	String getFailureReason() {
-		return this.failureReason;
-	}
+    /**
+     * @return The result of the request for which this is the response.
+     */
+    Serializable getResult() {
+        return this.result;
+    }
 
-	/**
-	 * @param t
-	 *            The throwable to set.
-	 */
-	void setThrowable(Throwable t) {
-		this.throwable = t;
-	}
+    /**
+     * @param result1
+     */
+    void setResult(Serializable result1) {
+        this.result = result1;
+    }
 
-	/**
-	 * @param reason
-	 */
-	void setFailureReason(String reason) {
-		this.status = REQUEST_FAILED;
-		this.failureReason = reason;
-	}
-
-	/**
-	 * @return The result of the request for which this is the response.
-	 */
-	Serializable getResult() {
-		return this.result;
-	}
-
-	/**
-	 * @param result1
-	 */
-	void setResult(Serializable result1) {
-		this.result = result1;
-	}
-
-	/**
-	 * @return String that identifies the request for that this is the response.
-	 */
-	String getInReplyTo() {
-		return this.inReplyTo;
-	}
+    /**
+     * @return String that identifies the request for that this is the response.
+     */
+    String getInReplyTo() {
+        return this.inReplyTo;
+    }
 
 }

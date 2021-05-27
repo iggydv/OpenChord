@@ -65,7 +65,7 @@ final class FingerTable {
     /**
      * Object logger.
      */
-    private Logger logger;
+    private final Logger logger;
 
     /**
      * Creates an initially empty finger table. The table size is determined by
@@ -122,7 +122,7 @@ final class FingerTable {
         this.remoteNodes[index] = proxy;
 
         if (this.logger.isDebugEnabled()) {
-            this.logger.debug("Entry " + index + " set to " + proxy.toString());
+            this.logger.debug("Entry " + index + " set to " + proxy);
         }
     }
 
@@ -178,7 +178,7 @@ final class FingerTable {
             this.references.disconnectIfUnreferenced(overwrittenNode);
             if (this.logger.isDebugEnabled()) {
                 this.logger.debug("Entry set to null: index=" + index
-                        + ", overwritten node=" + overwrittenNode.toString());
+                        + ", overwritten node=" + overwrittenNode);
             }
         }
     }

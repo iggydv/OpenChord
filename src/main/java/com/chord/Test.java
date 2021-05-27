@@ -26,210 +26,209 @@
  ***************************************************************************/
 package com.chord;
 
+import com.chord.data.ID;
+import com.chord.data.URL;
+import com.chord.service.PropertiesLoader;
+
 import java.net.MalformedURLException;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import com.chord.data.ID;
-import com.chord.data.URL;
-import com.chord.service.PropertiesLoader;
-
 public class Test {
 
-	private Test() {
-	}
+    static final String URL1 = "ocrmi://localhost:4245/";
+    static final String URL2 = "ocrmi://localhost/";
 
-	static final String URL1 = "ocrmi://localhost:4245/";
+    private Test() {
+    }
 
-	static final String URL2 = "ocrmi://localhost/";
+    public static void main(String[] args) throws MalformedURLException,
+            CommunicationException {
+        PropertiesLoader.loadPropertyFile();
+        try {
+            if (args[0] != null) {
+                NodeImpl node = new NodeImpl(URL2);
+                Endpoint ep = Endpoint.createEndpoint(node, node.nodeURL);
+                ep.listen();
+                ep.acceptEntries();
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
 
-	public static void main(String[] args) throws MalformedURLException,
-			CommunicationException {
-		PropertiesLoader.loadPropertyFile();
-		try {
-			if (args[0] != null) {
-				NodeImpl node = new NodeImpl(URL2);
-				Endpoint ep = Endpoint.createEndpoint(node, node.nodeURL);
-				ep.listen();
-				ep.acceptEntries();
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
+            NodeImpl node = new NodeImpl(URL1);
+            Endpoint ep = Endpoint.createEndpoint(node, node.nodeURL);
+            ep.listen();
+            ep.acceptEntries();
 
-			NodeImpl node = new NodeImpl(URL1);
-			Endpoint ep = Endpoint.createEndpoint(node, node.nodeURL);
-			ep.listen();
-			ep.acceptEntries();
+            Node proxy = Proxy.createConnection(new URL(URL1), new URL(URL2));
 
-			Node proxy = Proxy.createConnection(new URL(URL1), new URL(URL2));
+            List<Long> millis = new LinkedList<Long>();
 
-			List<Long> millis = new LinkedList<Long>();
+            long start = System.currentTimeMillis();
+            proxy.findSuccessor(node.nodeID);
+            long end = System.currentTimeMillis();
+            System.out.println("findSuccessor took " + (end - start) + "ms");
+            millis.add((end - start));
 
-			long start = System.currentTimeMillis();
-			proxy.findSuccessor(node.nodeID);
-			long end = System.currentTimeMillis();
-			System.out.println("findSuccessor took " + (end - start) + "ms");
-			millis.add((end - start));
+            start = System.currentTimeMillis();
+            proxy.getNodeID();
+            end = System.currentTimeMillis();
+            System.out.println("getNodeID took " + (end - start) + "ms");
+            millis.add((end - start));
 
-			start = System.currentTimeMillis();
-			proxy.getNodeID();
-			end = System.currentTimeMillis();
-			System.out.println("getNodeID took " + (end - start) + "ms");
-			millis.add((end - start));
+            start = System.currentTimeMillis();
+            proxy.insertEntry(new Entry(node.nodeID, "test"));
+            end = System.currentTimeMillis();
+            System.out.println("insertEntry took " + (end - start) + "ms");
+            millis.add((end - start));
 
-			start = System.currentTimeMillis();
-			proxy.insertEntry(new Entry(node.nodeID, "test"));
-			end = System.currentTimeMillis();
-			System.out.println("insertEntry took " + (end - start) + "ms");
-			millis.add((end - start));
+            start = System.currentTimeMillis();
+            proxy.insertReplicas(new HashSet<Entry>());
+            end = System.currentTimeMillis();
+            System.out.println("insertReplicas took " + (end - start) + "ms");
+            millis.add((end - start));
 
-			start = System.currentTimeMillis();
-			proxy.insertReplicas(new HashSet<Entry>());
-			end = System.currentTimeMillis();
-			System.out.println("insertReplicas took " + (end - start) + "ms");
-			millis.add((end - start));
+            start = System.currentTimeMillis();
+            proxy.removeEntry(new Entry(node.nodeID, "test"));
+            end = System.currentTimeMillis();
+            System.out.println("removeEntry took " + (end - start) + "ms");
+            millis.add((end - start));
 
-			start = System.currentTimeMillis();
-			proxy.removeEntry(new Entry(node.nodeID, "test"));
-			end = System.currentTimeMillis();
-			System.out.println("removeEntry took " + (end - start) + "ms");
-			millis.add((end - start));
+            start = System.currentTimeMillis();
+            proxy.leavesNetwork(node);
+            end = System.currentTimeMillis();
+            System.out.println("leavesNetwork took " + (end - start) + "ms");
+            millis.add((end - start));
 
-			start = System.currentTimeMillis();
-			proxy.leavesNetwork(node);
-			end = System.currentTimeMillis();
-			System.out.println("leavesNetwork took " + (end - start) + "ms");
-			millis.add((end - start));
+            start = System.currentTimeMillis();
+            proxy.removeReplicas(node.nodeID, new HashSet<Entry>());
+            end = System.currentTimeMillis();
+            System.out.println("removeReplicas took " + (end - start) + "ms");
+            millis.add((end - start));
 
-			start = System.currentTimeMillis();
-			proxy.removeReplicas(node.nodeID, new HashSet<Entry>());
-			end = System.currentTimeMillis();
-			System.out.println("removeReplicas took " + (end - start) + "ms");
-			millis.add((end - start));
+            start = System.currentTimeMillis();
+            proxy.notify(node);
+            end = System.currentTimeMillis();
+            System.out.println("notify took " + (end - start) + "ms");
+            millis.add((end - start));
 
-			start = System.currentTimeMillis();
-			proxy.notify(node);
-			end = System.currentTimeMillis();
-			System.out.println("notify took " + (end - start) + "ms");
-			millis.add((end - start));
+            proxy.notifyAndCopyEntries(node);
+            end = System.currentTimeMillis();
+            System.out.println("notifyAndCopyEntries took " + (end - start)
+                    + "ms");
+            millis.add((end - start));
 
-			proxy.notifyAndCopyEntries(node);
-			end = System.currentTimeMillis();
-			System.out.println("notifyAndCopyEntries took " + (end - start)
-					+ "ms");
-			millis.add((end - start));
+            start = System.currentTimeMillis();
+            proxy.retrieveEntries(node.nodeID);
+            end = System.currentTimeMillis();
+            System.out.println("retrieveEntries took " + (end - start) + "ms");
+            millis.add((end - start));
 
-			start = System.currentTimeMillis();
-			proxy.retrieveEntries(node.nodeID);
-			end = System.currentTimeMillis();
-			System.out.println("retrieveEntries took " + (end - start) + "ms");
-			millis.add((end - start));
+            start = System.currentTimeMillis();
+            proxy.ping();
+            end = System.currentTimeMillis();
+            System.out.println("ping took " + (end - start) + "ms");
+            millis.add((end - start));
 
-			start = System.currentTimeMillis();
-			proxy.ping();
-			end = System.currentTimeMillis();
-			System.out.println("ping took " + (end - start) + "ms");
-			millis.add((end - start));
+            long calls = 0;
+            long total = 0;
+            for (Long time : millis) {
+                total += time;
+                calls++;
+            }
+            System.out
+                    .println("Average duration of a call: " + (total / calls));
 
-			long calls = 0;
-			long total = 0;
-			for (Long time : millis) {
-				total += time;
-				calls++;
-			}
-			System.out
-					.println("Average duration of a call: " + (total / calls));
+            proxy.disconnect();
 
-			proxy.disconnect();
+            ep.disconnect();
+        }
+    }
 
-			ep.disconnect();
-		}
-	}
+    private static class NodeImpl extends Node {
 
-	private static class NodeImpl extends Node {
+        NodeImpl(String url) {
+            try {
+                this.nodeURL = new URL(url);
+            } catch (MalformedURLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                System.exit(-1);
+            }
+            this.nodeID = new ID(this.nodeURL.toString().getBytes());
+        }
 
-		NodeImpl(String url) {
-			try {
-				this.nodeURL = new URL(url);
-			} catch (MalformedURLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				System.exit(-1);
-			}
-			this.nodeID = new ID(this.nodeURL.toString().getBytes());
-		}
+        @Override
+        public void disconnect() {
+            // TODO Auto-generated method stub
 
-		@Override
-		public void disconnect() {
-			// TODO Auto-generated method stub
+        }
 
-		}
+        @Override
+        public Node findSuccessor(ID key) throws CommunicationException {
+            return this;
+        }
 
-		@Override
-		public Node findSuccessor(ID key) throws CommunicationException {
-			return this;
-		}
+        @Override
+        public void insertEntry(Entry entryToInsert)
+                throws CommunicationException {
+            // TODO Auto-generated method stub
 
-		@Override
-		public void insertEntry(Entry entryToInsert)
-				throws CommunicationException {
-			// TODO Auto-generated method stub
+        }
 
-		}
+        @Override
+        public void insertReplicas(Set<Entry> entries)
+                throws CommunicationException {
+            // TODO Auto-generated method stub
 
-		@Override
-		public void insertReplicas(Set<Entry> entries)
-				throws CommunicationException {
-			// TODO Auto-generated method stub
+        }
 
-		}
+        @Override
+        public void leavesNetwork(Node predecessor)
+                throws CommunicationException {
+            // TODO Auto-generated method stub
 
-		@Override
-		public void leavesNetwork(Node predecessor)
-				throws CommunicationException {
-			// TODO Auto-generated method stub
+        }
 
-		}
+        @Override
+        public List<Node> notify(Node potentialPredecessor)
+                throws CommunicationException {
+            return new LinkedList<Node>();
+        }
 
-		@Override
-		public List<Node> notify(Node potentialPredecessor)
-				throws CommunicationException {
-			return new LinkedList<Node>();
-		}
+        @Override
+        public RefsAndEntries notifyAndCopyEntries(Node potentialPredecessor)
+                throws CommunicationException {
+            return new RefsAndEntries(new LinkedList<Node>(),
+                    new HashSet<Entry>());
+        }
 
-		@Override
-		public RefsAndEntries notifyAndCopyEntries(Node potentialPredecessor)
-				throws CommunicationException {
-			return new RefsAndEntries(new LinkedList<Node>(),
-					new HashSet<Entry>());
-		}
+        @Override
+        public void ping() throws CommunicationException {
+            // TODO Auto-generated method stub
 
-		@Override
-		public void ping() throws CommunicationException {
-			// TODO Auto-generated method stub
+        }
 
-		}
+        @Override
+        public void removeEntry(Entry entryToRemove)
+                throws CommunicationException {
+            // TODO Auto-generated method stub
 
-		@Override
-		public void removeEntry(Entry entryToRemove)
-				throws CommunicationException {
-			// TODO Auto-generated method stub
+        }
 
-		}
+        @Override
+        public void removeReplicas(ID sendingNode, Set<Entry> replicasToRemove)
+                throws CommunicationException {
+            // TODO Auto-generated method stub
 
-		@Override
-		public void removeReplicas(ID sendingNode, Set<Entry> replicasToRemove)
-				throws CommunicationException {
-			// TODO Auto-generated method stub
+        }
 
-		}
+        @Override
+        public Set<Entry> retrieveEntries(ID id) throws CommunicationException {
+            return new HashSet<Entry>();
+        }
 
-		@Override
-		public Set<Entry> retrieveEntries(ID id) throws CommunicationException {
-			return new HashSet<Entry>();
-		}
-
-	}
+    }
 }

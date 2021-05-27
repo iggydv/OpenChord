@@ -25,115 +25,117 @@
  *   with this software or at: http://www.gnu.org/copyleft/gpl.html        *
  *                                                                         *
  ***************************************************************************/
- 
+
 package com.chord.console.command;
 
-import java.net.MalformedURLException;
-
-import com.chord.local.ChordImplAccess;
-import com.chord.local.Registry;
-import com.chord.local.ThreadEndpoint;
+import com.chord.console.ConsoleException;
 import com.chord.console.command.entry.Key;
 import com.chord.console.command.entry.Value;
 import com.chord.data.URL;
-import com.chord.console.ConsoleException;
+import com.chord.local.ChordImplAccess;
+import com.chord.local.Registry;
+import com.chord.local.ThreadEndpoint;
+
+import java.net.MalformedURLException;
 
 /**
- * 
  * To get a description of this command type <code>remove -help</code> into
  * the {@link com.chord.console.Main console}.
- * 
+ *
  * @author sven
  * @version 1.0.5
  */
 public class Remove extends com.chord.console.Command {
 
-	/**
-	 * The name of this command.
-	 */
-	public static final String COMMAND_NAME = "remove";
+    /**
+     * The name of this command.
+     */
+    public static final String COMMAND_NAME = "remove";
 
-	/**
-	 * The name of the parameter, that defines the name of the node, from that
-	 * the request to remove a key-value-pair from the dht, must be made.
-	 */
-	protected static final String NODE_PARAM = "node";
+    /**
+     * The name of the parameter, that defines the name of the node, from that
+     * the request to remove a key-value-pair from the dht, must be made.
+     */
+    protected static final String NODE_PARAM = "node";
 
-	/**
-	 * The name of the parameter that defines the key of the value to remove.
-	 */
-	protected static final String KEY_PARAM = "key";
+    /**
+     * The name of the parameter that defines the key of the value to remove.
+     */
+    protected static final String KEY_PARAM = "key";
 
-	/**
-	 * The name of the parameter that defines the value to remove.
-	 */
-	protected static final String VALUE_PARAM = "value";
+    /**
+     * The name of the parameter that defines the value to remove.
+     */
+    protected static final String VALUE_PARAM = "value";
 
-	/** Creates a new instance of Remove 
-	 * @param toCommand1 
-	 * @param out1 */
-	public Remove(Object[] toCommand1, java.io.PrintStream out1) {
-		super(toCommand1, out1);
-	}
+    /**
+     * Creates a new instance of Remove
+     *
+     * @param toCommand1
+     * @param out1
+     */
+    public Remove(Object[] toCommand1, java.io.PrintStream out1) {
+        super(toCommand1, out1);
+    }
 
-	public void exec() throws ConsoleException {
-		String node = this.parameters.get(NODE_PARAM);
-		String key = this.parameters.get(KEY_PARAM);
-		String value = this.parameters.get(VALUE_PARAM);
-		if ((node == null) || (node.length() == 0)) {
-			throw new ConsoleException("Not enough parameters! " + NODE_PARAM
-					+ " is missing.");
-		}
-		if ((key == null) || (key.length() == 0)) {
-			throw new ConsoleException("Not enough parameters! " + KEY_PARAM
-					+ " is missing.");
-		}
-		if ((value == null) || (value.length() == 0)) {
-			throw new ConsoleException("Not enough parameters! " + VALUE_PARAM
-					+ " is missing.");
-		}
-		URL url = null; 
-		try {
-			url = new URL(URL.KNOWN_PROTOCOLS.get(URL.LOCAL_PROTOCOL) + "://" + node + "/");
-		} catch (MalformedURLException e1) {
-			throw new ConsoleException(e1.getMessage());
-		} 
-		Key keyObject = new Key(key);
-		Value valueObject = new Value(value);
+    public void exec() throws ConsoleException {
+        String node = this.parameters.get(NODE_PARAM);
+        String key = this.parameters.get(KEY_PARAM);
+        String value = this.parameters.get(VALUE_PARAM);
+        if ((node == null) || (node.length() == 0)) {
+            throw new ConsoleException("Not enough parameters! " + NODE_PARAM
+                    + " is missing.");
+        }
+        if ((key == null) || (key.length() == 0)) {
+            throw new ConsoleException("Not enough parameters! " + KEY_PARAM
+                    + " is missing.");
+        }
+        if ((value == null) || (value.length() == 0)) {
+            throw new ConsoleException("Not enough parameters! " + VALUE_PARAM
+                    + " is missing.");
+        }
+        URL url = null;
+        try {
+            url = new URL(URL.KNOWN_PROTOCOLS.get(URL.LOCAL_PROTOCOL) + "://" + node + "/");
+        } catch (MalformedURLException e1) {
+            throw new ConsoleException(e1.getMessage());
+        }
+        Key keyObject = new Key(key);
+        Value valueObject = new Value(value);
 
-		ThreadEndpoint ep = Registry.getRegistryInstance().lookup(url);
-		if (ep == null) {
-			this.out.println("Node '" + node + "' does not exist!");
-			return;
-		}
-		try {
-			ChordImplAccess.fetchChordImplOfNode(ep.getNode()).remove(keyObject,
-					valueObject);
-		} catch (Throwable t) {
-			ConsoleException e = new ConsoleException(
-					"Exception during execution of command. " + t.getMessage());
-			e.setStackTrace(t.getStackTrace());
-			throw e;
-		}
-		this.out.println("Value '" + value + "' with key '" + key
-				+ "' removed " + "successfully from node '" + node + "'.");
-	}
+        ThreadEndpoint ep = Registry.getRegistryInstance().lookup(url);
+        if (ep == null) {
+            this.out.println("Node '" + node + "' does not exist!");
+            return;
+        }
+        try {
+            ChordImplAccess.fetchChordImplOfNode(ep.getNode()).remove(keyObject,
+                    valueObject);
+        } catch (Throwable t) {
+            ConsoleException e = new ConsoleException(
+                    "Exception during execution of command. " + t.getMessage());
+            e.setStackTrace(t.getStackTrace());
+            throw e;
+        }
+        this.out.println("Value '" + value + "' with key '" + key
+                + "' removed " + "successfully from node '" + node + "'.");
+    }
 
-	public String getCommandName() {
-		return COMMAND_NAME;
-	}
+    public String getCommandName() {
+        return COMMAND_NAME;
+    }
 
-	public void printOutHelp() {
-		this.out
-				.println("This command removes a value with a provided key from the chord network.");
-		this.out
-				.println("The key is removed starting from the node provided as parameter.");
-		this.out.println("Required parameters: ");
-		this.out.println("\t" + NODE_PARAM
-				+ ": The name of the node, from where the key is removed.");
-		this.out.println("\t" + KEY_PARAM + ": The key for the value.");
-		this.out.println("\t" + VALUE_PARAM + ": The value to remove.");
-		this.out.println();
-	}
+    public void printOutHelp() {
+        this.out
+                .println("This command removes a value with a provided key from the chord network.");
+        this.out
+                .println("The key is removed starting from the node provided as parameter.");
+        this.out.println("Required parameters: ");
+        this.out.println("\t" + NODE_PARAM
+                + ": The name of the node, from where the key is removed.");
+        this.out.println("\t" + KEY_PARAM + ": The key for the value.");
+        this.out.println("\t" + VALUE_PARAM + ": The value to remove.");
+        this.out.println();
+    }
 
 }

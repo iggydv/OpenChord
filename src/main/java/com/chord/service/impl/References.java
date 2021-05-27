@@ -57,7 +57,7 @@ final class References {
     /**
      * Object logger.
      */
-    private Logger logger;
+    private final Logger logger;
 
     /**
      * This node's finger table.
@@ -81,7 +81,7 @@ final class References {
 
     private URL localURL = null;
 
-    private Entries entries;
+    private final Entries entries;
 
     /**
      * Creates an References object which contains no references.

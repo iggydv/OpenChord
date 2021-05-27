@@ -25,24 +25,24 @@
  *   with this software or at: http://www.gnu.org/copyleft/gpl.html        *
  *                                                                         *
  ***************************************************************************/
- 
+
 package com.chord.console.command;
+
+import com.chord.console.Command;
+import com.chord.console.ConsoleThread;
 
 import java.io.PrintStream;
 import java.lang.reflect.Field;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Map;
-
-import com.chord.console.Command;
-import com.chord.console.ConsoleThread;
 //import org.slf4j.Logger;
 
 /**
- * This command prints a list of available commands. 
- * Just type <code>help</code> 
+ * This command prints a list of available commands.
+ * Just type <code>help</code>
  * into the {@link com.chord.console.Main console}.
- * 
+ *
  * @author sven
  * @version 1.0.5
  */
@@ -50,73 +50,74 @@ public class Help extends Command {
 
 //	private static Logger logger = LoggerFactory.getLogger(Help.class.getName());
 
-	/**
-	 * The name of this {@link Command}. 
-	 */
-	public static final String COMMAND_NAME = "help";
+    /**
+     * The name of this {@link Command}.
+     */
+    public static final String COMMAND_NAME = "help";
 
-	/** 
-	 * Creates a new instance of Help 
-	 * @param toCommand1 
-	 * @param out1 
-	 */
-	public Help(Object[] toCommand1, PrintStream out1) {
-		super(toCommand1, out1);
-	}
+    /**
+     * Creates a new instance of Help
+     *
+     * @param toCommand1
+     * @param out1
+     */
+    public Help(Object[] toCommand1, PrintStream out1) {
+        super(toCommand1, out1);
+    }
 
-	public void exec() {
-		Object factory = ConsoleThread.getConsole().getCommandFactory();
-		// out.println("Factory class " + factory.getClass());
-		Field[] fields = factory.getClass().getDeclaredFields();
-		// out.println("Number of factory fields " + fields.length);
-		Field mapping = null;
-		for (int i = 0; (i < fields.length) && (mapping == null); i++) {
-			// out.println("Searching for commandMapping");
-			if (fields[i].getType().equals(Map.class)) {
-				this.out
-						.println("For help with any command, type name of command plus '-h' or '-help'.");
-				this.out
-						.println("Parameters of commands are always passed to them in the format '-parametername parametervalue'.");
-				this.out
-						.println("Some parameters require no value, so only the parameter name has to be provided to the command.");
-				this.out.println("Commands available from this console:");
-				this.out.println("-----");
-				mapping = fields[i];
-				try {
-					mapping.setAccessible(true); 
-					
-					Hashtable mappingValue = (Hashtable) mapping.get(factory);
-					Enumeration cmds = mappingValue.keys();
-					int count = 0;
-					while (cmds.hasMoreElements()) {
-						this.out.print(cmds.nextElement());
-						count++;
-						if (cmds.hasMoreElements()) {
-							this.out.print(", ");
-						}
-						if ((count % 5) == 0) {
-							this.out.println();
-						}
-					}
-				} catch (IllegalAccessException e) {
-					this.out.println("No access to commands.");
-				}
-				this.out.println();
-				this.out.println("-----");
-				this.out
-						.println("Note: Commands and parameters are case sensitive.");
-			}
-		}
+    public void exec() {
+        Object factory = ConsoleThread.getConsole().getCommandFactory();
+        // out.println("Factory class " + factory.getClass());
+        Field[] fields = factory.getClass().getDeclaredFields();
+        // out.println("Number of factory fields " + fields.length);
+        Field mapping = null;
+        for (int i = 0; (i < fields.length) && (mapping == null); i++) {
+            // out.println("Searching for commandMapping");
+            if (fields[i].getType().equals(Map.class)) {
+                this.out
+                        .println("For help with any command, type name of command plus '-h' or '-help'.");
+                this.out
+                        .println("Parameters of commands are always passed to them in the format '-parametername parametervalue'.");
+                this.out
+                        .println("Some parameters require no value, so only the parameter name has to be provided to the command.");
+                this.out.println("Commands available from this console:");
+                this.out.println("-----");
+                mapping = fields[i];
+                try {
+                    mapping.setAccessible(true);
 
-	}
+                    Hashtable mappingValue = (Hashtable) mapping.get(factory);
+                    Enumeration cmds = mappingValue.keys();
+                    int count = 0;
+                    while (cmds.hasMoreElements()) {
+                        this.out.print(cmds.nextElement());
+                        count++;
+                        if (cmds.hasMoreElements()) {
+                            this.out.print(", ");
+                        }
+                        if ((count % 5) == 0) {
+                            this.out.println();
+                        }
+                    }
+                } catch (IllegalAccessException e) {
+                    this.out.println("No access to commands.");
+                }
+                this.out.println();
+                this.out.println("-----");
+                this.out
+                        .println("Note: Commands and parameters are case sensitive.");
+            }
+        }
 
-	public String getCommandName() {
-		return COMMAND_NAME;
-	}
+    }
 
-	public void printOutHelp() {
-		this.out
-				.println("Display a list of all commands available in this console.");
-	}
+    public String getCommandName() {
+        return COMMAND_NAME;
+    }
+
+    public void printOutHelp() {
+        this.out
+                .println("Display a list of all commands available in this console.");
+    }
 
 }

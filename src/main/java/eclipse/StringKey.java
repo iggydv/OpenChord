@@ -1,7 +1,7 @@
 package eclipse;
 
 public class StringKey implements com.chord.service.Key {
-    private String theString;
+    private final String theString;
 
     public StringKey(String theString) {
         this.theString = theString;

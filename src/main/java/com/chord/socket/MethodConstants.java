@@ -35,106 +35,92 @@ import com.chord.Node;
  * {@link Node}. Do not forget that this
  * class has to be edited eventually if the methods in
  * {@link Node} change.
- * 
+ *
  * <p>
  * TODO: change to enum type !
  * </p>
- * 
+ *
  * @author sven
  * @version 1.0.5
  */
 final class MethodConstants {
 
-	/**
-	 * Hide constructor as this has no instances. 
-	 */
-	private MethodConstants() {
-		// nothing to do here. 
-	}
-	
-	static final int CONNECT = -1; 
-	
-	/**
-	 * Integer constant used to identify method <code>findSuccessor</code>.
-	 */
-	static final int FIND_SUCCESSOR = 0;
+    static final int CONNECT = -1;
+    /**
+     * Integer constant used to identify method <code>findSuccessor</code>.
+     */
+    static final int FIND_SUCCESSOR = 0;
+    /**
+     * Integer constant used to identify method <code>getNodeID</code>.
+     */
+    static final int GET_NODE_ID = 1;
+    /**
+     * Integer constant used to identify method <code>insertEntry</code>.
+     */
+    static final int INSERT_ENTRY = 2;
+    /**
+     * Integer constant used to identify method <code>insertReplicas</code>.
+     */
+    static final int INSERT_REPLICAS = 3;
+    /**
+     * Integer constant used to identify method <code>leave</code>.
+     */
+    static final int LEAVES_NETWORK = 4;
+    /**
+     * Integer constant used to identify method <code>notify</code>.
+     */
+    static final int NOTIFY = 5;
+    /**
+     * Integer constant used to identify method <code>notifyAndCopeEntries</code>.
+     */
+    static final int NOTIFY_AND_COPY = 6;
+    /**
+     * Integer constant used to identify method <code>ping</code>.
+     */
+    static final int PING = 7;
+    /**
+     * Integer constant used to identify method <code>removeEntry</code>.
+     */
+    static final int REMOVE_ENTRY = 8;
+    /**
+     * Integer constant used to identify method <code>removeReplicas</code>.
+     */
+    static final int REMOVE_REPLICAS = 9;
+    /**
+     * Integer constant used to identify method <code>retrieveEntries</code>.
+     */
+    static final int RETRIEVE_ENTRIES = 10;
+    /**
+     * Integer constant used to notify the endpoint that a proxy is shutting
+     * down .
+     */
+    static final int SHUTDOWN = 11;
+    /**
+     * Array containing names of methods of
+     * {@link Node}. A name of a method
+     * can be accessed by using the constant identifying the method as an index
+     * into this array.
+     */
+    static final String[] METHOD_NAMES = new String[]{"findSuccessor",
+            "getNodeID", "insertEntry", "insertReplicas", "leavesNetwork",
+            "notify", "notifyAndCopyEntries", "ping", "removeEntry",
+            "removeReplicas", "retrieveEntries", "shutdown"};
 
-	/**
-	 * Integer constant used to identify method <code>getNodeID</code>. 
-	 */
-	static final int GET_NODE_ID = 1;
+    /**
+     * Hide constructor as this has no instances.
+     */
+    private MethodConstants() {
+        // nothing to do here.
+    }
 
-	/**
-	 * Integer constant used to identify method <code>insertEntry</code>.
-	 */
-	static final int INSERT_ENTRY = 2;
-
-	/**
-	 * Integer constant used to identify method <code>insertReplicas</code>.
-	 */
-	static final int INSERT_REPLICAS = 3;
-
-	/**
-	 * Integer constant used to identify method <code>leave</code>.
-	 */
-	static final int LEAVES_NETWORK = 4;
-
-	/**
-	 * Integer constant used to identify method <code>notify</code>.
-	 */
-	static final int NOTIFY = 5;
-
-	/**
-	 * Integer constant used to identify method <code>notifyAndCopeEntries</code>.
-	 */
-	static final int NOTIFY_AND_COPY = 6;
-
-	/**
-	 * Integer constant used to identify method <code>ping</code>.
-	 */
-	static final int PING = 7;
-
-	/**
-	 * Integer constant used to identify method <code>removeEntry</code>.
-	 */
-	static final int REMOVE_ENTRY = 8;
-
-	/**
-	 * Integer constant used to identify method <code>removeReplicas</code>.
-	 */
-	static final int REMOVE_REPLICAS = 9;
-
-	/**
-	 * Integer constant used to identify method <code>retrieveEntries</code>.
-	 */
-	static final int RETRIEVE_ENTRIES = 10;
-
-	/**
-	 * Integer constant used to notify the endpoint that a proxy is shutting
-	 * down .
-	 */
-	static final int SHUTDOWN = 11;
-
-	/**
-	 * Array containing names of methods of
-	 * {@link Node}. A name of a method
-	 * can be accessed by using the constant identifying the method as an index
-	 * into this array.
-	 */
-	static final String[] METHOD_NAMES = new String[] { "findSuccessor",
-			"getNodeID", "insertEntry", "insertReplicas", "leavesNetwork",
-			"notify", "notifyAndCopyEntries", "ping", "removeEntry",
-			"removeReplicas", "retrieveEntries", "shutdown" };
-
-	/**
-	 * Used to get the name of a method for a method identifier.
-	 * 
-	 * @param methodIdentifier
-	 *            The identifier of the method.
-	 * @return The name of the method.
-	 */
-	static String getMethodName(int methodIdentifier) {
-		return METHOD_NAMES[methodIdentifier];
-	}
+    /**
+     * Used to get the name of a method for a method identifier.
+     *
+     * @param methodIdentifier The identifier of the method.
+     * @return The name of the method.
+     */
+    static String getMethodName(int methodIdentifier) {
+        return METHOD_NAMES[methodIdentifier];
+    }
 
 }

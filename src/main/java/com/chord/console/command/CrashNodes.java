@@ -28,17 +28,17 @@
 
 package com.chord.console.command;
 
+import com.chord.console.Command;
+import com.chord.console.ConsoleException;
+import com.chord.data.URL;
+import com.chord.local.Registry;
+import com.chord.local.ThreadEndpoint;
+
 import java.net.MalformedURLException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-
-import com.chord.local.Registry;
-import com.chord.local.ThreadEndpoint;
-import com.chord.data.URL;
-import com.chord.console.Command;
-import com.chord.console.ConsoleException;
 
 /**
  * <p>
@@ -48,134 +48,134 @@ import com.chord.console.ConsoleException;
  * </p>
  * To get a description of this command type <code>crash -help</code> into the
  * {@link com.chord.console.Main console}.
- * 
+ *
  * @author sven
  * @version 1.0.5
  */
 public class CrashNodes extends Command {
 
-	/**
-	 * The name of this command.
-	 */
-	public static final String COMMAND_NAME = "crash";
+    /**
+     * The name of this command.
+     */
+    public static final String COMMAND_NAME = "crash";
 
-	/**
-	 * The name of the parameter defining the names of the nodes to crash.
-	 */
-	public static final String NAMES_PARAM = "names";
+    /**
+     * The name of the parameter defining the names of the nodes to crash.
+     */
+    public static final String NAMES_PARAM = "names";
 
-	/**
-	 * Parameter to define that all nodes should be crashed.
-	 */
-	public static final String ALL_PARAM = "all";
+    /**
+     * Parameter to define that all nodes should be crashed.
+     */
+    public static final String ALL_PARAM = "all";
 
-	/**
-	 * Creates a new instance of CrashNodes
-	 * 
-	 * @param toCommand1
-	 * @param out1
-	 */
-	public CrashNodes(Object[] toCommand1, java.io.PrintStream out1) {
-		super(toCommand1, out1);
-	}
+    /**
+     * Creates a new instance of CrashNodes
+     *
+     * @param toCommand1
+     * @param out1
+     */
+    public CrashNodes(Object[] toCommand1, java.io.PrintStream out1) {
+        super(toCommand1, out1);
+    }
 
-	public void exec() throws com.chord.console.ConsoleException {
-		if ((!this.parameters.containsKey(NAMES_PARAM))
-				&& (!this.parameters.containsKey(ALL_PARAM))) {
+    public void exec() throws com.chord.console.ConsoleException {
+        if ((!this.parameters.containsKey(NAMES_PARAM))
+                && (!this.parameters.containsKey(ALL_PARAM))) {
 
-			throw new ConsoleException("Not enough parameters. Provide at "
-					+ "least one node name with help of " + NAMES_PARAM
-					+ " parameter.");
-		}
+            throw new ConsoleException("Not enough parameters. Provide at "
+                    + "least one node name with help of " + NAMES_PARAM
+                    + " parameter.");
+        }
 
-		String namesString = this.parameters.get(NAMES_PARAM);
+        String namesString = this.parameters.get(NAMES_PARAM);
 
-		List<URL> names = new LinkedList<URL>();
-		if (namesString != null) {
-			ListParameter namesParam = new ListParameter(NAMES_PARAM,
-					namesString, false);
-			for (String name : namesParam.getList()) {
-				
-				try {
-					names.add(new URL(URL.KNOWN_PROTOCOLS.get(URL.LOCAL_PROTOCOL) + "://" + name + "/"));
-				} catch (MalformedURLException e) {
-					throw new ConsoleException(e.getMessage()); 
-				} 
-			}
-		} else if (this.parameters.containsKey(ALL_PARAM)) {
-			Registry reg = (Registry) this.toCommand[0];
-			Map<URL, ThreadEndpoint> all = reg.lookupAll();
-			names.addAll(all.keySet());
-		}
+        List<URL> names = new LinkedList<URL>();
+        if (namesString != null) {
+            ListParameter namesParam = new ListParameter(NAMES_PARAM,
+                    namesString, false);
+            for (String name : namesParam.getList()) {
 
-		if (names.size() == 1) {
-			this.crashNode(names.get(0));
-			return;
-		}
+                try {
+                    names.add(new URL(URL.KNOWN_PROTOCOLS.get(URL.LOCAL_PROTOCOL) + "://" + name + "/"));
+                } catch (MalformedURLException e) {
+                    throw new ConsoleException(e.getMessage());
+                }
+            }
+        } else if (this.parameters.containsKey(ALL_PARAM)) {
+            Registry reg = (Registry) this.toCommand[0];
+            Map<URL, ThreadEndpoint> all = reg.lookupAll();
+            names.addAll(all.keySet());
+        }
 
-		/* random to calculate random sleep time */
-		Random r = new Random();
+        if (names.size() == 1) {
+            this.crashNode(names.get(0));
+            return;
+        }
 
-		Thread[] threads = new Thread[names.size()];
+        /* random to calculate random sleep time */
+        Random r = new Random();
 
-		for (int i = 0; i < names.size(); i++) {
-			/* Create thread for each node to crash */
-			long s = r.nextLong() % 501;
-			if (s < 0) {
-				s *= -1;
-			}
-			final long sleep = s;
-			final URL name = names.get(i);
-			threads[i] = new Thread(new Runnable() {
-				public void run() {
-					try {
-						Thread.sleep(sleep);
-					} catch (InterruptedException e) {
-						/*
-						 * nothing to do here.
-						 */
-					}
-					crashNode(name);
-				}
-			});
-			threads[i].start();
-		}
-		for (Thread thread : threads) {
-			try {
-				thread.join();
-			} catch (InterruptedException e) {
-				/*
-				 * does not matter. 
-				 */
-			}
-		}
-	}
+        Thread[] threads = new Thread[names.size()];
 
-	/**
-	 * @param name
-	 */
-	void crashNode(URL name) {
-		Registry reg = (Registry) this.toCommand[0];
-		ThreadEndpoint ep = reg.lookup(name);
-		this.out.println("Crashing node " + name + ".");
-		if (ep != null) {
-			ep.crash();
-			this.out.println("Node with name " + name + " crashed.");
-		} else {
-			this.out.println("Could not find node with name " + name);
-		}
-	}
+        for (int i = 0; i < names.size(); i++) {
+            /* Create thread for each node to crash */
+            long s = r.nextLong() % 501;
+            if (s < 0) {
+                s *= -1;
+            }
+            final long sleep = s;
+            final URL name = names.get(i);
+            threads[i] = new Thread(new Runnable() {
+                public void run() {
+                    try {
+                        Thread.sleep(sleep);
+                    } catch (InterruptedException e) {
+                        /*
+                         * nothing to do here.
+                         */
+                    }
+                    crashNode(name);
+                }
+            });
+            threads[i].start();
+        }
+        for (Thread thread : threads) {
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                /*
+                 * does not matter.
+                 */
+            }
+        }
+    }
 
-	public String getCommandName() {
-		return COMMAND_NAME;
-	}
+    /**
+     * @param name
+     */
+    void crashNode(URL name) {
+        Registry reg = (Registry) this.toCommand[0];
+        ThreadEndpoint ep = reg.lookup(name);
+        this.out.println("Crashing node " + name + ".");
+        if (ep != null) {
+            ep.crash();
+            this.out.println("Node with name " + name + " crashed.");
+        } else {
+            this.out.println("Could not find node with name " + name);
+        }
+    }
 
-	public void printOutHelp() {
-		this.out.println("Crashes all nodes provided by '" + NAMES_PARAM
-				+ "' parameter.");
-		this.out.println("The names of the node must be separated by '_' \n as for the create command.");
-		this.out.println("In order to shutdown all nodes provide parameter '" + ALL_PARAM
-				+ "' with no value.");
-	}
+    public String getCommandName() {
+        return COMMAND_NAME;
+    }
+
+    public void printOutHelp() {
+        this.out.println("Crashes all nodes provided by '" + NAMES_PARAM
+                + "' parameter.");
+        this.out.println("The names of the node must be separated by '_' \n as for the create command.");
+        this.out.println("In order to shutdown all nodes provide parameter '" + ALL_PARAM
+                + "' with no value.");
+    }
 
 }
