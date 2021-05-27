@@ -7,7 +7,7 @@
 SocketEndpoint (OpenChord API 1.0.5)
 </TITLE>
 
-<META NAME="keywords" CONTENT="de.uniba.wiai.lspi.chord.com.socket.SocketEndpoint class">
+<META NAME="keywords" CONTENT="com.chord.socket.SocketEndpoint class">
 
 <LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../../../../stylesheet.css" TITLE="Style">
 
@@ -52,7 +52,7 @@ function windowTitle()
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
 &nbsp;PREV CLASS&nbsp;
-&nbsp;<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/socket/SocketProxy.html" title="class in de.uniba.wiai.lspi.chord.com.socket"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/socket/SocketProxy.html" title="class in com.chord.com.socket"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../../../index.html?de/uniba/wiai/lspi/chord/com/socket/SocketEndpoint.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="SocketEndpoint.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
@@ -72,7 +72,7 @@ function windowTitle()
 </TR>
 <TR>
 <TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
-  SUMMARY:&nbsp;NESTED&nbsp;|&nbsp;<A HREF="#fields_inherited_from_class_de.uniba.wiai.lspi.chord.com.Endpoint">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+  SUMMARY:&nbsp;NESTED&nbsp;|&nbsp;<A HREF="#fields_inherited_from_class_com.chord.Endpoint">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
 <TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
 DETAIL:&nbsp;FIELD&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
 </TR>
@@ -84,30 +84,30 @@ DETAIL:&nbsp;FIELD&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&n
 <!-- ======== START OF CLASS DATA ======== -->
 <H2>
 <FONT SIZE="-1">
-de.uniba.wiai.lspi.chord.com.socket</FONT>
+    com.chord.com.socket</FONT>
 <BR>
 Class SocketEndpoint</H2>
 <PRE>
 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html" title="class or interface in java.lang">java.lang.Object</A>
-  <IMG SRC="../../../../../../../resources/inherit.gif" ALT="extended by "><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html" title="class in de.uniba.wiai.lspi.chord.com">de.uniba.wiai.lspi.chord.com.Endpoint</A>
-      <IMG SRC="../../../../../../../resources/inherit.gif" ALT="extended by "><B>de.uniba.wiai.lspi.chord.com.socket.SocketEndpoint</B>
+  <IMG SRC="../../../../../../../resources/inherit.gif" ALT="extended by "><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html" title="class in com.chord.com">com.chord.Endpoint</A>
+      <IMG SRC="../../../../../../../resources/inherit.gif" ALT="extended by "><B>com.chord.socket.SocketEndpoint</B>
 </PRE>
 <DL>
 <DT><B>All Implemented Interfaces:</B> <DD><A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Runnable.html" title="class or interface in java.lang">Runnable</A></DD>
 </DL>
 <HR>
 <DL>
-<DT><PRE>public final class <B>SocketEndpoint</B><DT>extends <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html" title="class in de.uniba.wiai.lspi.chord.com">Endpoint</A><DT>implements <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Runnable.html" title="class or interface in java.lang">Runnable</A></DL>
+<DT><PRE>public final class <B>SocketEndpoint</B><DT>extends <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html" title="class in com.chord.com">Endpoint</A><DT>implements <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Runnable.html" title="class or interface in java.lang">Runnable</A></DL>
 </PRE>
 
 <P>
-This class represents an <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html" title="class in de.uniba.wiai.lspi.chord.com"><CODE>Endpoint</CODE></A> for communication over socket
+This class represents an <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html" title="class in com.chord.com"><CODE>Endpoint</CODE></A> for communication over socket
  protocol. It provides a <code>ServerSocket</code> to that clients can
  connect and starts for each incoming connection a
  <CODE>RequestHandler</CODE> that handles
  <CODE>Request</CODE>s for method invocations
  from remote nodes. These <CODE>Request</CODE>s
- are sent by one <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/socket/SocketProxy.html" title="class in de.uniba.wiai.lspi.chord.com.socket"><CODE>SocketProxy</CODE></A> representing the node, that this is the
+ are sent by one <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/socket/SocketProxy.html" title="class in com.chord.com.socket"><CODE>SocketProxy</CODE></A> representing the node, that this is the
  endpoint for, at another node.
 <P>
 
@@ -124,10 +124,10 @@ This class represents an <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/
 <B>Field Summary</B></FONT></TH>
 </TR>
 </TABLE>
-&nbsp;<A NAME="fields_inherited_from_class_de.uniba.wiai.lspi.chord.com.Endpoint"><!-- --></A>
+&nbsp;<A NAME="fields_inherited_from_class_com.chord.Endpoint"><!-- --></A>
 <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
 <TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
-<TH ALIGN="left"><B>Fields inherited from class de.uniba.wiai.lspi.chord.com.<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html" title="class in de.uniba.wiai.lspi.chord.com">Endpoint</A></B></TH>
+<TH ALIGN="left"><B>Fields inherited from class com.chord.com.<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html" title="class in com.chord.com">Endpoint</A></B></TH>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD><CODE><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#ACCEPT_ENTRIES">ACCEPT_ENTRIES</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#DISCONNECTED">DISCONNECTED</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#endpoints">endpoints</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#LISTENING">LISTENING</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#METHODS_ALLOWED_IN_ACCEPT_ENTRIES">METHODS_ALLOWED_IN_ACCEPT_ENTRIES</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#node">node</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#STARTED">STARTED</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#url">url</A></CODE></TD>
@@ -143,12 +143,12 @@ This class represents an <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/
 <B>Constructor Summary</B></FONT></TH>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD><CODE><B><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/socket/SocketEndpoint.html#SocketEndpoint(de.uniba.wiai.lspi.chord.com.Node, de.uniba.wiai.lspi.chord.data.URL)">SocketEndpoint</A></B>(<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in de.uniba.wiai.lspi.chord.com">Node</A>&nbsp;node1,
-               <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data">URL</A>&nbsp;url1)</CODE>
+<TD><CODE><B><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/socket/SocketEndpoint.html#SocketEndpoint(com.chord.com.Node, com.chord.data.URL)">SocketEndpoint</A></B>(<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in com.chord.com">Node</A>&nbsp;node1,
+               <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data">URL</A>&nbsp;url1)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a new <code>SocketEndpoint</code> for the given <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in de.uniba.wiai.lspi.chord.com"><CODE>Node</CODE></A>
- with <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data"><CODE>url</CODE></A>.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a new <code>SocketEndpoint</code> for the given <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in com.chord.com"><CODE>Node</CODE></A>
+ with <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data"><CODE>url</CODE></A>.</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -194,13 +194,13 @@ This class represents an <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Run method from <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Runnable.html" title="class or interface in java.lang"><CODE>Runnable</CODE></A> to accept connections from clients.</TD>
 </TR>
 </TABLE>
-&nbsp;<A NAME="methods_inherited_from_class_de.uniba.wiai.lspi.chord.com.Endpoint"><!-- --></A>
+&nbsp;<A NAME="methods_inherited_from_class_com.chord.Endpoint"><!-- --></A>
 <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
 <TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
-<TH ALIGN="left"><B>Methods inherited from class de.uniba.wiai.lspi.chord.com.<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html" title="class in de.uniba.wiai.lspi.chord.com">Endpoint</A></B></TH>
+<TH ALIGN="left"><B>Methods inherited from class com.chord.com.<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html" title="class in com.chord.com">Endpoint</A></B></TH>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD><CODE><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#acceptEntries()">acceptEntries</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#createEndpoint(de.uniba.wiai.lspi.chord.com.Node, de.uniba.wiai.lspi.chord.data.URL)">createEndpoint</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#deregister(de.uniba.wiai.lspi.chord.com.EndpointStateListener)">deregister</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#disconnect()">disconnect</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#getEndpoint(de.uniba.wiai.lspi.chord.data.URL)">getEndpoint</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#getNode()">getNode</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#getState()">getState</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#getURL()">getURL</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#listen()">listen</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#notify(int)">notify</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#register(de.uniba.wiai.lspi.chord.com.EndpointStateListener)">register</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#setState(int)">setState</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#toString()">toString</A></CODE></TD>
+<TD><CODE><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#acceptEntries()">acceptEntries</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#createEndpoint(com.chord.com.Node, com.chord.data.URL)">createEndpoint</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#deregister(com.chord.com.EndpointStateListener)">deregister</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#disconnect()">disconnect</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#getEndpoint(com.chord.data.URL)">getEndpoint</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#getNode()">getNode</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#getState()">getState</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#getURL()">getURL</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#listen()">listen</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#notify(int)">notify</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#register(com.chord.com.EndpointStateListener)">register</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#setState(int)">setState</A>, <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#toString()">toString</A></CODE></TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
@@ -225,19 +225,19 @@ This class represents an <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/
 </TR>
 </TABLE>
 
-<A NAME="SocketEndpoint(de.uniba.wiai.lspi.chord.com.Node, de.uniba.wiai.lspi.chord.data.URL)"><!-- --></A><H3>
+<A NAME="SocketEndpoint(com.chord.Node, com.chord.data.URL)"><!-- --></A><H3>
 SocketEndpoint</H3>
 <PRE>
-public <B>SocketEndpoint</B>(<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in de.uniba.wiai.lspi.chord.com">Node</A>&nbsp;node1,
-                      <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data">URL</A>&nbsp;url1)</PRE>
+public <B>SocketEndpoint</B>(<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in com.chord.com">Node</A>&nbsp;node1,
+                      <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data">URL</A>&nbsp;url1)</PRE>
 <DL>
-<DD>Creates a new <code>SocketEndpoint</code> for the given <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in de.uniba.wiai.lspi.chord.com"><CODE>Node</CODE></A>
- with <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data"><CODE>url</CODE></A>. <code>url</code> must have the protocol indexed
+<DD>Creates a new <code>SocketEndpoint</code> for the given <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in com.chord.com"><CODE>Node</CODE></A>
+ with <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data"><CODE>url</CODE></A>. <code>url</code> must have the protocol indexed
  by <code><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html#SOCKET_PROTOCOL"><CODE>URL.SOCKET_PROTOCOL</CODE></A></code> in the
  <code><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html#KNOWN_PROTOCOLS"><CODE>URL.KNOWN_PROTOCOLS</CODE></A></code> array.
 <P>
 <DL>
-<DT><B>Parameters:</B><DD><CODE>node1</CODE> - The <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in de.uniba.wiai.lspi.chord.com"><CODE>Node</CODE></A> node this endpoint provides connections to.<DD><CODE>url1</CODE> - The <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data"><CODE>URL</CODE></A> of this endpoint.</DL>
+<DT><B>Parameters:</B><DD><CODE>node1</CODE> - The <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in com.chord.com"><CODE>Node</CODE></A> node this endpoint provides connections to.<DD><CODE>url1</CODE> - The <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data"><CODE>URL</CODE></A> of this endpoint.</DL>
 </DL>
 
 <!-- ============ METHOD DETAIL ========== -->
@@ -264,7 +264,7 @@ protected void <B>openConnections</B>()</PRE>
  incoming connections.
 <P>
 <DD><DL>
-<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#openConnections()">openConnections</A></CODE> in class <CODE><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html" title="class in de.uniba.wiai.lspi.chord.com">Endpoint</A></CODE></DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#openConnections()">openConnections</A></CODE> in class <CODE><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html" title="class in com.chord.com">Endpoint</A></CODE></DL>
 </DD>
 <DD><DL>
 </DL>
@@ -285,7 +285,7 @@ protected void <B>entriesAcceptable</B>()</PRE>
  <code>ACCEPT_ENTRIES</code>.
 <P>
 <DD><DL>
-<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#entriesAcceptable()">entriesAcceptable</A></CODE> in class <CODE><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html" title="class in de.uniba.wiai.lspi.chord.com">Endpoint</A></CODE></DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#entriesAcceptable()">entriesAcceptable</A></CODE> in class <CODE><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html" title="class in com.chord.com">Endpoint</A></CODE></DL>
 </DD>
 <DD><DL>
 </DL>
@@ -303,7 +303,7 @@ protected void <B>closeConnections</B>()</PRE>
  <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#disconnect()"><CODE>Endpoint.disconnect()</CODE></A>to close all connections from the chord network.
 <P>
 <DD><DL>
-<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#closeConnections()">closeConnections</A></CODE> in class <CODE><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html" title="class in de.uniba.wiai.lspi.chord.com">Endpoint</A></CODE></DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#closeConnections()">closeConnections</A></CODE> in class <CODE><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html" title="class in com.chord.com">Endpoint</A></CODE></DL>
 </DD>
 <DD><DL>
 </DL>
@@ -358,7 +358,7 @@ public void <B>run</B>()</PRE>
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
 &nbsp;PREV CLASS&nbsp;
-&nbsp;<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/socket/SocketProxy.html" title="class in de.uniba.wiai.lspi.chord.com.socket"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/socket/SocketProxy.html" title="class in com.chord.com.socket"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../../../index.html?de/uniba/wiai/lspi/chord/com/socket/SocketEndpoint.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="SocketEndpoint.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
@@ -378,7 +378,7 @@ public void <B>run</B>()</PRE>
 </TR>
 <TR>
 <TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
-  SUMMARY:&nbsp;NESTED&nbsp;|&nbsp;<A HREF="#fields_inherited_from_class_de.uniba.wiai.lspi.chord.com.Endpoint">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+  SUMMARY:&nbsp;NESTED&nbsp;|&nbsp;<A HREF="#fields_inherited_from_class_com.chord.Endpoint">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
 <TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
 DETAIL:&nbsp;FIELD&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
 </TR>

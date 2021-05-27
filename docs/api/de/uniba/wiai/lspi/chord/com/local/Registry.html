@@ -7,7 +7,7 @@
 Registry (OpenChord API 1.0.5)
 </TITLE>
 
-<META NAME="keywords" CONTENT="de.uniba.wiai.lspi.chord.com.local.Registry class">
+<META NAME="keywords" CONTENT="com.chord.local.Registry class">
 
 <LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../../../../stylesheet.css" TITLE="Style">
 
@@ -51,8 +51,8 @@ function windowTitle()
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/InvocationListener.html" title="interface in de.uniba.wiai.lspi.chord.com.local"><B>PREV CLASS</B></A>&nbsp;
-&nbsp;<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in de.uniba.wiai.lspi.chord.com.local"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/InvocationListener.html" title="interface in com.chord.com.local"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in com.chord.com.local"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../../../index.html?de/uniba/wiai/lspi/chord/com/local/Registry.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="Registry.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
@@ -84,12 +84,12 @@ DETAIL:&nbsp;FIELD&nbsp;|&nbsp;CONSTR&nbsp;|&nbsp;<A HREF="#method_detail">METHO
 <!-- ======== START OF CLASS DATA ======== -->
 <H2>
 <FONT SIZE="-1">
-de.uniba.wiai.lspi.chord.com.local</FONT>
+    com.chord.com.local</FONT>
 <BR>
 Class Registry</H2>
 <PRE>
 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html" title="class or interface in java.lang">java.lang.Object</A>
-  <IMG SRC="../../../../../../../resources/inherit.gif" ALT="extended by "><B>de.uniba.wiai.lspi.chord.com.local.Registry</B>
+  <IMG SRC="../../../../../../../resources/inherit.gif" ALT="extended by "><B>com.chord.local.Registry</B>
 </PRE>
 <HR>
 <DL>
@@ -97,7 +97,7 @@ Class Registry</H2>
 </PRE>
 
 <P>
-This class represents a registry for <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in de.uniba.wiai.lspi.chord.com.local"><CODE>endpoints</CODE></A>that
+This class represents a registry for <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in com.chord.com.local"><CODE>endpoints</CODE></A>that
  can be used to build up a chord network within the same JVM with help of Java
  Threads. This Registry is a singleton so that there is only one instance of
  this in the JVM. A reference to the singleton can be obtained by invocation
@@ -120,8 +120,8 @@ This class represents a registry for <A HREF="../../../../../../../de/uniba/wiai
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/Registry.html#addProxyUsedBy(de.uniba.wiai.lspi.chord.data.URL, de.uniba.wiai.lspi.chord.com.local.ThreadProxy)">addProxyUsedBy</A></B>(<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data">URL</A>&nbsp;url,
-               <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadProxy.html" title="class in de.uniba.wiai.lspi.chord.com.local">ThreadProxy</A>&nbsp;proxy)</CODE>
+<TD><CODE><B><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/Registry.html#addProxyUsedBy(com.chord.data.URL, com.chord.com.local.ThreadProxy)">addProxyUsedBy</A></B>(<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data">URL</A>&nbsp;url,
+               <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadProxy.html" title="class in com.chord.com.local">ThreadProxy</A>&nbsp;proxy)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add the given proxy used by the node with <code>nodeName</code>.</TD>
@@ -129,16 +129,16 @@ This class represents a registry for <A HREF="../../../../../../../de/uniba/wiai
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/Registry.html#bind(de.uniba.wiai.lspi.chord.com.local.ThreadEndpoint)">bind</A></B>(<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in de.uniba.wiai.lspi.chord.com.local">ThreadEndpoint</A>&nbsp;endpoint)</CODE>
+<TD><CODE><B><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/Registry.html#bind(com.chord.com.local.ThreadEndpoint)">bind</A></B>(<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in com.chord.com.local">ThreadEndpoint</A>&nbsp;endpoint)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Register the given <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in de.uniba.wiai.lspi.chord.com.local"><CODE>endpoint</CODE></A>so that it can be
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Register the given <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in com.chord.com.local"><CODE>endpoint</CODE></A>so that it can be
  looked up via <CODE>#lookup(String)</CODE>.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadProxy.html" title="class in de.uniba.wiai.lspi.chord.com.local">ThreadProxy</A>&gt;</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/Registry.html#getProxiesInUseBy(de.uniba.wiai.lspi.chord.data.URL)">getProxiesInUseBy</A></B>(<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data">URL</A>&nbsp;nodeName)</CODE>
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadProxy.html" title="class in com.chord.com.local">ThreadProxy</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/Registry.html#getProxiesInUseBy(com.chord.data.URL)">getProxiesInUseBy</A></B>(<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data">URL</A>&nbsp;nodeName)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get a reference to the <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html" title="class or interface in java.util"><CODE>List</CODE></A>of proxies used by the node with
@@ -146,7 +146,7 @@ This class represents a registry for <A HREF="../../../../../../../de/uniba/wiai
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>static&nbsp;<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/Registry.html" title="class in de.uniba.wiai.lspi.chord.com.local">Registry</A></CODE></FONT></TD>
+<CODE>static&nbsp;<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/Registry.html" title="class in com.chord.com.local">Registry</A></CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/Registry.html#getRegistryInstance()">getRegistryInstance</A></B>()</CODE>
 
 <BR>
@@ -154,17 +154,17 @@ This class represents a registry for <A HREF="../../../../../../../de/uniba/wiai
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in de.uniba.wiai.lspi.chord.com.local">ThreadEndpoint</A></CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/Registry.html#lookup(de.uniba.wiai.lspi.chord.data.URL)">lookup</A></B>(<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data">URL</A>&nbsp;url)</CODE>
+<CODE>&nbsp;<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in com.chord.com.local">ThreadEndpoint</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/Registry.html#lookup(com.chord.data.URL)">lookup</A></B>(<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data">URL</A>&nbsp;url)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This method looks up the <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in de.uniba.wiai.lspi.chord.com.local"><CODE>endpoint</CODE></A>for the
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This method looks up the <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in com.chord.com.local"><CODE>endpoint</CODE></A>for the
   node with the given
  name.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html" title="class or interface in java.util">Map</A>&lt;<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data">URL</A>,<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in de.uniba.wiai.lspi.chord.com.local">ThreadEndpoint</A>&gt;</CODE></FONT></TD>
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html" title="class or interface in java.util">Map</A>&lt;<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data">URL</A>,<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in com.chord.com.local">ThreadEndpoint</A>&gt;</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/Registry.html#lookupAll()">lookupAll</A></B>()</CODE>
 
 <BR>
@@ -173,10 +173,10 @@ This class represents a registry for <A HREF="../../../../../../../de/uniba/wiai
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/Registry.html#removeProxiesInUseBy(de.uniba.wiai.lspi.chord.data.URL)">removeProxiesInUseBy</A></B>(<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data">URL</A>&nbsp;nodeName)</CODE>
+<TD><CODE><B><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/Registry.html#removeProxiesInUseBy(com.chord.data.URL)">removeProxiesInUseBy</A></B>(<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data">URL</A>&nbsp;nodeName)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Removes the <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadProxy.html" title="class in de.uniba.wiai.lspi.chord.com.local"><CODE>proxies</CODE></A> used by the node 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Removes the <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadProxy.html" title="class in com.chord.com.local"><CODE>proxies</CODE></A> used by the node
  with <code>nodeName</code>.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
@@ -198,10 +198,10 @@ This class represents a registry for <A HREF="../../../../../../../de/uniba/wiai
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/Registry.html#unbind(de.uniba.wiai.lspi.chord.com.local.ThreadEndpoint)">unbind</A></B>(<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in de.uniba.wiai.lspi.chord.com.local">ThreadEndpoint</A>&nbsp;endpoint)</CODE>
+<TD><CODE><B><A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/Registry.html#unbind(com.chord.com.local.ThreadEndpoint)">unbind</A></B>(<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in com.chord.com.local">ThreadEndpoint</A>&nbsp;endpoint)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Remove the given <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in de.uniba.wiai.lspi.chord.com.local"><CODE>endpoint</CODE></A>from the registry.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Remove the given <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in com.chord.com.local"><CODE>endpoint</CODE></A>from the registry.</TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
@@ -226,43 +226,43 @@ This class represents a registry for <A HREF="../../../../../../../de/uniba/wiai
 </TR>
 </TABLE>
 
-<A NAME="addProxyUsedBy(de.uniba.wiai.lspi.chord.data.URL, de.uniba.wiai.lspi.chord.com.local.ThreadProxy)"><!-- --></A><H3>
+<A NAME="addProxyUsedBy(com.chord.data.URL, com.chord.com.local.ThreadProxy)"><!-- --></A><H3>
 addProxyUsedBy</H3>
 <PRE>
-public void <B>addProxyUsedBy</B>(<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data">URL</A>&nbsp;url,
-                           <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadProxy.html" title="class in de.uniba.wiai.lspi.chord.com.local">ThreadProxy</A>&nbsp;proxy)</PRE>
+public void <B>addProxyUsedBy</B>(<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data">URL</A>&nbsp;url,
+                           <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadProxy.html" title="class in com.chord.com.local">ThreadProxy</A>&nbsp;proxy)</PRE>
 <DL>
 <DD>Add the given proxy used by the node with <code>nodeName</code>.
 <P>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>url</CODE> - The url of the node that uses the proxy.<DD><CODE>proxy</CODE> - The <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadProxy.html" title="class in de.uniba.wiai.lspi.chord.com.local"><CODE>proxy</CODE></A>to add.</DL>
+<DT><B>Parameters:</B><DD><CODE>url</CODE> - The url of the node that uses the proxy.<DD><CODE>proxy</CODE> - The <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadProxy.html" title="class in com.chord.com.local"><CODE>proxy</CODE></A>to add.</DL>
 </DD>
 </DL>
 <HR>
 
-<A NAME="getProxiesInUseBy(de.uniba.wiai.lspi.chord.data.URL)"><!-- --></A><H3>
+<A NAME="getProxiesInUseBy(com.chord.data.URL)"><!-- --></A><H3>
 getProxiesInUseBy</H3>
 <PRE>
-public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadProxy.html" title="class in de.uniba.wiai.lspi.chord.com.local">ThreadProxy</A>&gt; <B>getProxiesInUseBy</B>(<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data">URL</A>&nbsp;nodeName)</PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadProxy.html" title="class in com.chord.com.local">ThreadProxy</A>&gt; <B>getProxiesInUseBy</B>(<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data">URL</A>&nbsp;nodeName)</PRE>
 <DL>
 <DD>Get a reference to the <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html" title="class or interface in java.util"><CODE>List</CODE></A>of proxies used by the node with
  <code>nodeName</code>.
 <P>
 <DD><DL>
 <DT><B>Parameters:</B><DD><CODE>url</CODE> - The url of the node.
-<DT><B>Returns:</B><DD><A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html" title="class or interface in java.util"><CODE>List</CODE></A>of <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadProxy.html" title="class in de.uniba.wiai.lspi.chord.com.local"><CODE>proxies</CODE></A>that are used by the
+<DT><B>Returns:</B><DD><A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html" title="class or interface in java.util"><CODE>List</CODE></A>of <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadProxy.html" title="class in com.chord.com.local"><CODE>proxies</CODE></A>that are used by the
          node with <code>nodeName</code>. May return <code>null</code>
          if there are no proxies in use by the node.</DL>
 </DD>
 </DL>
 <HR>
 
-<A NAME="removeProxiesInUseBy(de.uniba.wiai.lspi.chord.data.URL)"><!-- --></A><H3>
+<A NAME="removeProxiesInUseBy(com.chord.data.URL)"><!-- --></A><H3>
 removeProxiesInUseBy</H3>
 <PRE>
-public void <B>removeProxiesInUseBy</B>(<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data">URL</A>&nbsp;nodeName)</PRE>
+public void <B>removeProxiesInUseBy</B>(<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data">URL</A>&nbsp;nodeName)</PRE>
 <DL>
-<DD>Removes the <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadProxy.html" title="class in de.uniba.wiai.lspi.chord.com.local"><CODE>proxies</CODE></A> used by the node 
+<DD>Removes the <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadProxy.html" title="class in com.chord.com.local"><CODE>proxies</CODE></A> used by the node
  with <code>nodeName</code>.
 <P>
 <DD><DL>
@@ -272,46 +272,46 @@ public void <B>removeProxiesInUseBy</B>(<A HREF="../../../../../../../de/uniba/w
 </DL>
 <HR>
 
-<A NAME="bind(de.uniba.wiai.lspi.chord.com.local.ThreadEndpoint)"><!-- --></A><H3>
+<A NAME="bind(com.chord.com.local.ThreadEndpoint)"><!-- --></A><H3>
 bind</H3>
 <PRE>
-public void <B>bind</B>(<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in de.uniba.wiai.lspi.chord.com.local">ThreadEndpoint</A>&nbsp;endpoint)</PRE>
+public void <B>bind</B>(<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in com.chord.com.local">ThreadEndpoint</A>&nbsp;endpoint)</PRE>
 <DL>
-<DD>Register the given <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in de.uniba.wiai.lspi.chord.com.local"><CODE>endpoint</CODE></A>so that it can be
+<DD>Register the given <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in com.chord.com.local"><CODE>endpoint</CODE></A>so that it can be
  looked up via <CODE>#lookup(String)</CODE>.
 <P>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>endpoint</CODE> - The <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in de.uniba.wiai.lspi.chord.com.local"><CODE>ThreadEndpoint</CODE></A>to register.</DL>
+<DT><B>Parameters:</B><DD><CODE>endpoint</CODE> - The <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in com.chord.com.local"><CODE>ThreadEndpoint</CODE></A>to register.</DL>
 </DD>
 </DL>
 <HR>
 
-<A NAME="unbind(de.uniba.wiai.lspi.chord.com.local.ThreadEndpoint)"><!-- --></A><H3>
+<A NAME="unbind(com.chord.com.local.ThreadEndpoint)"><!-- --></A><H3>
 unbind</H3>
 <PRE>
-public void <B>unbind</B>(<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in de.uniba.wiai.lspi.chord.com.local">ThreadEndpoint</A>&nbsp;endpoint)</PRE>
+public void <B>unbind</B>(<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in com.chord.com.local">ThreadEndpoint</A>&nbsp;endpoint)</PRE>
 <DL>
-<DD>Remove the given <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in de.uniba.wiai.lspi.chord.com.local"><CODE>endpoint</CODE></A>from the registry.
+<DD>Remove the given <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in com.chord.com.local"><CODE>endpoint</CODE></A>from the registry.
 <P>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>endpoint</CODE> - <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in de.uniba.wiai.lspi.chord.com.local"><CODE>ThreadEndpoint</CODE></A>to remove.</DL>
+<DT><B>Parameters:</B><DD><CODE>endpoint</CODE> - <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in com.chord.com.local"><CODE>ThreadEndpoint</CODE></A>to remove.</DL>
 </DD>
 </DL>
 <HR>
 
-<A NAME="lookup(de.uniba.wiai.lspi.chord.data.URL)"><!-- --></A><H3>
+<A NAME="lookup(com.chord.data.URL)"><!-- --></A><H3>
 lookup</H3>
 <PRE>
-public <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in de.uniba.wiai.lspi.chord.com.local">ThreadEndpoint</A> <B>lookup</B>(<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data">URL</A>&nbsp;url)</PRE>
+public <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in com.chord.com.local">ThreadEndpoint</A> <B>lookup</B>(<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data">URL</A>&nbsp;url)</PRE>
 <DL>
-<DD>This method looks up the <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in de.uniba.wiai.lspi.chord.com.local"><CODE>endpoint</CODE></A>for the
+<DD>This method looks up the <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in com.chord.com.local"><CODE>endpoint</CODE></A>for the
   node with the given
  name. If no endpoint is found <code>null</code> is returned.
 <P>
 <DD><DL>
 <DT><B>Parameters:</B><DD><CODE>url</CODE> - The url of the node, for which the
-            <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in de.uniba.wiai.lspi.chord.com.local"><CODE>endpoint</CODE></A>is looked up.
-<DT><B>Returns:</B><DD>Reference to the <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in de.uniba.wiai.lspi.chord.com.local"><CODE>endpoint</CODE></A>of node with
+            <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in com.chord.com.local"><CODE>endpoint</CODE></A>is looked up.
+<DT><B>Returns:</B><DD>Reference to the <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in com.chord.com.local"><CODE>endpoint</CODE></A>of node with
          name "<code>name</code>". May be <code>null</code> if no
          such reference exists.</DL>
 </DD>
@@ -321,13 +321,13 @@ public <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEn
 <A NAME="lookupAll()"><!-- --></A><H3>
 lookupAll</H3>
 <PRE>
-public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html" title="class or interface in java.util">Map</A>&lt;<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data">URL</A>,<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in de.uniba.wiai.lspi.chord.com.local">ThreadEndpoint</A>&gt; <B>lookupAll</B>()</PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html" title="class or interface in java.util">Map</A>&lt;<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data">URL</A>,<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in com.chord.com.local">ThreadEndpoint</A>&gt; <B>lookupAll</B>()</PRE>
 <DL>
 <DD>Returns an array of all registered endpoints.
 <P>
 <DD><DL>
 
-<DT><B>Returns:</B><DD>Array of all registered <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in de.uniba.wiai.lspi.chord.com.local"><CODE>endpoints</CODE></A>. If no
+<DT><B>Returns:</B><DD>Array of all registered <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in com.chord.com.local"><CODE>endpoints</CODE></A>. If no
          endpoint is registered an array of length 0 is returned.</DL>
 </DD>
 </DL>
@@ -336,7 +336,7 @@ public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html" titl
 <A NAME="getRegistryInstance()"><!-- --></A><H3>
 getRegistryInstance</H3>
 <PRE>
-public static <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/Registry.html" title="class in de.uniba.wiai.lspi.chord.com.local">Registry</A> <B>getRegistryInstance</B>()</PRE>
+public static <A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/Registry.html" title="class in com.chord.com.local">Registry</A> <B>getRegistryInstance</B>()</PRE>
 <DL>
 <DD>Get a reference to the registry singleton.
  This method is not thread-safe!
@@ -406,8 +406,8 @@ public void <B>shutdown</B>()</PRE>
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/InvocationListener.html" title="interface in de.uniba.wiai.lspi.chord.com.local"><B>PREV CLASS</B></A>&nbsp;
-&nbsp;<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in de.uniba.wiai.lspi.chord.com.local"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/InvocationListener.html" title="interface in com.chord.com.local"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in com.chord.com.local"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../../../index.html?de/uniba/wiai/lspi/chord/com/local/Registry.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="Registry.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;

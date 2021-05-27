@@ -7,7 +7,7 @@
 Endpoint (OpenChord API 1.0.5)
 </TITLE>
 
-<META NAME="keywords" CONTENT="de.uniba.wiai.lspi.chord.com.Endpoint class">
+<META NAME="keywords" CONTENT="com.chord.Endpoint class">
 
 <LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../../../stylesheet.css" TITLE="Style">
 
@@ -51,8 +51,8 @@ function windowTitle()
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/CommunicationException.html" title="class in de.uniba.wiai.lspi.chord.com"><B>PREV CLASS</B></A>&nbsp;
-&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/EndpointStateListener.html" title="interface in de.uniba.wiai.lspi.chord.com"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/CommunicationException.html" title="class in com.chord.com"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/EndpointStateListener.html" title="interface in com.chord.com"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../../index.html?de/uniba/wiai/lspi/chord/com/Endpoint.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="Endpoint.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
@@ -84,15 +84,15 @@ DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor
 <!-- ======== START OF CLASS DATA ======== -->
 <H2>
 <FONT SIZE="-1">
-de.uniba.wiai.lspi.chord.com</FONT>
+    com.chord.com</FONT>
 <BR>
 Class Endpoint</H2>
 <PRE>
 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html" title="class or interface in java.lang">java.lang.Object</A>
-  <IMG SRC="../../../../../../resources/inherit.gif" ALT="extended by "><B>de.uniba.wiai.lspi.chord.com.Endpoint</B>
+  <IMG SRC="../../../../../../resources/inherit.gif" ALT="extended by "><B>com.chord.Endpoint</B>
 </PRE>
 <DL>
-<DT><B>Direct Known Subclasses:</B> <DD><A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/rmi/RMIEndpoint.html" title="class in de.uniba.wiai.lspi.chord.com.rmi">RMIEndpoint</A>, <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/socket/SocketEndpoint.html" title="class in de.uniba.wiai.lspi.chord.com.socket">SocketEndpoint</A>, <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in de.uniba.wiai.lspi.chord.com.local">ThreadEndpoint</A></DD>
+<DT><B>Direct Known Subclasses:</B> <DD><A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/rmi/RMIEndpoint.html" title="class in com.chord.com.rmi">RMIEndpoint</A>, <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/socket/SocketEndpoint.html" title="class in com.chord.com.socket">SocketEndpoint</A>, <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/local/ThreadEndpoint.html" title="class in com.chord.com.local">ThreadEndpoint</A></DD>
 </DL>
 <HR>
 <DL>
@@ -101,7 +101,7 @@ Class Endpoint</H2>
 
 <P>
 <p>
- This class represents an endpoint, which wraps a <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in de.uniba.wiai.lspi.chord.com"><CODE>Node</CODE></A>, so that other
+ This class represents an endpoint, which wraps a <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in com.chord.com"><CODE>Node</CODE></A>, so that other
  nodes can connect to the node using a protocol.
  </p>
  <p>
@@ -110,17 +110,17 @@ Class Endpoint</H2>
  </p>
  <p>
  This is the abstract class that has to be implemented by all Endpoints. An
- Endpoint enables other chord peers to connect to a <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in de.uniba.wiai.lspi.chord.com"><CODE>node</CODE></A> with
+ Endpoint enables other chord peers to connect to a <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in com.chord.com"><CODE>node</CODE></A> with
  help of a given protocol. Each node in a chord network has to have exactly
  one endpoint.
  </p>
  <p>
  For each protocol that shall be supported a separate endpoint has to be
- implemented. To initialise endpoints for a <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in de.uniba.wiai.lspi.chord.com"><CODE>Node</CODE></A> an <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data"><CODE>URL</CODE></A> has to
- be provided to the <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#createEndpoint(de.uniba.wiai.lspi.chord.com.Node, de.uniba.wiai.lspi.chord.data.URL)"><CODE>createEndpoint(Node, URL)</CODE></A> endpoint factory
+ implemented. To initialise endpoints for a <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in com.chord.com"><CODE>Node</CODE></A> an <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data"><CODE>URL</CODE></A> has to
+ be provided to the <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#createEndpoint(com.chord.com.Node, com.chord.data.URL)"><CODE>createEndpoint(Node, URL)</CODE></A> endpoint factory
  method. This methods tries to determine the endpoint with help of the
  protocol names defined by the url. Supported protocols can be found in the
- <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data"><CODE>URL</CODE></A> class.
+ <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data"><CODE>URL</CODE></A> class.
  </p>
  An Endpoint can be in three states:
  <ul>
@@ -175,7 +175,7 @@ Class Endpoint</H2>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>protected static&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html" title="class or interface in java.util">Map</A>&lt;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data">URL</A>,<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html" title="class in de.uniba.wiai.lspi.chord.com">Endpoint</A>&gt;</CODE></FONT></TD>
+<CODE>protected static&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html" title="class or interface in java.util">Map</A>&lt;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data">URL</A>,<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html" title="class in com.chord.com">Endpoint</A>&gt;</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#endpoints">endpoints</A></B></CODE>
 
 <BR>
@@ -200,11 +200,11 @@ Class Endpoint</H2>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>protected &nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in de.uniba.wiai.lspi.chord.com">Node</A></CODE></FONT></TD>
+<CODE>protected &nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in com.chord.com">Node</A></CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#node">node</A></B></CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in de.uniba.wiai.lspi.chord.com"><CODE>node</CODE></A>on which this endpoint invokes methods.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in com.chord.com"><CODE>node</CODE></A>on which this endpoint invokes methods.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -216,11 +216,11 @@ Class Endpoint</H2>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>protected &nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data">URL</A></CODE></FONT></TD>
+<CODE>protected &nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data">URL</A></CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#url">url</A></B></CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data"><CODE>URL</CODE></A>that can be used to connect to this endpoint.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data"><CODE>URL</CODE></A>that can be used to connect to this endpoint.</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -235,8 +235,8 @@ Class Endpoint</H2>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>protected </CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#Endpoint(de.uniba.wiai.lspi.chord.com.Node, de.uniba.wiai.lspi.chord.data.URL)">Endpoint</A></B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in de.uniba.wiai.lspi.chord.com">Node</A>&nbsp;node1,
-         <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data">URL</A>&nbsp;url1)</CODE>
+<TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#Endpoint(com.chord.com.Node, com.chord.data.URL)">Endpoint</A></B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in com.chord.com">Node</A>&nbsp;node1,
+         <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data">URL</A>&nbsp;url1)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
@@ -271,9 +271,9 @@ Class Endpoint</H2>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>static&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html" title="class in de.uniba.wiai.lspi.chord.com">Endpoint</A></CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#createEndpoint(de.uniba.wiai.lspi.chord.com.Node, de.uniba.wiai.lspi.chord.data.URL)">createEndpoint</A></B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in de.uniba.wiai.lspi.chord.com">Node</A>&nbsp;node,
-               <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data">URL</A>&nbsp;url)</CODE>
+<CODE>static&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html" title="class in com.chord.com">Endpoint</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#createEndpoint(com.chord.com.Node, com.chord.data.URL)">createEndpoint</A></B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in com.chord.com">Node</A>&nbsp;node,
+               <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data">URL</A>&nbsp;url)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create the endpoints for the protocol given by <code>url</code>.</TD>
@@ -281,7 +281,7 @@ Class Endpoint</H2>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#deregister(de.uniba.wiai.lspi.chord.com.EndpointStateListener)">deregister</A></B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/EndpointStateListener.html" title="interface in de.uniba.wiai.lspi.chord.com">EndpointStateListener</A>&nbsp;listener)</CODE>
+<TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#deregister(com.chord.com.EndpointStateListener)">deregister</A></B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/EndpointStateListener.html" title="interface in com.chord.com">EndpointStateListener</A>&nbsp;listener)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Remove a listener that listened for state changes of this endpoint.</TD>
@@ -304,15 +304,15 @@ Class Endpoint</H2>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>static&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html" title="class in de.uniba.wiai.lspi.chord.com">Endpoint</A></CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#getEndpoint(de.uniba.wiai.lspi.chord.data.URL)">getEndpoint</A></B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data">URL</A>&nbsp;url)</CODE>
+<CODE>static&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html" title="class in com.chord.com">Endpoint</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#getEndpoint(com.chord.data.URL)">getEndpoint</A></B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data">URL</A>&nbsp;url)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get the <code>Endpoint</code> for the given <code>url</code>.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in de.uniba.wiai.lspi.chord.com">Node</A></CODE></FONT></TD>
+<CODE>&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in com.chord.com">Node</A></CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#getNode()">getNode</A></B>()</CODE>
 
 <BR>
@@ -328,11 +328,11 @@ Class Endpoint</H2>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data">URL</A></CODE></FONT></TD>
+<CODE>&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data">URL</A></CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#getURL()">getURL</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get the <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data"><CODE>URL</CODE></A>of this endpoint.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get the <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data"><CODE>URL</CODE></A>of this endpoint.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -362,7 +362,7 @@ Class Endpoint</H2>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#register(de.uniba.wiai.lspi.chord.com.EndpointStateListener)">register</A></B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/EndpointStateListener.html" title="interface in de.uniba.wiai.lspi.chord.com">EndpointStateListener</A>&nbsp;listener)</CODE>
+<TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#register(com.chord.com.EndpointStateListener)">register</A></B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/EndpointStateListener.html" title="interface in com.chord.com">EndpointStateListener</A>&nbsp;listener)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Register a listener that is notified when the state of this endpoint
@@ -410,9 +410,9 @@ Class Endpoint</H2>
 <A NAME="endpoints"><!-- --></A><H3>
 endpoints</H3>
 <PRE>
-protected static final <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html" title="class or interface in java.util">Map</A>&lt;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data">URL</A>,<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html" title="class in de.uniba.wiai.lspi.chord.com">Endpoint</A>&gt; <B>endpoints</B></PRE>
+protected static final <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html" title="class or interface in java.util">Map</A>&lt;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data">URL</A>,<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html" title="class in com.chord.com">Endpoint</A>&gt; <B>endpoints</B></PRE>
 <DL>
-<DD>Map containing all endpoints. Key: <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data"><CODE>URL</CODE></A>. Value:
+<DD>Map containing all endpoints. Key: <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data"><CODE>URL</CODE></A>. Value:
  <code>Endpoint</code>.
 <P>
 <DL>
@@ -428,7 +428,7 @@ public static final int <B>STARTED</B></PRE>
 <DD>Integer representation of state.
 <P>
 <DL>
-<DT><B>See Also:</B><DD><A HREF="../../../../../../constant-values.html#de.uniba.wiai.lspi.chord.com.Endpoint.STARTED">Constant Field Values</A></DL>
+<DT><B>See Also:</B><DD><A HREF="../../../../../../constant-values.html#com.chord.com.Endpoint.STARTED">Constant Field Values</A></DL>
 </DL>
 <HR>
 
@@ -440,7 +440,7 @@ public static final int <B>LISTENING</B></PRE>
 <DD>Integer representation of state.
 <P>
 <DL>
-<DT><B>See Also:</B><DD><A HREF="../../../../../../constant-values.html#de.uniba.wiai.lspi.chord.com.Endpoint.LISTENING">Constant Field Values</A></DL>
+<DT><B>See Also:</B><DD><A HREF="../../../../../../constant-values.html#com.chord.com.Endpoint.LISTENING">Constant Field Values</A></DL>
 </DL>
 <HR>
 
@@ -452,7 +452,7 @@ public static final int <B>ACCEPT_ENTRIES</B></PRE>
 <DD>Integer representation of state.
 <P>
 <DL>
-<DT><B>See Also:</B><DD><A HREF="../../../../../../constant-values.html#de.uniba.wiai.lspi.chord.com.Endpoint.ACCEPT_ENTRIES">Constant Field Values</A></DL>
+<DT><B>See Also:</B><DD><A HREF="../../../../../../constant-values.html#com.chord.com.Endpoint.ACCEPT_ENTRIES">Constant Field Values</A></DL>
 </DL>
 <HR>
 
@@ -464,7 +464,7 @@ public static final int <B>DISCONNECTED</B></PRE>
 <DD>Integer representation of state.
 <P>
 <DL>
-<DT><B>See Also:</B><DD><A HREF="../../../../../../constant-values.html#de.uniba.wiai.lspi.chord.com.Endpoint.DISCONNECTED">Constant Field Values</A></DL>
+<DT><B>See Also:</B><DD><A HREF="../../../../../../constant-values.html#com.chord.com.Endpoint.DISCONNECTED">Constant Field Values</A></DL>
 </DL>
 <HR>
 
@@ -475,7 +475,7 @@ public static final <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/L
 <DL>
 <DD>Array containing names of methods only allowed to be invoked in state
  <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#ACCEPT_ENTRIES"><CODE>ACCEPT_ENTRIES</CODE></A>. Remember to eventually edit this array if you
- change the methods in interface <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in de.uniba.wiai.lspi.chord.com"><CODE>Node</CODE></A>. The method names contained
+ change the methods in interface <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in com.chord.com"><CODE>Node</CODE></A>. The method names contained
  in this array must be sorted!
 <P>
 <DL>
@@ -486,9 +486,9 @@ public static final <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/L
 <A NAME="url"><!-- --></A><H3>
 url</H3>
 <PRE>
-protected <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data">URL</A> <B>url</B></PRE>
+protected <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data">URL</A> <B>url</B></PRE>
 <DL>
-<DD>The <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data"><CODE>URL</CODE></A>that can be used to connect to this endpoint.
+<DD>The <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data"><CODE>URL</CODE></A>that can be used to connect to this endpoint.
 <P>
 <DL>
 </DL>
@@ -498,9 +498,9 @@ protected <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" tit
 <A NAME="node"><!-- --></A><H3>
 node</H3>
 <PRE>
-protected <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in de.uniba.wiai.lspi.chord.com">Node</A> <B>node</B></PRE>
+protected <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in com.chord.com">Node</A> <B>node</B></PRE>
 <DL>
-<DD>The <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in de.uniba.wiai.lspi.chord.com"><CODE>node</CODE></A>on which this endpoint invokes methods.
+<DD>The <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in com.chord.com"><CODE>node</CODE></A>on which this endpoint invokes methods.
 <P>
 <DL>
 </DL>
@@ -516,14 +516,14 @@ protected <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" tit
 </TR>
 </TABLE>
 
-<A NAME="Endpoint(de.uniba.wiai.lspi.chord.com.Node, de.uniba.wiai.lspi.chord.data.URL)"><!-- --></A><H3>
+<A NAME="Endpoint(com.chord.Node, com.chord.data.URL)"><!-- --></A><H3>
 Endpoint</H3>
 <PRE>
-protected <B>Endpoint</B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in de.uniba.wiai.lspi.chord.com">Node</A>&nbsp;node1,
-                   <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data">URL</A>&nbsp;url1)</PRE>
+protected <B>Endpoint</B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in com.chord.com">Node</A>&nbsp;node1,
+                   <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data">URL</A>&nbsp;url1)</PRE>
 <DL>
 <DL>
-<DT><B>Parameters:</B><DD><CODE>node1</CODE> - The <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in de.uniba.wiai.lspi.chord.com"><CODE>Node</CODE></A> this is the Endpoint for.<DD><CODE>url1</CODE> - The <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data"><CODE>URL</CODE></A> that describes the location of this endpoint.</DL>
+<DT><B>Parameters:</B><DD><CODE>node1</CODE> - The <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in com.chord.com"><CODE>Node</CODE></A> this is the Endpoint for.<DD><CODE>url1</CODE> - The <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data"><CODE>URL</CODE></A> that describes the location of this endpoint.</DL>
 </DL>
 
 <!-- ============ METHOD DETAIL ========== -->
@@ -539,7 +539,7 @@ protected <B>Endpoint</B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/co
 <A NAME="getNode()"><!-- --></A><H3>
 getNode</H3>
 <PRE>
-public final <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in de.uniba.wiai.lspi.chord.com">Node</A> <B>getNode</B>()</PRE>
+public final <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in com.chord.com">Node</A> <B>getNode</B>()</PRE>
 <DL>
 <DD><DL>
 
@@ -548,10 +548,10 @@ public final <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" 
 </DL>
 <HR>
 
-<A NAME="register(de.uniba.wiai.lspi.chord.com.EndpointStateListener)"><!-- --></A><H3>
+<A NAME="register(com.chord.com.EndpointStateListener)"><!-- --></A><H3>
 register</H3>
 <PRE>
-public final void <B>register</B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/EndpointStateListener.html" title="interface in de.uniba.wiai.lspi.chord.com">EndpointStateListener</A>&nbsp;listener)</PRE>
+public final void <B>register</B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/EndpointStateListener.html" title="interface in com.chord.com">EndpointStateListener</A>&nbsp;listener)</PRE>
 <DL>
 <DD>Register a listener that is notified when the state of this endpoint
  changes.
@@ -562,10 +562,10 @@ public final void <B>register</B>(<A HREF="../../../../../../de/uniba/wiai/lspi/
 </DL>
 <HR>
 
-<A NAME="deregister(de.uniba.wiai.lspi.chord.com.EndpointStateListener)"><!-- --></A><H3>
+<A NAME="deregister(com.chord.com.EndpointStateListener)"><!-- --></A><H3>
 deregister</H3>
 <PRE>
-public final void <B>deregister</B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/EndpointStateListener.html" title="interface in de.uniba.wiai.lspi.chord.com">EndpointStateListener</A>&nbsp;listener)</PRE>
+public final void <B>deregister</B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/EndpointStateListener.html" title="interface in com.chord.com">EndpointStateListener</A>&nbsp;listener)</PRE>
 <DL>
 <DD>Remove a listener that listened for state changes of this endpoint.
 <P>
@@ -594,13 +594,13 @@ protected void <B>notify</B>(int&nbsp;s)</PRE>
 <A NAME="getURL()"><!-- --></A><H3>
 getURL</H3>
 <PRE>
-public <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data">URL</A> <B>getURL</B>()</PRE>
+public <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data">URL</A> <B>getURL</B>()</PRE>
 <DL>
-<DD>Get the <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data"><CODE>URL</CODE></A>of this endpoint.
+<DD>Get the <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data"><CODE>URL</CODE></A>of this endpoint.
 <P>
 <DD><DL>
 
-<DT><B>Returns:</B><DD>The <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data"><CODE>URL</CODE></A>that can be used to connect to this endpoint.</DL>
+<DT><B>Returns:</B><DD>The <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data"><CODE>URL</CODE></A>that can be used to connect to this endpoint.</DL>
 </DD>
 </DL>
 <HR>
@@ -720,16 +720,16 @@ protected abstract void <B>closeConnections</B>()</PRE>
 </DL>
 <HR>
 
-<A NAME="createEndpoint(de.uniba.wiai.lspi.chord.com.Node, de.uniba.wiai.lspi.chord.data.URL)"><!-- --></A><H3>
+<A NAME="createEndpoint(com.chord.Node, com.chord.data.URL)"><!-- --></A><H3>
 createEndpoint</H3>
 <PRE>
-public static <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html" title="class in de.uniba.wiai.lspi.chord.com">Endpoint</A> <B>createEndpoint</B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in de.uniba.wiai.lspi.chord.com">Node</A>&nbsp;node,
-                                      <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data">URL</A>&nbsp;url)</PRE>
+public static <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html" title="class in com.chord.com">Endpoint</A> <B>createEndpoint</B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Node.html" title="class in com.chord.com">Node</A>&nbsp;node,
+                                      <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data">URL</A>&nbsp;url)</PRE>
 <DL>
 <DD>Create the endpoints for the protocol given by <code>url</code>. An
- URL must have a known protocol. An endpoint for an <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data"><CODE>URL</CODE></A> can only
+ URL must have a known protocol. An endpoint for an <A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data"><CODE>URL</CODE></A> can only
  be create once and then be obtained with help of
- <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#getEndpoint(de.uniba.wiai.lspi.chord.data.URL)"><CODE>getEndpoint(URL)</CODE></A>. An endpoint for an url must again be
+ <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#getEndpoint(com.chord.data.URL)"><CODE>getEndpoint(URL)</CODE></A>. An endpoint for an url must again be
  created if the <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html#disconnect()"><CODE>disconnect()</CODE></A> has been invoked.
 <P>
 <DD><DL>
@@ -744,10 +744,10 @@ public static <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.h
 </DL>
 <HR>
 
-<A NAME="getEndpoint(de.uniba.wiai.lspi.chord.data.URL)"><!-- --></A><H3>
+<A NAME="getEndpoint(com.chord.data.URL)"><!-- --></A><H3>
 getEndpoint</H3>
 <PRE>
-public static <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html" title="class in de.uniba.wiai.lspi.chord.com">Endpoint</A> <B>getEndpoint</B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in de.uniba.wiai.lspi.chord.data">URL</A>&nbsp;url)</PRE>
+public static <A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/Endpoint.html" title="class in com.chord.com">Endpoint</A> <B>getEndpoint</B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/data/URL.html" title="class in com.chord.data">URL</A>&nbsp;url)</PRE>
 <DL>
 <DD>Get the <code>Endpoint</code> for the given <code>url</code>.
 <P>
@@ -803,8 +803,8 @@ public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html" t
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/CommunicationException.html" title="class in de.uniba.wiai.lspi.chord.com"><B>PREV CLASS</B></A>&nbsp;
-&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/EndpointStateListener.html" title="interface in de.uniba.wiai.lspi.chord.com"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/CommunicationException.html" title="class in com.chord.com"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/com/EndpointStateListener.html" title="interface in com.chord.com"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../../index.html?de/uniba/wiai/lspi/chord/com/Endpoint.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="Endpoint.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;

@@ -7,7 +7,7 @@
 CommandFactory (OpenChord API 1.0.5)
 </TITLE>
 
-<META NAME="keywords" CONTENT="de.uniba.wiai.lspi.util.console.CommandFactory class">
+<META NAME="keywords" CONTENT="com.chord.console.CommandFactory class">
 
 <LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../../../stylesheet.css" TITLE="Style">
 
@@ -51,8 +51,8 @@ function windowTitle()
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in de.uniba.wiai.lspi.util.console"><B>PREV CLASS</B></A>&nbsp;
-&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/util/console/ConsoleException.html" title="class in de.uniba.wiai.lspi.util.console"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in com.chord.console"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/util/console/ConsoleException.html" title="class in com.chord.console"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../../index.html?de/uniba/wiai/lspi/util/console/CommandFactory.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="CommandFactory.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
@@ -84,12 +84,12 @@ DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor
 <!-- ======== START OF CLASS DATA ======== -->
 <H2>
 <FONT SIZE="-1">
-de.uniba.wiai.lspi.util.console</FONT>
+    com.chord.console</FONT>
 <BR>
 Class CommandFactory</H2>
 <PRE>
 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html" title="class or interface in java.lang">java.lang.Object</A>
-  <IMG SRC="../../../../../../resources/inherit.gif" ALT="extended by "><B>de.uniba.wiai.lspi.util.console.CommandFactory</B>
+  <IMG SRC="../../../../../../resources/inherit.gif" ALT="extended by "><B>com.chord.console.CommandFactory</B>
 </PRE>
 <HR>
 <DL>
@@ -97,9 +97,9 @@ Class CommandFactory</H2>
 </PRE>
 
 <P>
-Factory responsible to create instances of <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in de.uniba.wiai.lspi.util.console"><CODE>Command</CODE></A> given the commands
+Factory responsible to create instances of <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in com.chord.console"><CODE>Command</CODE></A> given the commands
  name. The factory must be supplied with a mapping from the commands' names to
- the commands' classes, which are subclasses of <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in de.uniba.wiai.lspi.util.console"><CODE>Command</CODE></A>. The mapping
+ the commands' classes, which are subclasses of <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in com.chord.console"><CODE>Command</CODE></A>. The mapping
  is provided through a Hashtable containing keys (Strings) representing
  command names and values (Strings) representing class names. <br/> <div> For
  example: <br/> <CODE> MyClass toCommand = new MyClass(...); <br/> Hashtable
@@ -109,7 +109,7 @@ Factory responsible to create instances of <A HREF="../../../../../../de/uniba/w
  the factory is provided with one or more Objects, on which the commands will
  be executed. Additionally the mapping from command names to command classes
  implementing the command must be provided to the <code>CommandFactory</code>.
- This factory is used by <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/ConsoleThread.html" title="class in de.uniba.wiai.lspi.util.console"><CODE>ConsoleThread</CODE></A>.
+ This factory is used by <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/ConsoleThread.html" title="class in com.chord.console"><CODE>ConsoleThread</CODE></A>.
 <P>
 
 <P>
@@ -134,7 +134,7 @@ Factory responsible to create instances of <A HREF="../../../../../../de/uniba/w
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>protected &nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>,<A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in de.uniba.wiai.lspi.util.console">Command</A>&gt;</CODE></FONT></TD>
+<CODE>protected &nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>,<A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in com.chord.console">Command</A>&gt;</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/util/console/CommandFactory.html#instanceMap">instanceMap</A></B></CODE>
 
 <BR>
@@ -146,7 +146,7 @@ Factory responsible to create instances of <A HREF="../../../../../../de/uniba/w
 <TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/util/console/CommandFactory.html#out">out</A></B></CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The PrintStream to that all <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in de.uniba.wiai.lspi.util.console"><CODE>Command</CODE></A>s print their outputs.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The PrintStream to that all <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in com.chord.console"><CODE>Command</CODE></A>s print their outputs.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -191,15 +191,15 @@ Factory responsible to create instances of <A HREF="../../../../../../de/uniba/w
            <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>&nbsp;cmdClass)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add the given <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in de.uniba.wiai.lspi.util.console"><CODE>Command</CODE></A> <code>cmd</code> to this command factory.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add the given <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in com.chord.console"><CODE>Command</CODE></A> <code>cmd</code> to this command factory.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in de.uniba.wiai.lspi.util.console">Command</A></CODE></FONT></TD>
+<CODE>&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in com.chord.console">Command</A></CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/util/console/CommandFactory.html#createCommand(java.lang.String)">createCommand</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>&nbsp;commandLine)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates the <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in de.uniba.wiai.lspi.util.console"><CODE>Command</CODE></A> instance corresponding to the given command
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates the <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in com.chord.console"><CODE>Command</CODE></A> instance corresponding to the given command
  name.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
@@ -208,7 +208,7 @@ Factory responsible to create instances of <A HREF="../../../../../../de/uniba/w
 <TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/util/console/CommandFactory.html#getPrintStream()">getPrintStream</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get the PrintStream, to that all <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in de.uniba.wiai.lspi.util.console"><CODE>Command</CODE></A>s created by this
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get the PrintStream, to that all <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in com.chord.console"><CODE>Command</CODE></A>s created by this
  factory, print their output to.</TD>
 </TR>
 </TABLE>
@@ -261,9 +261,9 @@ protected <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html" t
 <A NAME="instanceMap"><!-- --></A><H3>
 instanceMap</H3>
 <PRE>
-protected <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>,<A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in de.uniba.wiai.lspi.util.console">Command</A>&gt; <B>instanceMap</B></PRE>
+protected <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>,<A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in com.chord.console">Command</A>&gt; <B>instanceMap</B></PRE>
 <DL>
-<DD>Map containing already instantiated commands. Key: name of command, Value: instance of   <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in de.uniba.wiai.lspi.util.console"><CODE>Command</CODE></A>  .
+<DD>Map containing already instantiated commands. Key: name of command, Value: instance of   <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in com.chord.console"><CODE>Command</CODE></A>  .
 <P>
 <DL>
 </DL>
@@ -275,7 +275,7 @@ out</H3>
 <PRE>
 protected <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/PrintStream.html" title="class or interface in java.io">PrintStream</A> <B>out</B></PRE>
 <DL>
-<DD>The PrintStream to that all <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in de.uniba.wiai.lspi.util.console"><CODE>Command</CODE></A>s print their outputs.
+<DD>The PrintStream to that all <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in com.chord.console"><CODE>Command</CODE></A>s print their outputs.
 <P>
 <DL>
 </DL>
@@ -301,7 +301,7 @@ public <B>CommandFactory</B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/ja
 <DD>Creates a new instance of CommandFactory.
 <P>
 <DL>
-<DT><B>Parameters:</B><DD><CODE>out</CODE> - The PrintStream, to that all <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in de.uniba.wiai.lspi.util.console"><CODE>Command</CODE></A>s created by this
+<DT><B>Parameters:</B><DD><CODE>out</CODE> - The PrintStream, to that all <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in com.chord.console"><CODE>Command</CODE></A>s created by this
             factory, print their output to.<DD><CODE>toCommand</CODE> - The Objects to execute commands on.<DD><CODE>commandMapping</CODE> - The mapping from command name to command class. This must not
             be <code>null</code> or have a size of zero!</DL>
 </DL>
@@ -322,10 +322,10 @@ addCommand</H3>
 public void <B>addCommand</B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>&nbsp;name,
                        <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>&nbsp;cmdClass)</PRE>
 <DL>
-<DD>Add the given <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in de.uniba.wiai.lspi.util.console"><CODE>Command</CODE></A> <code>cmd</code> to this command factory.
+<DD>Add the given <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in com.chord.console"><CODE>Command</CODE></A> <code>cmd</code> to this command factory.
 <P>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>name</CODE> - The name of the command to add.<DD><CODE>cmdClass</CODE> - The class name of <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in de.uniba.wiai.lspi.util.console"><CODE>Command</CODE></A> to add.</DL>
+<DT><B>Parameters:</B><DD><CODE>name</CODE> - The name of the command to add.<DD><CODE>cmdClass</CODE> - The class name of <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in com.chord.console"><CODE>Command</CODE></A> to add.</DL>
 </DD>
 </DL>
 <HR>
@@ -335,7 +335,7 @@ getPrintStream</H3>
 <PRE>
 public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/PrintStream.html" title="class or interface in java.io">PrintStream</A> <B>getPrintStream</B>()</PRE>
 <DL>
-<DD>Get the PrintStream, to that all <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in de.uniba.wiai.lspi.util.console"><CODE>Command</CODE></A>s created by this
+<DD>Get the PrintStream, to that all <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in com.chord.console"><CODE>Command</CODE></A>s created by this
  factory, print their output to.
 <P>
 <DD><DL>
@@ -348,21 +348,21 @@ public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/PrintStream.html
 <A NAME="createCommand(java.lang.String)"><!-- --></A><H3>
 createCommand</H3>
 <PRE>
-public <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in de.uniba.wiai.lspi.util.console">Command</A> <B>createCommand</B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>&nbsp;commandLine)
-                      throws <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/ConsoleException.html" title="class in de.uniba.wiai.lspi.util.console">ConsoleException</A></PRE>
+public <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in com.chord.console">Command</A> <B>createCommand</B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>&nbsp;commandLine)
+                      throws <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/ConsoleException.html" title="class in com.chord.console">ConsoleException</A></PRE>
 <DL>
-<DD>Creates the <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in de.uniba.wiai.lspi.util.console"><CODE>Command</CODE></A> instance corresponding to the given command
+<DD>Creates the <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in com.chord.console"><CODE>Command</CODE></A> instance corresponding to the given command
  name. Therefore the given command line is parsed with help of
- <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/parser/CommandParser.html" title="class in de.uniba.wiai.lspi.util.console.parser"><CODE>CommandParser</CODE></A>, the command name and parameters extracted from
- it, the correspondig <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in de.uniba.wiai.lspi.util.console"><CODE>Command</CODE></A> created and the parameters passed to
+ <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/parser/CommandParser.html" title="class in com.chord.console.parser"><CODE>CommandParser</CODE></A>, the command name and parameters extracted from
+ it, the correspondig <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in com.chord.console"><CODE>Command</CODE></A> created and the parameters passed to
  the command. Then the command is returned.
 <P>
 <DD><DL>
 <DT><B>Parameters:</B><DD><CODE>commandLine</CODE> - The command line entered into the console (See
-            <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/ConsoleThread.html" title="class in de.uniba.wiai.lspi.util.console"><CODE>ConsoleThread</CODE></A>).
+            <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/ConsoleThread.html" title="class in com.chord.console"><CODE>ConsoleThread</CODE></A>).
 <DT><B>Returns:</B><DD>The instance of the command corresponding to given commandLine.
 <DT><B>Throws:</B>
-<DD><CODE><A HREF="../../../../../../de/uniba/wiai/lspi/util/console/ConsoleException.html" title="class in de.uniba.wiai.lspi.util.console">ConsoleException</A></CODE> - Any Exception during creation of command.</DL>
+<DD><CODE><A HREF="../../../../../../de/uniba/wiai/lspi/util/console/ConsoleException.html" title="class in com.chord.console">ConsoleException</A></CODE> - Any Exception during creation of command.</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -395,8 +395,8 @@ public <A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" 
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in de.uniba.wiai.lspi.util.console"><B>PREV CLASS</B></A>&nbsp;
-&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/util/console/ConsoleException.html" title="class in de.uniba.wiai.lspi.util.console"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/util/console/Command.html" title="class in com.chord.console"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/util/console/ConsoleException.html" title="class in com.chord.console"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../../index.html?de/uniba/wiai/lspi/util/console/CommandFactory.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="CommandFactory.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;

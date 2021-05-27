@@ -7,7 +7,7 @@
 ChordCallback (OpenChord API 1.0.5)
 </TITLE>
 
-<META NAME="keywords" CONTENT="de.uniba.wiai.lspi.chord.service.ChordCallback interface">
+<META NAME="keywords" CONTENT="com.chord.service.ChordCallback interface">
 
 <LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../../../stylesheet.css" TITLE="Style">
 
@@ -51,8 +51,8 @@ function windowTitle()
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/Chord.html" title="interface in de.uniba.wiai.lspi.chord.service"><B>PREV CLASS</B></A>&nbsp;
-&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/ChordFuture.html" title="interface in de.uniba.wiai.lspi.chord.service"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/Chord.html" title="interface in com.chord.service"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/ChordFuture.html" title="interface in com.chord.service"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../../index.html?de/uniba/wiai/lspi/chord/service/ChordCallback.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="ChordCallback.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
@@ -84,7 +84,7 @@ DETAIL:&nbsp;FIELD&nbsp;|&nbsp;CONSTR&nbsp;|&nbsp;<A HREF="#method_detail">METHO
 <!-- ======== START OF CLASS DATA ======== -->
 <H2>
 <FONT SIZE="-1">
-de.uniba.wiai.lspi.chord.service</FONT>
+    com.chord.service</FONT>
 <BR>
 Interface ChordCallback</H2>
 <HR>
@@ -95,23 +95,23 @@ Interface ChordCallback</H2>
 <P>
 <p>
  This is the interface that must be implemented by classes 
- that can be used as callback for method invocations on <A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/AsynChord.html" title="interface in de.uniba.wiai.lspi.chord.service"><CODE>AsynChord</CODE></A>.
+ that can be used as callback for method invocations on <A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/AsynChord.html" title="interface in com.chord.service"><CODE>AsynChord</CODE></A>.
  </p> 
  
  <p>
  An instance of this must be passed as parameter to on of the 
  methods:
  <ul>
- <li><A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/AsynChord.html#insert(de.uniba.wiai.lspi.chord.service.Key, java.io.Serializable, de.uniba.wiai.lspi.chord.service.ChordCallback)"><CODE>AsynChord.insert(Key, Serializable, ChordCallback)</CODE></A></li>
- <li><A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/AsynChord.html#remove(de.uniba.wiai.lspi.chord.service.Key, java.io.Serializable, de.uniba.wiai.lspi.chord.service.ChordCallback)"><CODE>AsynChord.remove(Key, Serializable, ChordCallback)</CODE></A></li>
- <li><A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/AsynChord.html#retrieve(de.uniba.wiai.lspi.chord.service.Key, de.uniba.wiai.lspi.chord.service.ChordCallback)"><CODE>AsynChord.retrieve(Key, ChordCallback)</CODE></A></li>
+ <li><A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/AsynChord.html#insert(com.chord.service.Key, java.io.Serializable, com.chord.service.ChordCallback)"><CODE>AsynChord.insert(Key, Serializable, ChordCallback)</CODE></A></li>
+ <li><A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/AsynChord.html#remove(com.chord.service.Key, java.io.Serializable, com.chord.service.ChordCallback)"><CODE>AsynChord.remove(Key, Serializable, ChordCallback)</CODE></A></li>
+ <li><A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/AsynChord.html#retrieve(com.chord.service.Key, com.chord.service.ChordCallback)"><CODE>AsynChord.retrieve(Key, ChordCallback)</CODE></A></li>
  </ul>
  On termination of those methods the corresponding callback method 
  on this is called. These methods are: 
  <ul>
- <li><A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/ChordCallback.html#inserted(de.uniba.wiai.lspi.chord.service.Key, java.io.Serializable, java.lang.Throwable)"><CODE>inserted(Key, Serializable, Throwable)</CODE></A></li>
- <li><A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/ChordCallback.html#removed(de.uniba.wiai.lspi.chord.service.Key, java.io.Serializable, java.lang.Throwable)"><CODE>removed(Key, Serializable, Throwable)</CODE></A></li>
- <li><A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/ChordCallback.html#retrieved(de.uniba.wiai.lspi.chord.service.Key, java.util.Set, java.lang.Throwable)"><CODE>retrieved(Key, Set, Throwable)</CODE></A></li>
+ <li><A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/ChordCallback.html#inserted(com.chord.service.Key, java.io.Serializable, java.lang.Throwable)"><CODE>inserted(Key, Serializable, Throwable)</CODE></A></li>
+ <li><A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/ChordCallback.html#removed(com.chord.service.Key, java.io.Serializable, java.lang.Throwable)"><CODE>removed(Key, Serializable, Throwable)</CODE></A></li>
+ <li><A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/ChordCallback.html#retrieved(com.chord.service.Key, java.util.Set, java.lang.Throwable)"><CODE>retrieved(Key, Set, Throwable)</CODE></A></li>
  </ul>
  The <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Throwable.html" title="class or interface in java.lang"><CODE>Throwable</CODE></A> parameter of these methods is <code>null</code> 
  if the corresponding method has been executed successfully. 
@@ -134,19 +134,19 @@ Interface ChordCallback</H2>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/ChordCallback.html#inserted(de.uniba.wiai.lspi.chord.service.Key, java.io.Serializable, java.lang.Throwable)">inserted</A></B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/Key.html" title="interface in de.uniba.wiai.lspi.chord.service">Key</A>&nbsp;key,
+<TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/ChordCallback.html#inserted(com.chord.service.Key, java.io.Serializable, java.lang.Throwable)">inserted</A></B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/Key.html" title="interface in com.chord.service">Key</A>&nbsp;key,
          <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/Serializable.html" title="class or interface in java.io">Serializable</A>&nbsp;entry,
          <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Throwable.html" title="class or interface in java.lang">Throwable</A>&nbsp;t)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This method is called, when a call to 
- <A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/AsynChord.html#insert(de.uniba.wiai.lspi.chord.service.Key, java.io.Serializable, de.uniba.wiai.lspi.chord.service.ChordCallback)"><CODE>AsynChord.insert(Key, Serializable, ChordCallback)</CODE></A>
+ <A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/AsynChord.html#insert(com.chord.service.Key, java.io.Serializable, com.chord.service.ChordCallback)"><CODE>AsynChord.insert(Key, Serializable, ChordCallback)</CODE></A>
  has been finished.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/ChordCallback.html#removed(de.uniba.wiai.lspi.chord.service.Key, java.io.Serializable, java.lang.Throwable)">removed</A></B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/Key.html" title="interface in de.uniba.wiai.lspi.chord.service">Key</A>&nbsp;key,
+<TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/ChordCallback.html#removed(com.chord.service.Key, java.io.Serializable, java.lang.Throwable)">removed</A></B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/Key.html" title="interface in com.chord.service">Key</A>&nbsp;key,
         <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/Serializable.html" title="class or interface in java.io">Serializable</A>&nbsp;entry,
         <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Throwable.html" title="class or interface in java.lang">Throwable</A>&nbsp;t)</CODE>
 
@@ -157,7 +157,7 @@ Interface ChordCallback</H2>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/ChordCallback.html#retrieved(de.uniba.wiai.lspi.chord.service.Key, java.util.Set, java.lang.Throwable)">retrieved</A></B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/Key.html" title="interface in de.uniba.wiai.lspi.chord.service">Key</A>&nbsp;key,
+<TD><CODE><B><A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/ChordCallback.html#retrieved(com.chord.service.Key, java.util.Set, java.lang.Throwable)">retrieved</A></B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/Key.html" title="interface in com.chord.service">Key</A>&nbsp;key,
           <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Set.html" title="class or interface in java.util">Set</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/Serializable.html" title="class or interface in java.io">Serializable</A>&gt;&nbsp;entries,
           <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Throwable.html" title="class or interface in java.lang">Throwable</A>&nbsp;t)</CODE>
 
@@ -179,52 +179,52 @@ Interface ChordCallback</H2>
 </TR>
 </TABLE>
 
-<A NAME="retrieved(de.uniba.wiai.lspi.chord.service.Key, java.util.Set, java.lang.Throwable)"><!-- --></A><H3>
+<A NAME="retrieved(com.chord.service.Key, java.util.Set, java.lang.Throwable)"><!-- --></A><H3>
 retrieved</H3>
 <PRE>
-void <B>retrieved</B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/Key.html" title="interface in de.uniba.wiai.lspi.chord.service">Key</A>&nbsp;key,
+void <B>retrieved</B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/Key.html" title="interface in com.chord.service">Key</A>&nbsp;key,
                <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Set.html" title="class or interface in java.util">Set</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/Serializable.html" title="class or interface in java.io">Serializable</A>&gt;&nbsp;entries,
                <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Throwable.html" title="class or interface in java.lang">Throwable</A>&nbsp;t)</PRE>
 <DL>
 <DD>This is the callback method for retrieval of values 
  associated with <code>key</code>. This method is called 
  when an invocation of 
- <A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/AsynChord.html#retrieve(de.uniba.wiai.lspi.chord.service.Key, de.uniba.wiai.lspi.chord.service.ChordCallback)"><CODE>AsynChord.retrieve(Key, ChordCallback)</CODE></A> has finished.
+ <A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/AsynChord.html#retrieve(com.chord.service.Key, com.chord.service.ChordCallback)"><CODE>AsynChord.retrieve(Key, ChordCallback)</CODE></A> has finished.
 <P>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>key</CODE> - The <A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/Key.html" title="interface in de.uniba.wiai.lspi.chord.service"><CODE>Key</CODE></A> that has been used for the retrieval.<DD><CODE>entries</CODE> - The retrieved entries. Empty Set, if no values 
+<DT><B>Parameters:</B><DD><CODE>key</CODE> - The <A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/Key.html" title="interface in com.chord.service"><CODE>Key</CODE></A> that has been used for the retrieval.<DD><CODE>entries</CODE> - The retrieved entries. Empty Set, if no values
  are associated with <code>key</code>.<DD><CODE>t</CODE> - Any <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Throwable.html" title="class or interface in java.lang"><CODE>Throwable</CODE></A> that occured during execution 
- of <A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/AsynChord.html#retrieve(de.uniba.wiai.lspi.chord.service.Key, de.uniba.wiai.lspi.chord.service.ChordCallback)"><CODE>AsynChord.retrieve(Key, ChordCallback)</CODE></A>. 
+ of <A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/AsynChord.html#retrieve(com.chord.service.Key, com.chord.service.ChordCallback)"><CODE>AsynChord.retrieve(Key, ChordCallback)</CODE></A>.
  This is <code>null</code> if retrieval of <code>key</code> 
  was succesful.</DL>
 </DD>
 </DL>
 <HR>
 
-<A NAME="inserted(de.uniba.wiai.lspi.chord.service.Key, java.io.Serializable, java.lang.Throwable)"><!-- --></A><H3>
+<A NAME="inserted(com.chord.service.Key, java.io.Serializable, java.lang.Throwable)"><!-- --></A><H3>
 inserted</H3>
 <PRE>
-void <B>inserted</B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/Key.html" title="interface in de.uniba.wiai.lspi.chord.service">Key</A>&nbsp;key,
+void <B>inserted</B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/Key.html" title="interface in com.chord.service">Key</A>&nbsp;key,
               <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/Serializable.html" title="class or interface in java.io">Serializable</A>&nbsp;entry,
               <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Throwable.html" title="class or interface in java.lang">Throwable</A>&nbsp;t)</PRE>
 <DL>
 <DD>This method is called, when a call to 
- <A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/AsynChord.html#insert(de.uniba.wiai.lspi.chord.service.Key, java.io.Serializable, de.uniba.wiai.lspi.chord.service.ChordCallback)"><CODE>AsynChord.insert(Key, Serializable, ChordCallback)</CODE></A>
+ <A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/AsynChord.html#insert(com.chord.service.Key, java.io.Serializable, com.chord.service.ChordCallback)"><CODE>AsynChord.insert(Key, Serializable, ChordCallback)</CODE></A>
  has been finished.
 <P>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>key</CODE> - The <A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/Key.html" title="interface in de.uniba.wiai.lspi.chord.service"><CODE>Key</CODE></A> that should be used for insertion.<DD><CODE>entry</CODE> - The entry that should be inserted.<DD><CODE>t</CODE> - Any <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Throwable.html" title="class or interface in java.lang"><CODE>Throwable</CODE></A> that occured during execution 
- of <A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/AsynChord.html#insert(de.uniba.wiai.lspi.chord.service.Key, java.io.Serializable, de.uniba.wiai.lspi.chord.service.ChordCallback)"><CODE>AsynChord.insert(Key, Serializable, ChordCallback)</CODE></A>. 
+<DT><B>Parameters:</B><DD><CODE>key</CODE> - The <A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/Key.html" title="interface in com.chord.service"><CODE>Key</CODE></A> that should be used for insertion.<DD><CODE>entry</CODE> - The entry that should be inserted.<DD><CODE>t</CODE> - Any <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Throwable.html" title="class or interface in java.lang"><CODE>Throwable</CODE></A> that occured during execution
+ of <A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/AsynChord.html#insert(com.chord.service.Key, java.io.Serializable, com.chord.service.ChordCallback)"><CODE>AsynChord.insert(Key, Serializable, ChordCallback)</CODE></A>.
  This is <code>null</code> if insertion of <code>key</code> and 
  <code>entry</code> was succesful.</DL>
 </DD>
 </DL>
 <HR>
 
-<A NAME="removed(de.uniba.wiai.lspi.chord.service.Key, java.io.Serializable, java.lang.Throwable)"><!-- --></A><H3>
+<A NAME="removed(com.chord.service.Key, java.io.Serializable, java.lang.Throwable)"><!-- --></A><H3>
 removed</H3>
 <PRE>
-void <B>removed</B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/Key.html" title="interface in de.uniba.wiai.lspi.chord.service">Key</A>&nbsp;key,
+void <B>removed</B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/Key.html" title="interface in com.chord.service">Key</A>&nbsp;key,
              <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/Serializable.html" title="class or interface in java.io">Serializable</A>&nbsp;entry,
              <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Throwable.html" title="class or interface in java.lang">Throwable</A>&nbsp;t)</PRE>
 <DL>
@@ -232,8 +232,8 @@ void <B>removed</B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/
  with <code>key</code>.
 <P>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>key</CODE> - The <A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/Key.html" title="interface in de.uniba.wiai.lspi.chord.service"><CODE>Key</CODE></A> of the entry that should be removed.<DD><CODE>entry</CODE> - The entry that should be removed.<DD><CODE>t</CODE> - Any <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Throwable.html" title="class or interface in java.lang"><CODE>Throwable</CODE></A> that occured during execution 
- of <A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/AsynChord.html#remove(de.uniba.wiai.lspi.chord.service.Key, java.io.Serializable, de.uniba.wiai.lspi.chord.service.ChordCallback)"><CODE>AsynChord.remove(Key, Serializable, ChordCallback)</CODE></A>. 
+<DT><B>Parameters:</B><DD><CODE>key</CODE> - The <A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/Key.html" title="interface in com.chord.service"><CODE>Key</CODE></A> of the entry that should be removed.<DD><CODE>entry</CODE> - The entry that should be removed.<DD><CODE>t</CODE> - Any <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Throwable.html" title="class or interface in java.lang"><CODE>Throwable</CODE></A> that occured during execution
+ of <A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/AsynChord.html#remove(com.chord.service.Key, java.io.Serializable, com.chord.service.ChordCallback)"><CODE>AsynChord.remove(Key, Serializable, ChordCallback)</CODE></A>.
  This is <code>null</code> if removal of 
  <code>entry</code> was succesful.</DL>
 </DD>
@@ -268,8 +268,8 @@ void <B>removed</B>(<A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/Chord.html" title="interface in de.uniba.wiai.lspi.chord.service"><B>PREV CLASS</B></A>&nbsp;
-&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/ChordFuture.html" title="interface in de.uniba.wiai.lspi.chord.service"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/Chord.html" title="interface in com.chord.service"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../../de/uniba/wiai/lspi/chord/service/ChordFuture.html" title="interface in com.chord.service"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../../index.html?de/uniba/wiai/lspi/chord/service/ChordCallback.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="ChordCallback.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;

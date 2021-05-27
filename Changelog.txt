@@ -9,7 +9,7 @@ Open Chord version 1.0.5 (2008-04-11)
   must start with "ocrmi". The protocol can be changed in the console with the
   command "cprotocol -t ocrmi" before creating or joining a network. When
   compiling Open Chord do not forget to create the stub class for
-  de.uniba.wiai.lspi.chord.com.rmi.RMIEndpoint with rmic!
+  com.chord.com.rmi.RMIEndpoint with rmic!
 
 
 Open Chord version 1.0.4 (2007-10-25)
@@ -18,8 +18,8 @@ Open Chord version 1.0.4 (2007-10-25)
 - Fixed bug 1795697: https://sourceforge.net/tracker/index.php?
       func=detail&aid=1795697&group_id=158069&atid=806356
 - Fixed synchronization problems in class
-  de.uniba.wiai.lspi.chord.com.socket.SocketProxy
-- Changed de.uniba.wiai.lspi.chord.data.URL.KNOWN_PROTOCOLS from String array
+  com.chord.com.socket.SocketProxy
+- Changed com.chord.data.URL.KNOWN_PROTOCOLS from String array
   to unmodifiable java.util.List<String>
 - Manual adapted to changes in URL.
 - Added possibility to configure Log4jLogger with help of xml file according to
