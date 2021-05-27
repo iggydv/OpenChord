@@ -25,11 +25,11 @@
  *   with this software or at: http://www.gnu.org/copyleft/gpl.html        *
  *                                                                         *
  ***************************************************************************/
-package com.chord.com.local;
+package com.chord.local;
 
 import java.lang.reflect.Field;
 
-import com.chord.com.Node;
+import com.chord.Node;
 import com.chord.service.impl.ChordImpl;
 import com.chord.service.impl.NodeImpl;
 

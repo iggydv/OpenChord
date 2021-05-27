@@ -26,13 +26,15 @@
  *                                                                         *
  ***************************************************************************/
 
-package com.chord.com.socket;
+package com.chord.socket;
+
+import com.chord.Node;
 
 /**
  * This class contains constants regarding methods that can be invoked on
- * {@link com.chord.com.Node}. Do not forget that this
+ * {@link Node}. Do not forget that this
  * class has to be edited eventually if the methods in
- * {@link com.chord.com.Node} change.
+ * {@link Node} change.
  * 
  * <p>
  * TODO: change to enum type !
@@ -115,7 +117,7 @@ final class MethodConstants {
 
 	/**
 	 * Array containing names of methods of
-	 * {@link com.chord.com.Node}. A name of a method
+	 * {@link Node}. A name of a method
 	 * can be accessed by using the constant identifying the method as an index
 	 * into this array.
 	 */

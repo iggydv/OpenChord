@@ -34,10 +34,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import com.chord.com.local.Registry;
-import com.chord.com.local.ThreadEndpoint;
+import com.chord.local.Registry;
+import com.chord.local.ThreadEndpoint;
 import com.chord.data.ID;
-import de.uniba.wiai.lspi.util.console.Command;
+import com.chord.console.Command;
 
 /**
  * <p>

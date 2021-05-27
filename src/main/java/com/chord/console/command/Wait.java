@@ -30,8 +30,8 @@ package com.chord.console.command;
 
 import java.io.PrintStream;
 
-import de.uniba.wiai.lspi.util.console.Command;
-import de.uniba.wiai.lspi.util.console.ConsoleException;
+import com.chord.console.Command;
+import com.chord.console.ConsoleException;
 
 /**
  * <p>

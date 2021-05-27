@@ -26,7 +26,7 @@
  *                                                                         *
  ***************************************************************************/
 
-package com.chord.com.socket;
+package com.chord.socket;
 
 import java.io.Serializable;
 

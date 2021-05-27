@@ -34,8 +34,8 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Map;
 
-import de.uniba.wiai.lspi.util.console.Command;
-import de.uniba.wiai.lspi.util.console.ConsoleThread;
+import com.chord.console.Command;
+import com.chord.console.ConsoleThread;
 //import org.slf4j.Logger;
 
 /**

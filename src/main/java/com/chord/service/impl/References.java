@@ -27,10 +27,10 @@
  ***************************************************************************/
 package com.chord.service.impl;
 
-import com.chord.com.CommunicationException;
-import com.chord.com.Entry;
-import com.chord.com.Node;
-import com.chord.com.Proxy;
+import com.chord.CommunicationException;
+import com.chord.Entry;
+import com.chord.Node;
+import com.chord.Proxy;
 import com.chord.data.ID;
 import com.chord.data.URL;
 import org.slf4j.Logger;

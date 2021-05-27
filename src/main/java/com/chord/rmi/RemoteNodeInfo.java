@@ -24,7 +24,7 @@
  *   with this software or at: http://www.gnu.org/copyleft/gpl.html        *
  *                                                                         *
  ***************************************************************************/
-package com.chord.com.rmi;
+package com.chord.rmi;
 
 import java.io.Serializable;
 

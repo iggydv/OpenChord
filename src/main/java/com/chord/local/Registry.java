@@ -26,7 +26,7 @@
  *                                                                         *
  ***************************************************************************/
  
-package com.chord.com.local;
+package com.chord.local;
 
 import java.util.HashMap;
 import java.util.LinkedList;

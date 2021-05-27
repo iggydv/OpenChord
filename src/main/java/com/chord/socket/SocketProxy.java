@@ -25,14 +25,14 @@
  *   with this software or at: http://www.gnu.org/copyleft/gpl.html        *
  *                                                                         *
  ***************************************************************************/
-package com.chord.com.socket;
+package com.chord.socket;
 
-import com.chord.com.CommunicationException;
-import com.chord.com.Endpoint;
-import com.chord.com.Entry;
-import com.chord.com.Node;
-import com.chord.com.Proxy;
-import com.chord.com.RefsAndEntries;
+import com.chord.CommunicationException;
+import com.chord.Endpoint;
+import com.chord.Entry;
+import com.chord.Node;
+import com.chord.Proxy;
+import com.chord.RefsAndEntries;
 import com.chord.data.ID;
 import com.chord.data.URL;
 import org.slf4j.Logger;
@@ -1014,10 +1014,10 @@ public final class SocketProxy extends Proxy implements Runnable {
 
     /**
      * The run methods waits for incoming
-     * {@link com.chord.com.socket.Response} made by this proxy
+     * {@link Response} made by this proxy
      * and puts them into a datastructure from where the can be collected by the
      * associated method call that made a
-     * {@link com.chord.com.socket.Request} to the {@link Node},
+     * {@link Request} to the {@link Node},
      * that this is the proxy for.
      */
     public void run() {

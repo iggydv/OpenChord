@@ -30,12 +30,12 @@ package com.chord.console.command;
 
 import java.net.MalformedURLException;
 
-import com.chord.com.local.ChordImplAccess;
-import com.chord.com.local.Registry;
-import com.chord.com.local.ThreadEndpoint;
+import com.chord.local.ChordImplAccess;
+import com.chord.local.Registry;
+import com.chord.local.ThreadEndpoint;
 import com.chord.data.URL;
-import de.uniba.wiai.lspi.util.console.Command;
-import de.uniba.wiai.lspi.util.console.ConsoleException;
+import com.chord.console.Command;
+import com.chord.console.ConsoleException;
 
 /**
  * <p>

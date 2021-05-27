@@ -26,7 +26,7 @@
  *                                                                         *
  ***************************************************************************/
 
-package com.chord.com.socket;
+package com.chord.socket;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -35,8 +35,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ThreadPoolExecutor;
 
-import com.chord.com.Endpoint;
-import com.chord.com.Node;
+import com.chord.Endpoint;
+import com.chord.Node;
 import com.chord.data.URL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,9 +45,9 @@ import org.slf4j.LoggerFactory;
  * This class represents an {@link Endpoint} for communication over socket
  * protocol. It provides a <code>ServerSocket</code> to that clients can
  * connect and starts for each incoming connection a
- * {@link com.chord.com.socket.RequestHandler} that handles
- * {@link com.chord.com.socket.Request}s for method invocations
- * from remote nodes. These {@link com.chord.com.socket.Request}s
+ * {@link RequestHandler} that handles
+ * {@link Request}s for method invocations
+ * from remote nodes. These {@link Request}s
  * are sent by one {@link SocketProxy} representing the node, that this is the
  * endpoint for, at another node.
  * 

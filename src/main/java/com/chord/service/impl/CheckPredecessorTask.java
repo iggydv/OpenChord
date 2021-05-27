@@ -27,8 +27,8 @@
  ***************************************************************************/
 package com.chord.service.impl;
 
-import com.chord.com.CommunicationException;
-import com.chord.com.Node;
+import com.chord.CommunicationException;
+import com.chord.Node;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

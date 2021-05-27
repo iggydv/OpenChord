@@ -33,9 +33,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import com.chord.com.CommunicationException;
-import com.chord.com.Entry;
-import com.chord.com.Node;
+import com.chord.CommunicationException;
+import com.chord.Entry;
+import com.chord.Node;
 import com.chord.data.ID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -26,7 +26,7 @@
  *                                                                         *
  ***************************************************************************/
 
-package com.chord.com.local;
+package com.chord.local;
 
 /**
  * This interface has to be implemented by classes that want to be notified 

@@ -30,13 +30,7 @@ package com.chord.console;
 
 import java.util.Hashtable;
 
-import de.uniba.wiai.lspi.util.console.CommandFactory;
-import de.uniba.wiai.lspi.util.console.ConsoleThread;
-import de.uniba.wiai.lspi.util.console.ExecuteMacro;
-import de.uniba.wiai.lspi.util.console.MemoryOutputStream;
-import de.uniba.wiai.lspi.util.console.ShowOutputCommand;
-
-import com.chord.com.local.Registry;
+import com.chord.local.Registry;
 import com.chord.console.command.*;
 import com.chord.data.URL;
 import com.chord.service.Chord;

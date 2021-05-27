@@ -32,13 +32,13 @@ import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.util.Set;
 
-import com.chord.com.local.ChordImplAccess;
-import com.chord.com.local.Registry;
-import com.chord.com.local.ThreadEndpoint;
+import com.chord.local.ChordImplAccess;
+import com.chord.local.Registry;
+import com.chord.local.ThreadEndpoint;
 import com.chord.console.command.entry.Key;
 import com.chord.data.URL;
-import de.uniba.wiai.lspi.util.console.Command;
-import de.uniba.wiai.lspi.util.console.ConsoleException;
+import com.chord.console.Command;
+import com.chord.console.ConsoleException;
 
 /**
  * {@link Command} to retrieve a value from the local chord network.

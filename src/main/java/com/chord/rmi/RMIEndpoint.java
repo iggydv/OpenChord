@@ -24,7 +24,7 @@
  *   with this software or at: http://www.gnu.org/copyleft/gpl.html        *
  *                                                                         *
  ***************************************************************************/
-package com.chord.com.rmi;
+package com.chord.rmi;
 
 import java.rmi.AccessException;
 import java.rmi.AlreadyBoundException;
@@ -38,11 +38,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import com.chord.com.CommunicationException;
-import com.chord.com.Endpoint;
-import com.chord.com.Entry;
-import com.chord.com.Node;
-import com.chord.com.RefsAndEntries;
+import com.chord.CommunicationException;
+import com.chord.Endpoint;
+import com.chord.Entry;
+import com.chord.Node;
+import com.chord.RefsAndEntries;
 import com.chord.data.ID;
 import com.chord.data.URL;
 

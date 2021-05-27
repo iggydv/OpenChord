@@ -36,8 +36,8 @@ package com.chord.console.command;
 import java.util.List;
 import java.io.PrintStream;
 
-import de.uniba.wiai.lspi.util.console.ConsoleException;
-import com.chord.com.local.Registry;
+import com.chord.console.ConsoleException;
+import com.chord.local.Registry;
 import com.chord.data.URL;
 import com.chord.service.Chord;
 import com.chord.service.ServiceException;
@@ -52,7 +52,7 @@ import com.chord.service.impl.ChordImpl;
  * @author  sven
  * @version 1.0.5
  */
-public class CreateNodes extends de.uniba.wiai.lspi.util.console.Command {
+public class CreateNodes extends com.chord.console.Command {
     
 	/**
 	 * Name of this commmand. 

@@ -30,8 +30,8 @@ package com.chord.console.command;
 
 import java.io.PrintStream;
 
-import com.chord.com.local.Registry;
-import de.uniba.wiai.lspi.util.console.Command;
+import com.chord.local.Registry;
+import com.chord.console.Command;
 
 /**
  * The command to close the {@link com.chord.console.Main console}.

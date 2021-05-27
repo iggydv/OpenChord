@@ -30,8 +30,8 @@ package com.chord.console.command;
 
 import com.chord.console.command.entry.Key;
 import com.chord.service.Chord;
-import de.uniba.wiai.lspi.util.console.Command;
-import de.uniba.wiai.lspi.util.console.ConsoleException;
+import com.chord.console.Command;
+import com.chord.console.ConsoleException;
 
 import java.io.Serializable;
 import java.util.Set;

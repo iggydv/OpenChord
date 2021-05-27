@@ -27,7 +27,7 @@
  ***************************************************************************/
 package com.chord.service.impl;
 
-import com.chord.com.Node;
+import com.chord.Node;
 import com.chord.data.ID;
 import com.chord.data.URL;
 import org.slf4j.Logger;

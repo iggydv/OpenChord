@@ -31,7 +31,7 @@
  * Created on 1. September 2004, 17:54
  */
 
-package com.chord.com.socket;
+package com.chord.socket;
 
 import java.io.Serializable;
 

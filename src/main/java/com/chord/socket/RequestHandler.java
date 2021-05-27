@@ -32,7 +32,7 @@
  * Created on 2. September 2004, 14:02
  */
 
-package com.chord.com.socket;
+package com.chord.socket;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -46,12 +46,12 @@ import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
-import com.chord.com.CommunicationException;
-import com.chord.com.Endpoint;
-import com.chord.com.EndpointStateListener;
-import com.chord.com.Entry;
-import com.chord.com.Node;
-import com.chord.com.RefsAndEntries;
+import com.chord.CommunicationException;
+import com.chord.Endpoint;
+import com.chord.EndpointStateListener;
+import com.chord.Entry;
+import com.chord.Node;
+import com.chord.RefsAndEntries;
 import com.chord.data.ID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -100,7 +100,7 @@ final class RequestHandler extends Thread implements EndpointStateListener {
 	/**
 	 * The state that the {@link SocketEndpoint endpoint}, that started this
 	 * request handler, is currently in. See constants of class
-	 * {@link com.chord.com.Endpoint}.
+	 * {@link Endpoint}.
 	 */
 	private int state;
 

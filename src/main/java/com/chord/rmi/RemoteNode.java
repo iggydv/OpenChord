@@ -24,15 +24,15 @@
  *   with this software or at: http://www.gnu.org/copyleft/gpl.html        *
  *                                                                         *
  ***************************************************************************/
-package com.chord.com.rmi;
+package com.chord.rmi;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
 import java.util.Set;
 
-import com.chord.com.CommunicationException;
-import com.chord.com.Entry;
+import com.chord.CommunicationException;
+import com.chord.Entry;
 import com.chord.data.ID;
 
 /**

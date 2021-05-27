@@ -25,7 +25,7 @@
  *   with this software or at: http://www.gnu.org/copyleft/gpl.html        *
  *                                                                         *
  ***************************************************************************/
-package com.chord.com.socket;
+package com.chord.socket;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;

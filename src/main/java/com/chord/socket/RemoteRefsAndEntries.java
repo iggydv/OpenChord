@@ -25,13 +25,13 @@
  *   with this software or at: http://www.gnu.org/copyleft/gpl.html        *
  *                                                                         *
  ***************************************************************************/
-package com.chord.com.socket;
+package com.chord.socket;
 
 import java.util.List;
 import java.io.Serializable;
 import java.util.Set;
 
-import com.chord.com.Entry;
+import com.chord.Entry;
 
 /**
  * This class represents entries and {@link RemoteNodeInfo references} that 

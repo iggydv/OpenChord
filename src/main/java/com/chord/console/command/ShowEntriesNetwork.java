@@ -29,7 +29,7 @@
 package com.chord.console.command;
 
 import com.chord.service.Report;
-import de.uniba.wiai.lspi.util.console.Command;
+import com.chord.console.Command;
 
 /**
  * <p>

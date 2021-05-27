@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.LinkedList;
 
 import com.chord.console.Main;
-import de.uniba.wiai.lspi.util.console.ConsoleException;
+import com.chord.console.ConsoleException;
 
 /**
  * This class represents a list of names, that are provided to some commands as

@@ -28,7 +28,7 @@
 
 package com.chord.service.impl;
 
-import com.chord.com.Entry;
+import com.chord.Entry;
 import com.chord.data.ID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
